@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagnik Chakraborty | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warm: {
+                            50: '#fdfbf7', 
+                            100: '#f7f1e3', 
+                            200: '#efe2c7',
+                            300: '#e6cc9f', 
+                            400: '#e0b16f',
+                            500: '#e07a5f', 
+                            600: '#c45a40', 
+                            700: '#3d405b', 
+                            800: '#282a3a', 
+                            900: '#81b29a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #3d405b;
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .blob {
+            position: absolute;
+            filter: blur(50px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f7f1e3; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e07a5f; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c45a40; 
+        }
+    </style>
+</head>
+<body class="selection:bg-warm-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-warm-50/90 backdrop-blur-md border-b border-warm-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif font-bold text-2xl text-warm-600">Sagnik.</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">About</a>
+                    <a href="#skills" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Skills</a>
+                    <a href="#experience" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Experience</a>
+                    <a href="#achievements" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Achievements</a>
+                    <a href="#contact" class="bg-warm-500 text-white hover:bg-warm-600 px-4 py-2 rounded-full text-sm font-medium transition shadow-md">Contact Me</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-warm-700 hover:text-warm-500 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-warm-50 px-4 pt-2 pb-4 shadow-lg border-b border-warm-200">
+            <a href="#about" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">About</a>
+            <a href="#skills" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+            <a href="#experience" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+            <a href="#achievements" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Achievements</a>
+            <a href="#contact" class="block text-warm-500 font-bold mt-2">Contact Me</a>
+        </div>
+    </nav>
+
+    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="blob bg-warm-300 w-64 h-64 rounded-full top-20 left-10 opacity-40"></div>
+        <div class="blob bg-warm-500 w-96 h-96 rounded-full bottom-10 right-10 opacity-20 animation-delay-2000"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-block px-4 py-1.5 bg-warm-200 text-warm-800 rounded-full text-sm font-semibold mb-6 shadow-sm">
+                        👋 Hello, I'm Sagnik Chakraborty
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold font-serif text-warm-800 mb-6 leading-tight">
+                        Aspiring <span class="text-warm-500">Software Developer</span> & AI/ML Enthusiast
+                    </h1>
+                    <p class="text-lg text-warm-700 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        I'm a first-year <b>B.Tech CSE (AI/ML)</b> undergraduate at <b>Lovely Professional University</b>. 
+                        Passionate about Python, Data Structures, and Web Development. Always exploring, learning, and open to internships.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="px-8 py-3 bg-warm-500 text-white font-semibold rounded-lg shadow-lg hover:bg-warm-600 transform hover:-translate-y-1 transition duration-300">
+                            Get in Touch
+                        </a>
+                        <a href="#experience" class="px-8 py-3 bg-white text-warm-700 font-semibold rounded-lg shadow border border-warm-200 hover:bg-warm-50 transform hover:-translate-y-1 transition duration-300">
+                            View Experience
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-2 text-warm-600 text-sm">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kolkata, West Bengal, India</span>
+                    </div>
+                </div>
+
+                <div class="flex-1 relative">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 mx-auto">
+                        <div class="absolute inset-0 border-4 border-warm-300 rounded-full transform rotate-6"></div>
+                        <div class="absolute inset-0 border-4 border-warm-500 rounded-full transform -rotate-3 opacity-50"></div>
+                        
+                        <img src="https://placehold.co/500x500/e07a5f/white?text=Sagnik"
+                             alt="Sagnik Chakraborty" 
+                             class="w-full h-full object-cover rounded-full shadow-2xl relative z-10 border-4 border-white">
+                        
+                        <div class="absolute bottom-4 right-4 z-20 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="bg-warm-100 p-2 rounded-full text-warm-600">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Focus</p>
+                                <p class="font-bold text-sm text-warm-800">Frontend Dev</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Technical Skills</h2>
+                <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
+                        <i class="fab fa-python text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="font-bold text-warm-800">Python</h3>
+                    <p class="text-sm text-warm-600 mt-1">Core & Scripting</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
+                        <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                    </div>
+                    <h3 class="font-bold text-warm-800">HTML5</h3>
+                    <p class="text-sm text-warm-600 mt-1">Structure</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
+                        <i class="fab fa-css3-alt text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-warm-800">CSS3</h3>
+                    <p class="text-sm text-warm-600 mt-1">Styling & Grid</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
+                        <i class="fab fa-js text-3xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-bold text-warm-800">JavaScript</h3>
+                    <p class="text-sm text-warm-600 mt-1">Interactive Web</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-warm-50 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-warm-800 mb-8 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-warm-500"></i> Education
+                    </h2>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-warm-500 ml-4 relative">
+                        <div class="absolute -left-6 top-6 w-4 h-4 rounded-full bg-warm-500 border-4 border-warm-100"></div>
+                        <h3 class="text-xl font-bold text-warm-800">Lovely Professional University</h3>
+                        <p class="text-warm-600 font-medium">B.Tech CSE (AI/ML)</p>
+                        <p class="text-sm text-gray-400 mt-1"><i class="far fa-calendar-alt mr-1"></i> 2025 - 2029</p>
+                        <p class="mt-3 text-gray-600">Currently in First Year. Focusing on foundational computer science concepts.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-warm-800 mb-8 flex items-center gap-3">
+                        <i class="fas fa-briefcase text-warm-500"></i> Experience
+                    </h2>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-warm-900 ml-4 relative">
+                        <div class="absolute -left-6 top-6 w-4 h-4 rounded-full bg-warm-900 border-4 border-warm-100"></div>
+                        <h3 class="text-xl font-bold text-warm-800">Outreach Trainee</h3>
+                        <p class="text-warm-600 font-medium">LPU School of Computer Science Engineering</p>
+                        <p class="text-sm text-gray-400 mt-1"><i class="far fa-calendar-alt mr-1"></i> Nov 2025 - Present</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-warm-100 text-warm-800 text-xs rounded">Office Support</span>
+                            <span class="px-2 py-1 bg-warm-100 text-warm-800 text-xs rounded">Student Outreach</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif font-bold text-warm-800">Achievements</h2>
+                <p class="text-warm-600 mt-2">Milestones in my journey</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-warm-50 rounded-3xl overflow-hidden shadow-xl border border-warm-100 flex flex-col md:flex-row">
+                <div class="md:w-1/2 relative bg-gray-200">
+                    <img src="https://placehold.co/800x600/3d405b/white?text=TechXpo+Hackathon"
+                         alt="TechXpo Hackathon" 
+                         class="w-full h-full object-cover min-h-[300px]">
+                    <div class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 font-bold px-3 py-1 rounded-full text-sm shadow-md">
+                        <i class="fas fa-trophy mr-1"></i> 7th Place
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold text-warm-800 mb-2">TechXpo Hackathon</h3>
+                    <div class="flex items-center gap-2 mb-4 text-warm-600 text-sm">
+                        <i class="fas fa-map-pin"></i> 
+                        <span>Lovely Professional University</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Competed against numerous teams to solve real-world problems. Secured 7th position by demonstrating strong problem-solving skills and teamwork. This experience fueled my passion for competitive coding and development.
+                    </p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-white border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Teamwork</span>
+                        <span class="px-3 py-1 bg-white border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-warm-800 text-warm-100 py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-serif font-bold text-white mb-6">Let's Connect!</h2>
+            <p class="text-warm-200 mb-10 max-w-xl mx-auto">
+                I'm currently looking for internships and collaborative projects. Feel free to reach out via social media or check out my code repositories.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/d" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
+                    <i class="fab fa-linkedin text-xl"></i>
+                    <span>LinkedIn</span>
+                </a>
+                
+                <a href="https://github.com/sagnik-devv" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
+                    <i class="fab fa-github text-xl"></i>
+                    <span>GitHub</span>
+                </a>
+
+                <a href="https://leetcode.com/u/canbesagnik/" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
+                    <i class="fas fa-code text-xl"></i>
+                    <span>LeetCode</span>
+                </a>
+
+                <a href="https://www.instagram.com/canbe.sagnik/?next=%2F" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                    <span>Instagram</span>
+                </a>
+
+                <a href="https://x.com/canbesagnik" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
+                    <i class="fab fa-x-twitter text-xl"></i>
+                    <span>Twitter/X</span>
+                </a>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-warm-700 text-sm text-warm-400">
+                <p>&copy; 2025 Sagnik Chakraborty. Made with <i class="fas fa-heart text-warm-500"></i> & Coffee.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = menu.querySelectorAll('a');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
