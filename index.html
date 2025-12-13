@@ -57,7 +57,7 @@
             50% { transform: translate(20px, -20px) scale(1.1); }
             100% { transform: translate(0, 0) scale(1); }
         }
-        /* Custom Scrollbar */
+        
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -81,10 +81,11 @@
                 <div class="flex-shrink-0 flex items-center">
                     <span class="font-serif font-bold text-2xl text-warm-600">Sagnik.</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex space-x-6">
                     <a href="#about" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">About</a>
                     <a href="#skills" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Skills</a>
                     <a href="#experience" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Experience</a>
+                    <a href="#projects" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Projects</a>
                     <a href="#achievements" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Achievements</a>
                     <a href="#contact" class="bg-warm-500 text-white hover:bg-warm-600 px-4 py-2 rounded-full text-sm font-medium transition shadow-md">Contact Me</a>
                 </div>
@@ -99,6 +100,7 @@
             <a href="#about" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">About</a>
             <a href="#skills" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Skills</a>
             <a href="#experience" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+            <a href="#projects" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Projects</a>
             <a href="#achievements" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Achievements</a>
             <a href="#contact" class="block text-warm-500 font-bold mt-2">Contact Me</a>
         </div>
@@ -141,6 +143,7 @@
                         <div class="absolute inset-0 border-4 border-warm-500 rounded-full transform -rotate-3 opacity-50"></div>
                         
                         <img src="IMG_1054.jpeg"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Sagnik+Chakraborty&size=400&background=e07a5f&color=fff'"
                              alt="Sagnik Chakraborty" 
                              class="w-full h-full object-cover rounded-full shadow-2xl relative z-10 border-4 border-white">
                         
@@ -198,6 +201,14 @@
                     <h3 class="font-bold text-warm-800">JavaScript</h3>
                     <p class="text-sm text-warm-600 mt-1">Interactive Web</p>
                 </div>
+
+                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
+                        <i class="fas fa-bolt text-3xl text-red-500"></i>
+                    </div>
+                    <h3 class="font-bold text-warm-800">Streamlit</h3>
+                    <p class="text-sm text-warm-600 mt-1">Rapid Web Apps</p>
+                </div>
             </div>
         </div>
     </section>
@@ -239,16 +250,69 @@
         </div>
     </section>
 
-    <section id="achievements" class="py-20 bg-white">
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Featured Projects</h2>
+                <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-warm-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-warm-100 flex flex-col">
+                    <div class="h-48 bg-gradient-to-r from-slate-800 to-slate-900 flex items-center justify-center relative group">
+                        <div class="text-center">
+                            <i class="fas fa-calculator text-5xl text-cyan-400 mb-2 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]"></i>
+                            <h3 class="text-white font-bold text-xl tracking-wider">Cal<span class="text-cyan-400">Cool</span>ator</h3>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="https://calcoolator.streamlit.app/" target="_blank" class="px-6 py-2 bg-cyan-500 text-white rounded-full font-bold shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+                                Try it Live 🚀
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-warm-800">CalCoolator</h3>
+                            <a href="https://calcoolator.streamlit.app/" target="_blank" class="text-warm-500 hover:text-warm-700">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-warm-600 mb-4 flex-1">
+                            A sleek, neon-themed scientific calculator built entirely in Python. Features a modern dark UI, advanced scientific operations (Log, Power, Sqrt), and responsive design.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-blue-600 rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-red-500 rounded-full">Streamlit</span>
+                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-green-600 rounded-full">CSS Styling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-warm-50 rounded-2xl overflow-hidden shadow-sm border border-warm-100 flex flex-col opacity-70">
+                    <div class="h-48 bg-warm-200 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-4xl text-warm-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-warm-800 mb-2">More Coming Soon...</h3>
+                        <p class="text-warm-600">Currently working on exciting new projects in AI and Web Development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="py-20 bg-warm-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-serif font-bold text-warm-800">Achievements</h2>
                 <p class="text-warm-600 mt-2">Milestones in my journey</p>
             </div>
 
-            <div class="max-w-4xl mx-auto bg-warm-50 rounded-3xl overflow-hidden shadow-xl border border-warm-100 flex flex-col md:flex-row">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden shadow-xl border border-warm-100 flex flex-col md:flex-row">
                 <div class="md:w-1/2 relative bg-gray-200">
                     <img src="IMG_3723.jpeg"
+                         onerror="this.src='https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'"
                          alt="TechXpo Hackathon" 
                          class="w-full h-full object-cover min-h-[300px]">
                     <div class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 font-bold px-3 py-1 rounded-full text-sm shadow-md">
@@ -266,8 +330,8 @@
                         Competed against numerous teams to solve real-world problems. Secured 7th position by demonstrating strong problem-solving skills and teamwork. This experience fueled my passion for competitive coding and development.
                     </p>
                     <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-white border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Teamwork</span>
-                        <span class="px-3 py-1 bg-white border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Innovation</span>
+                        <span class="px-3 py-1 bg-warm-50 border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Teamwork</span>
+                        <span class="px-3 py-1 bg-warm-50 border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Innovation</span>
                     </div>
                 </div>
             </div>
