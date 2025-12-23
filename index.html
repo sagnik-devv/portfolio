@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sagnik Chakraborty | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
         tailwind.config = {
@@ -24,11 +24,17 @@
                             700: '#3d405b', 
                             800: '#282a3a', 
                             900: '#81b29a',
+                        },
+                        brand: {
+                            primary: '#ea580c',
+                            dark: '#c2410c',
+                            secondary: '#be123c',
                         }
                     },
                     fontFamily: {
                         sans: ['Nunito', 'sans-serif'],
                         serif: ['Lora', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
                     }
                 }
             }
@@ -164,7 +170,6 @@
 
     <section id="skills" class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Technical Languages Section -->
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Technical Skills</h2>
                 <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
@@ -204,14 +209,12 @@
                 </div>
             </div>
 
-            <!-- Tools & Frameworks Section -->
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Tools & Frameworks</h2>
                 <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
-                <!-- Streamlit Card with Beginner Badge -->
                 <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group relative overflow-hidden">
                     <span class="absolute top-3 right-3 bg-warm-200 text-warm-800 text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Beginner</span>
                     
@@ -220,6 +223,16 @@
                     </div>
                     <h3 class="font-bold text-warm-800">Streamlit</h3>
                     <p class="text-sm text-warm-600 mt-1">Rapid Web Apps</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group relative overflow-hidden">
+                    <span class="absolute top-3 right-3 bg-warm-200 text-warm-800 text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Beginner</span>
+                    
+                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
+                        <i class="fas fa-flask text-3xl text-gray-700"></i>
+                    </div>
+                    <h3 class="font-bold text-warm-800">Flask</h3>
+                    <p class="text-sm text-warm-600 mt-1">Backend Dev</p>
                 </div>
             </div>
         </div>
@@ -301,15 +314,37 @@
                     </div>
                 </div>
 
-                <div class="bg-warm-50 rounded-2xl overflow-hidden shadow-sm border border-warm-100 flex flex-col opacity-70">
-                    <div class="h-48 bg-warm-200 flex items-center justify-center">
-                        <i class="fas fa-laptop-code text-4xl text-warm-400"></i>
+                <div class="bg-warm-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-warm-100 flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-brand-primary to-warm-800 flex items-center justify-center relative group">
+                        <div class="text-center">
+                            <i class="fas fa-qrcode text-5xl text-white mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"></i>
+                            <h3 class="text-white font-bold text-xl tracking-wider font-outfit">Nexus <span class="text-warm-200">QR</span></h3>
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="https://nexus-qr.onrender.com/" target="_blank" class="px-6 py-2 bg-brand-primary text-white rounded-full font-bold shadow-lg transform scale-90 group-hover:scale-100 transition-transform hover:bg-brand-dark">
+                                Open App 🔗
+                            </a>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-warm-800 mb-2">More Coming Soon...</h3>
-                        <p class="text-warm-600">Currently working on exciting new projects in AI and Web Development.</p>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-warm-800 font-outfit">Nexus QR Generator</h3>
+                            <a href="https://nexus-qr.onrender.com/" target="_blank" class="text-brand-primary hover:text-brand-dark">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-warm-600 mb-4 flex-1">
+                            A robust QR code management tool. Generate instantly scannable codes for links and text. Designed with a focus on simplicity and modern UI aesthetics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-brand-primary rounded-full">Web Tool</span>
+                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-warm-700 rounded-full">Generator</span>
+                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-brand-secondary rounded-full">Utility</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -391,7 +426,6 @@
     </section>
 
     <script>
-        
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const links = menu.querySelectorAll('a');
@@ -400,7 +434,6 @@
             menu.classList.toggle('hidden');
         });
 
-        
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
