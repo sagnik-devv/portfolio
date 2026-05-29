@@ -72,6 +72,25 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #000000; 
         }
+        
+        /* Funky scrollbar for mobile carousel */
+        .funky-scrollbar::-webkit-scrollbar {
+            height: 14px;
+        }
+        .funky-scrollbar::-webkit-scrollbar-track {
+            background: #fdf2f8;
+            border-top: 2px solid #171717;
+            border-bottom: 2px solid #171717;
+        }
+        .funky-scrollbar::-webkit-scrollbar-thumb {
+            background: #fde047;
+            border: 2px solid #171717;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+        .funky-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #f472b6;
+        }
     </style>
 </head>
 <body class="selection:bg-accent-green selection:text-midnight-ink font-satoshi bg-canvas-white text-midnight-ink">
@@ -194,7 +213,6 @@
                             </div>
                             <div class="text-left hidden sm:block">
                                 <p class="text-xs font-bold text-midnight-ink">Python Developer</p>
-                                <p class="text-xs text-midnight-ink font-medium">3+ Years Coding</p>
                             </div>
                         </div>
                     </div>
@@ -202,7 +220,7 @@
             </div>
             
             <!-- Mobile Post-it Carousel (Industry Mentors) -->
-            <div class="mt-16 w-full flex md:hidden overflow-x-auto gap-4 pb-8 pt-4 px-2 -mx-2 snap-x snap-mandatory">
+            <div class="mt-16 w-full flex md:hidden overflow-x-auto gap-4 pb-8 pt-4 px-2 -mx-2 snap-x snap-mandatory funky-scrollbar">
                 <div class="snap-center shrink-0">
                     <div class="bg-card-saffron p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform rotate-2">
                         <img src="postit 1.JPG" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
