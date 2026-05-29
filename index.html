@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sagnik Chakraborty | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -13,28 +13,37 @@
             theme: {
                 extend: {
                     colors: {
-                        warm: {
-                            50: '#fdfbf7', 
-                            100: '#f7f1e3', 
-                            200: '#efe2c7',
-                            300: '#e6cc9f', 
-                            400: '#e0b16f',
-                            500: '#e07a5f', 
-                            600: '#c45a40', 
-                            700: '#3d405b', 
-                            800: '#282a3a', 
-                            900: '#81b29a',
-                        },
-                        brand: {
-                            primary: '#ea580c',
-                            dark: '#c2410c',
-                            secondary: '#be123c',
-                        }
+                        'midnight-ink': '#000000',
+                        'canvas-white': '#ffffff',
+                        'charcoal-border': '#171717',
+                        'shadow-base': '#0a0a0d',
+                        'pale-ash': '#f5f5f5',
+                        'accent-green': '#a3e635',
+                        'card-saffron': '#fef3c8',
+                        'card-lavender': '#fae9ff',
+                        'card-mint': '#d2fae5',
+                        'card-pink': '#f5d1fe',
+                        'highlight-yellow': '#fbbf25',
+                    },
+                    backgroundImage: {
+                        'honey-dew-gradient': 'linear-gradient(rgb(253, 229, 177), rgb(252, 214, 131))',
+                        'lime-spritz-gradient': 'linear-gradient(rgb(219, 244, 181), rgb(198, 238, 137))',
+                        'sky-breeze-gradient': 'linear-gradient(rgb(137, 229, 240), rgb(182, 239, 246) 27%, rgb(204, 243, 250) 35%, rgb(197, 243, 248) 55%)',
                     },
                     fontFamily: {
-                        sans: ['Nunito', 'sans-serif'],
-                        serif: ['Lora', 'serif'],
-                        outfit: ['Outfit', 'sans-serif'],
+                        satoshi: ['Satoshi', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'subtle': '2px 2px 0px 0px #0a0a0d',
+                        'subtle-2': '4px 4px 0px 0px #0a0a0d',
+                        'subtle-3': '1px 1px 0px 0px #0a0a0d',
+                        'subtle-4': '4px 4px 0px 0px #171717',
+                    },
+                    borderRadius: {
+                        'md': '4px',
+                        'lg': '8px',
+                        'xl': '16px',
+                        'pill': '100px',
                     }
                 }
             }
@@ -42,124 +51,104 @@
     </script>
     <style>
         body {
-            background-color: #fdfbf7;
-            color: #3d405b;
+            background-color: #ffffff;
+            color: #000000;
             scroll-behavior: smooth;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        .blob {
-            position: absolute;
-            filter: blur(50px);
-            z-index: -1;
-            opacity: 0.6;
-            animation: float 10s infinite ease-in-out;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20px, -20px) scale(1.1); }
-            100% { transform: translate(0, 0) scale(1); }
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 500;
         }
         
         ::-webkit-scrollbar {
             width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #f7f1e3; 
+            background: #ffffff;
+            border-left: 1px solid #171717;
         }
         ::-webkit-scrollbar-thumb {
-            background: #e07a5f; 
-            border-radius: 5px;
+            background: #a3e635;
+            border-left: 1px solid #171717;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #c45a40; 
+            background: #000000; 
         }
     </style>
 </head>
-<body class="selection:bg-warm-500 selection:text-white">
+<body class="selection:bg-accent-green selection:text-midnight-ink font-satoshi bg-canvas-white text-midnight-ink">
 
-    <nav class="fixed w-full z-50 bg-warm-50/90 backdrop-blur-md border-b border-warm-200">
+    <nav class="fixed w-full z-50 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="font-serif font-bold text-2xl text-warm-600">Sagnik.</span>
+                    <span class="font-bold text-2xl text-midnight-ink tracking-tight border border-transparent hover:bg-accent-green hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-1 rounded-md transition-all duration-300 cursor-pointer inline-block" onclick="window.scrollTo(0,0)">Sagnik.</span>
                 </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#about" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">About</a>
-                    <a href="#skills" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Skills</a>
-                    <a href="#experience" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Experience</a>
-                    <a href="#projects" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Projects</a>
-                    <a href="#achievements" class="text-warm-700 hover:text-warm-500 px-3 py-2 rounded-md text-sm font-medium transition">Achievements</a>
-                    <a href="#contact" class="bg-warm-500 text-white hover:bg-warm-600 px-4 py-2 rounded-full text-sm font-medium transition shadow-md">Contact Me</a>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#about" class="text-midnight-ink border border-transparent hover:bg-card-saffron hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">About</a>
+                    <a href="#skills" class="text-midnight-ink border border-transparent hover:bg-card-lavender hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Skills</a>
+                    <a href="#experience" class="text-midnight-ink border border-transparent hover:bg-card-mint hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Experience</a>
+                    <a href="#projects" class="text-midnight-ink border border-transparent hover:bg-card-pink hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Projects</a>
+                    <a href="#achievements" class="text-midnight-ink border border-transparent hover:bg-highlight-yellow hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Achievements</a>
+                    <a href="#contact" class="bg-accent-green text-midnight-ink font-bold border border-charcoal-border px-6 py-2 rounded-md text-sm shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">Contact Me</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-warm-700 hover:text-warm-500 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-midnight-ink focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-warm-50 px-4 pt-2 pb-4 shadow-lg border-b border-warm-200">
-            <a href="#about" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">About</a>
-            <a href="#skills" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Skills</a>
-            <a href="#experience" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-            <a href="#projects" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Projects</a>
-            <a href="#achievements" class="block text-warm-700 hover:bg-warm-100 px-3 py-2 rounded-md text-base font-medium">Achievements</a>
-            <a href="#contact" class="block text-warm-500 font-bold mt-2">Contact Me</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-canvas-white px-4 pt-2 pb-4 border-b border-charcoal-border">
+            <a href="#about" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-saffron hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">About</a>
+            <a href="#skills" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-lavender hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Skills</a>
+            <a href="#experience" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-mint hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Experience</a>
+            <a href="#projects" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-pink hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Projects</a>
+            <a href="#achievements" class="block text-midnight-ink font-bold border border-transparent hover:bg-highlight-yellow hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Achievements</a>
+            <a href="#contact" class="block text-accent-green font-bold mt-2">Contact Me</a>
         </div>
     </nav>
 
-    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="blob bg-warm-300 w-64 h-64 rounded-full top-20 left-10 opacity-40"></div>
-        <div class="blob bg-warm-500 w-96 h-96 rounded-full bottom-10 right-10 opacity-20 animation-delay-2000"></div>
-
+    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-sky-breeze-gradient border-b border-charcoal-border">
+        
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="flex-1 text-center lg:text-left">
-                    <div class="inline-block px-4 py-1.5 bg-warm-200 text-warm-800 rounded-full text-sm font-semibold mb-6 shadow-sm">
+                    <div class="inline-block px-4 py-1.5 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-pill text-xs shadow-subtle mb-8 hover:-translate-y-1 hover:shadow-subtle-2 hover:bg-highlight-yellow transition-all duration-300 cursor-pointer">
                         👋 Hello, I'm Sagnik Chakraborty
                     </div>
-                    <h1 class="text-4xl lg:text-6xl font-bold font-serif text-warm-800 mb-6 leading-tight">
-                        Aspiring <span class="text-warm-500">AI/ML Engineer</span> & Python Web Developer
+                    <h1 class="text-5xl lg:text-7xl font-bold tracking-tight text-midnight-ink mb-6 leading-tight">
+                        Building with <br/><span class="bg-accent-green px-2 border border-charcoal-border shadow-subtle-3 hover:shadow-subtle hover:-translate-y-1 hover:rotate-0 inline-block mt-2 transform -rotate-1 transition-all duration-300 cursor-pointer">Code, Data & AI</span>
                     </h1>
-                    <p class="text-lg text-warm-700 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        I'm a first-year <b>B.Tech CSE (AI/ML)</b> undergraduate at <b>Lovely Professional University</b>. 
-                        I build web applications using <b>Flask</b>, <b>SQL</b>, <b>HTML/CSS</b>, <b>JavaScript</b>, and <b>Streamlit</b> while exploring the depths of <b>Machine Learning</b> and <b>Data Structures</b>. Always learning, coding, and open to internships.
+                    <p class="text-lg text-midnight-ink mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                        Combining software development, data analysis, and artificial intelligence to create practical, user-focused solutions. Always learning, building, and pushing ideas from concept to reality.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#contact" class="px-8 py-3 bg-warm-500 text-white font-semibold rounded-lg shadow-lg hover:bg-warm-600 transform hover:-translate-y-1 transition duration-300">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <a href="#contact" class="w-full sm:w-auto text-center px-6 py-3 bg-accent-green text-midnight-ink font-bold rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">
                             Get in Touch
                         </a>
-                        <a href="#experience" class="px-8 py-3 bg-white text-warm-700 font-semibold rounded-lg shadow border border-warm-200 hover:bg-warm-50 transform hover:-translate-y-1 transition duration-300">
+                        <a href="#experience" class="w-full sm:w-auto text-center px-6 py-3 bg-canvas-white text-midnight-ink font-bold rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">
                             View Experience
                         </a>
                     </div>
-                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-2 text-warm-600 text-sm">
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-2 text-midnight-ink font-bold text-sm">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Kolkata, West Bengal, India</span>
                     </div>
                 </div>
 
-                <div class="flex-1 relative">
-                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 mx-auto">
-                        <div class="absolute inset-0 border-4 border-warm-300 rounded-full transform rotate-6"></div>
-                        <div class="absolute inset-0 border-4 border-warm-500 rounded-full transform -rotate-3 opacity-50"></div>
-                        
+                <div class="flex-1 relative w-full flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto group cursor-pointer">
+                        <div class="absolute inset-0 bg-highlight-yellow rounded-lg border-2 border-charcoal-border transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300"></div>
                         <img src="IMG_1054.jpeg" 
-                             onerror="this.src='https://ui-avatars.com/api/?name=Sagnik+Chakraborty&size=400&background=e07a5f&color=fff'"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Sagnik+Chakraborty&size=400&background=a3e635&color=000000'"
                              alt="Sagnik Chakraborty" 
-                             class="w-full h-full object-cover rounded-full shadow-2xl relative z-10 border-4 border-white">
+                             class="w-full h-full object-cover rounded-lg border-2 border-charcoal-border relative z-10 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300">
                         
-                        <div class="absolute bottom-4 right-4 z-20 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
-                            <div class="bg-warm-100 p-2 rounded-full text-warm-600">
-                                <i class="fas fa-code"></i>
+                        <div class="absolute -bottom-6 -left-6 z-20 bg-card-pink p-4 rounded-lg shadow-subtle-2 border border-charcoal-border flex items-center gap-4 transform rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300">
+                            <div class="bg-canvas-white p-2 rounded-md border border-charcoal-border">
+                                <i class="fas fa-code text-lg text-midnight-ink"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-gray-500">Role</p>
-                                <p class="font-bold text-sm text-warm-800">Python Developer</p>
+                                <p class="font-bold text-sm text-midnight-ink">Python Developer</p>
                             </div>
                         </div>
                     </div>
@@ -168,114 +157,125 @@
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-white">
+    <section id="skills" class="py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Technical Skills</h2>
-                <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Technical Skills</h2>
             </div>
 
-            <!-- Changed grid to flex wrap to nicely center the 5 items -->
-            <div class="flex flex-wrap justify-center gap-6 mb-20">
-                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)] p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fab fa-python text-3xl text-blue-500"></i>
+            <div class="flex flex-wrap gap-6 mb-20 justify-center">
+                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(33%-16px)] p-6 rounded-lg bg-card-saffron border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group">
+                    <div class="w-12 h-12 mb-4 bg-canvas-white border border-charcoal-border rounded-md flex items-center justify-center shadow-subtle-3">
+                        <i class="fab fa-python text-2xl text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">Python</h3>
-                    <p class="text-sm text-warm-600 mt-1">Core & Scripting</p>
+                    <h3 class="font-bold text-xl text-midnight-ink mb-1">Python</h3>
+                    <p class="text-sm text-midnight-ink font-medium">Core & Scripting</p>
                 </div>
 
-                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)] p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fas fa-database text-3xl text-indigo-500"></i>
+                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(33%-16px)] p-6 rounded-lg bg-card-lavender border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group">
+                    <div class="w-12 h-12 mb-4 bg-canvas-white border border-charcoal-border rounded-md flex items-center justify-center shadow-subtle-3">
+                        <i class="fas fa-database text-2xl text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">SQL</h3>
-                    <p class="text-sm text-warm-600 mt-1">Database Management</p> 
+                    <h3 class="font-bold text-xl text-midnight-ink mb-1">SQL</h3>
+                    <p class="text-sm text-midnight-ink font-medium">Database Management</p> 
                 </div>
 
-                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)] p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(33%-16px)] p-6 rounded-lg bg-card-mint border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group">
+                    <div class="w-12 h-12 mb-4 bg-canvas-white border border-charcoal-border rounded-md flex items-center justify-center shadow-subtle-3">
+                        <i class="fab fa-html5 text-2xl text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">HTML5</h3>
-                    <p class="text-sm text-warm-600 mt-1">Structure</p>
+                    <h3 class="font-bold text-xl text-midnight-ink mb-1">HTML5</h3>
+                    <p class="text-sm text-midnight-ink font-medium">Structure</p>
                 </div>
 
-                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)] p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fab fa-css3-alt text-3xl text-blue-600"></i>
+                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(33%-16px)] p-6 rounded-lg bg-card-pink border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group">
+                    <div class="w-12 h-12 mb-4 bg-canvas-white border border-charcoal-border rounded-md flex items-center justify-center shadow-subtle-3">
+                        <i class="fab fa-css3-alt text-2xl text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">CSS3</h3>
-                    <p class="text-sm text-warm-600 mt-1">Styling & Grid</p>
+                    <h3 class="font-bold text-xl text-midnight-ink mb-1">CSS3</h3>
+                    <p class="text-sm text-midnight-ink font-medium">Styling & Grid</p>
                 </div>
 
-                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(25%-18px)] p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fab fa-js text-3xl text-yellow-400"></i>
+                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(33%-16px)] p-6 rounded-lg bg-highlight-yellow border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group">
+                    <div class="w-12 h-12 mb-4 bg-canvas-white border border-charcoal-border rounded-md flex items-center justify-center shadow-subtle-3">
+                        <i class="fab fa-js text-2xl text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">JavaScript</h3>
-                    <p class="text-sm text-warm-600 mt-1">Interactive Web</p>
+                    <h3 class="font-bold text-xl text-midnight-ink mb-1">JavaScript</h3>
+                    <p class="text-sm text-midnight-ink font-medium">Interactive Web</p>
+                </div>
+
+                <div class="w-full sm:w-[calc(50%-12px)] md:w-[calc(33%-16px)] p-6 rounded-lg bg-card-saffron border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group">
+                    <div class="w-12 h-12 mb-4 bg-canvas-white border border-charcoal-border rounded-md flex items-center justify-center shadow-subtle-3 p-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" class="w-full h-full object-contain filter grayscale contrast-200" alt="C Logo" />
+                    </div>
+                    <h3 class="font-bold text-xl text-midnight-ink mb-1">C</h3>
+                    <p class="text-sm text-midnight-ink font-medium">Systems & Core</p>
                 </div>
             </div>
 
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Tools & Frameworks</h2>
-                <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-midnight-ink mb-4">Tools & Frameworks</h2>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
-                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group relative overflow-hidden">
-                    <span class="absolute top-3 right-3 bg-warm-200 text-warm-800 text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Beginner</span>
-                    
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fas fa-bolt text-3xl text-red-500"></i>
+                <div class="p-6 rounded-lg bg-canvas-white border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all relative overflow-hidden">
+                    <span class="absolute top-3 right-3 bg-accent-green text-midnight-ink text-[10px] px-2 py-1 rounded-pill font-bold tracking-wide border border-charcoal-border">Beginner</span>
+                    <div class="w-10 h-10 mb-3 bg-pale-ash border border-charcoal-border rounded-md flex items-center justify-center">
+                        <i class="fas fa-bolt text-lg text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">Streamlit</h3>
-                    <p class="text-sm text-warm-600 mt-1">Rapid Web Apps</p>
+                    <h3 class="font-bold text-lg text-midnight-ink">Streamlit</h3>
                 </div>
 
-                <div class="p-6 rounded-2xl bg-warm-50 border border-warm-100 text-center hover:shadow-lg transition duration-300 group relative overflow-hidden">
-                    <span class="absolute top-3 right-3 bg-warm-200 text-warm-800 text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wide">Beginner</span>
-                    
-                    <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition">
-                        <i class="fas fa-flask text-3xl text-gray-700"></i>
+                <div class="p-6 rounded-lg bg-canvas-white border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all relative overflow-hidden">
+                    <span class="absolute top-3 right-3 bg-accent-green text-midnight-ink text-[10px] px-2 py-1 rounded-pill font-bold tracking-wide border border-charcoal-border">Beginner</span>
+                    <div class="w-10 h-10 mb-3 bg-pale-ash border border-charcoal-border rounded-md flex items-center justify-center">
+                        <i class="fas fa-flask text-lg text-midnight-ink"></i>
                     </div>
-                    <h3 class="font-bold text-warm-800">Flask</h3>
-                    <p class="text-sm text-warm-600 mt-1">Backend Dev</p>
+                    <h3 class="font-bold text-lg text-midnight-ink">Flask</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-20 bg-warm-50 relative">
+    <section id="experience" class="py-24 bg-pale-ash border-b border-charcoal-border relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-16">
                 
                 <div>
-                    <h2 class="text-2xl font-serif font-bold text-warm-800 mb-8 flex items-center gap-3">
-                        <i class="fas fa-graduation-cap text-warm-500"></i> Education
+                    <h2 class="text-3xl font-bold tracking-tight text-midnight-ink mb-8 flex items-center gap-3">
+                        Education
                     </h2>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-warm-500 ml-4 relative">
-                        <div class="absolute -left-6 top-6 w-4 h-4 rounded-full bg-warm-500 border-4 border-warm-100"></div>
-                        <h3 class="text-xl font-bold text-warm-800">Lovely Professional University</h3>
-                        <p class="text-warm-600 font-medium">B.Tech CSE (AI/ML)</p>
-                        <p class="text-sm text-gray-400 mt-1"><i class="far fa-calendar-alt mr-1"></i> 2025 - 2029</p>
-                        <p class="mt-3 text-gray-600">Currently in First Year. Focusing on foundational computer science concepts.</p>
+                    <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300">
+                        <h3 class="text-xl font-bold text-midnight-ink">Undergrad B.Tech CSE (AI/ML)</h3>
+                        <p class="text-sm font-bold text-charcoal-border mt-1 border-b border-charcoal-border pb-3 mb-3 inline-block">2025 - 2029</p>
+                        <p class="text-md text-midnight-ink leading-relaxed font-medium">Building a strong foundation in Artificial Intelligence, Machine Learning algorithms, and data-driven problem solving.</p>
                     </div>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-serif font-bold text-warm-800 mb-8 flex items-center gap-3">
-                        <i class="fas fa-briefcase text-warm-500"></i> Experience
+                    <h2 class="text-3xl font-bold tracking-tight text-midnight-ink mb-8 flex items-center gap-3">
+                        Experience
                     </h2>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-warm-900 ml-4 relative">
-                        <div class="absolute -left-6 top-6 w-4 h-4 rounded-full bg-warm-900 border-4 border-warm-100"></div>
-                        <h3 class="text-xl font-bold text-warm-800">Trainee</h3>
-                        <p class="text-warm-600 font-medium">LPU School of Computer Science Engineering</p>
-                        <p class="text-sm text-gray-400 mt-1"><i class="far fa-calendar-alt mr-1"></i> Nov 2025 - Present</p>
-                        <div class="mt-3 flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-warm-100 text-warm-800 text-xs rounded">Office Support</span>
-                            <span class="px-2 py-1 bg-warm-100 text-warm-800 text-xs rounded">Media Volunteer</span>
+                    
+                    <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300 mb-6">
+                        <h3 class="text-xl font-bold text-midnight-ink">Vice President & Founder</h3>
+                        <p class="text-md font-bold text-midnight-ink bg-highlight-yellow inline-block px-1 mt-1">CodeBhumi</p>
+                        <p class="text-sm font-bold text-charcoal-border mt-2 border-b border-charcoal-border pb-3 mb-3 block w-max">2026 - Present</p>
+                        <p class="text-md text-midnight-ink leading-relaxed font-medium">Overseeing every technical aspect and driving the overall vision and strategy of the platform.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pale-ash text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill">Leadership</span>
+                            <span class="px-3 py-1 bg-pale-ash text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill">Technical</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300">
+                        <h3 class="text-xl font-bold text-midnight-ink">Media Head</h3>
+                        <p class="text-md font-bold text-midnight-ink bg-card-mint inline-block px-1 mt-1">Student Career Committee</p>
+                        <p class="text-sm font-bold text-charcoal-border mt-2 border-b border-charcoal-border pb-3 mb-3 block w-max">2025 - Present</p>
+                        <p class="text-md text-midnight-ink leading-relaxed font-medium">Leading the media team, managing content creation, and organizing digital outreach strategies for the student community.</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pale-ash text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill">Media Strategy</span>
+                            <span class="px-3 py-1 bg-pale-ash text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill">Content</span>
                         </div>
                     </div>
                 </div>
@@ -284,73 +284,111 @@
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-white">
+    <section id="projects" class="py-24 bg-lime-spritz-gradient border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-serif font-bold text-warm-800 mb-4">Featured Projects</h2>
-                <div class="h-1 w-20 bg-warm-500 mx-auto rounded-full"></div>
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-warm-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-warm-100 flex flex-col">
-                    <div class="h-48 bg-gradient-to-r from-slate-800 to-slate-900 flex items-center justify-center relative group">
-                        <div class="text-center">
-                            <i class="fas fa-calculator text-5xl text-cyan-400 mb-2 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]"></i>
-                            <h3 class="text-white font-bold text-xl tracking-wider">Cal<span class="text-cyan-400">Cool</span>ator</h3>
-                        </div>
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <a href="https://calcoolator.streamlit.app/" target="_blank" class="px-6 py-2 bg-cyan-500 text-white rounded-full font-bold shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
-                                Try it Live 🚀
-                            </a>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                    <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform -rotate-2 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-calculator text-4xl text-midnight-ink mb-2"></i>
+                            <h3 class="text-midnight-ink font-bold text-2xl">CalCoolator</h3>
                         </div>
                     </div>
                     
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-xl font-bold text-warm-800">CalCoolator</h3>
-                            <a href="https://calcoolator.streamlit.app/" target="_blank" class="text-warm-500 hover:text-warm-700">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
+                            <h3 class="text-2xl font-bold text-midnight-ink">CalCoolator</h3>
                         </div>
-                        <p class="text-warm-600 mb-4 flex-1">
-                            A sleek, neon-themed scientific calculator built entirely in Python. Features a modern dark UI, advanced scientific operations (Log, Power, Sqrt), and responsive design.
+                        <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
+                            A sleek, scientific calculator built entirely in Python. Features a modern dark UI, advanced scientific operations (Log, Power, Sqrt), and responsive design.
                         </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-blue-600 rounded-full">Python</span>
-                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-red-500 rounded-full">Streamlit</span>
-                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-green-600 rounded-full">CSS Styling</span>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-6">
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Python</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Streamlit</span>
                         </div>
+                        <a href="https://calcoolator.streamlit.app/" target="_blank" class="w-full text-center px-4 py-3 bg-accent-green text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                            Try it Live
+                        </a>
                     </div>
                 </div>
 
-                <div class="bg-warm-50 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-warm-100 flex flex-col">
-                    <div class="h-48 bg-gradient-to-br from-brand-primary to-warm-800 flex items-center justify-center relative group">
-                        <div class="text-center">
-                            <i class="fas fa-qrcode text-5xl text-white mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"></i>
-                            <h3 class="text-white font-bold text-xl tracking-wider font-outfit">Nexus <span class="text-warm-200">QR</span></h3>
-                        </div>
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <a href="https://web-production-acdb4.up.railway.app/" target="_blank" class="px-6 py-2 bg-brand-primary text-white rounded-full font-bold shadow-lg transform scale-90 group-hover:scale-100 transition-transform hover:bg-brand-dark">
-                                Open App 🔗
-                            </a>
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                    <div class="h-48 border-b border-charcoal-border bg-card-lavender flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-qrcode text-4xl text-midnight-ink mb-2"></i>
+                            <h3 class="text-midnight-ink font-bold text-2xl">Nexus QR</h3>
                         </div>
                     </div>
                     
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-xl font-bold text-warm-800 font-outfit">Nexus QR Generator</h3>
-                            <a href=https://nexus-qr-1.onrender.com target="_blank" class="text-brand-primary hover:text-brand-dark">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
+                            <h3 class="text-2xl font-bold text-midnight-ink">Nexus QR Generator</h3>
                         </div>
-                        <p class="text-warm-600 mb-4 flex-1">
-                            A robust QR code management tool. Generate instantly scannable codes for links and text. Designed with a focus on simplicity and modern UI aesthetics.
+                        <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
+                            A robust QR code management tool built with Flask. Generate instantly scannable codes for links and text. Designed with a focus on simplicity and modern UI aesthetics.
                         </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-brand-primary rounded-full">Web Tool</span>
-                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-warm-700 rounded-full">Generator</span>
-                            <span class="px-3 py-1 bg-white border border-warm-200 text-xs font-bold text-brand-secondary rounded-full">Utility</span>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-6">
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Flask</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Web Tool</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Utility</span>
                         </div>
+                        <a href="https://nexus-qr-1.onrender.com" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                            Open App
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                    <div class="h-48 border-b border-charcoal-border bg-card-mint flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform -rotate-2 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-laptop-code text-4xl text-midnight-ink mb-2"></i>
+                            <h3 class="text-midnight-ink font-bold text-2xl">CodeBhumi</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-2xl font-bold text-midnight-ink">CodeBhumi Website</h3>
+                        </div>
+                        <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
+                            The official platform for CodeBhumi. Built completely from scratch with a focus on modern design, responsive UI, and fast performance.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-6">
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">HTML/CSS/JS</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Firebase</span>
+                        </div>
+                        <a href="https://codebhumiscc.netlify.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                            Visit Site
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                    <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-graduation-cap text-4xl text-midnight-ink mb-2"></i>
+                            <h3 class="text-midnight-ink font-bold text-2xl">CGPA Calc</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-2xl font-bold text-midnight-ink">LPU CGPA Calculator</h3>
+                        </div>
+                        <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
+                            A fast, responsive web application for students to easily calculate their semester CGPA. Built with a focus on usability and precision.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-6">
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">HTML/CSS/JS</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Utility</span>
+                        </div>
+                        <a href="https://lpucgpacalculator.netlify.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                            Open App
+                        </a>
                     </div>
                 </div>
 
@@ -358,78 +396,72 @@
         </div>
     </section>
 
-    <section id="achievements" class="py-20 bg-warm-50">
+    <section id="achievements" class="py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-serif font-bold text-warm-800">Achievements</h2>
-                <p class="text-warm-600 mt-2">Milestones in my journey</p>
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Achievements</h2>
             </div>
 
-            <div class="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden shadow-xl border border-warm-100 flex flex-col md:flex-row">
-                <div class="md:w-1/2 relative bg-gray-200">
+            <div class="max-w-4xl mx-auto bg-highlight-yellow rounded-lg border border-charcoal-border shadow-subtle flex flex-col md:flex-row hover:shadow-subtle-2 transition-all">
+                <div class="md:w-5/12 relative border-b md:border-b-0 md:border-r border-charcoal-border">
                     <img src="IMG_3723.jpeg" 
                          onerror="this.src='https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'"
                          alt="TechXpo Hackathon" 
-                         class="w-full h-full object-cover min-h-[300px]">
-                    <div class="absolute top-4 left-4 bg-yellow-400 text-yellow-900 font-bold px-3 py-1 rounded-full text-sm shadow-md">
-                        <i class="fas fa-trophy mr-1"></i> 7th Place
+                         class="w-full h-full object-cover min-h-[250px]">
+                    <div class="absolute top-4 left-4 bg-canvas-white text-midnight-ink font-bold px-4 py-2 rounded-pill text-sm shadow-subtle border border-charcoal-border transform -rotate-3">
+                        <i class="fas fa-trophy mr-1 text-midnight-ink"></i> 7th Place
                     </div>
                 </div>
                 
-                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold text-warm-800 mb-2">TechXpo Hackathon</h3>
-                    <div class="flex items-center gap-2 mb-4 text-warm-600 text-sm">
+                <div class="md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-bold text-midnight-ink mb-2">TechXpo Hackathon</h3>
+                    <div class="flex items-center gap-2 mb-6 text-midnight-ink text-sm font-bold bg-canvas-white border border-charcoal-border w-max px-3 py-1 rounded-pill">
                         <i class="fas fa-map-pin"></i> 
                         <span>Lovely Professional University</span>
                     </div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-md text-midnight-ink font-medium mb-8 leading-relaxed">
                         Competed against numerous teams to solve real-world problems. Secured 7th position by demonstrating strong problem-solving skills and teamwork. This experience fueled my passion for competitive coding and development.
                     </p>
-                    <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-warm-50 border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Teamwork</span>
-                        <span class="px-3 py-1 bg-warm-50 border border-warm-200 rounded-lg text-sm font-medium text-warm-700">Innovation</span>
+                    <div class="flex gap-3">
+                        <span class="px-4 py-1.5 bg-canvas-white text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">Teamwork</span>
+                        <span class="px-4 py-1.5 bg-canvas-white text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">Innovation</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="bg-warm-800 text-warm-100 py-16">
+    <section id="contact" class="bg-canvas-white text-midnight-ink py-24">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-serif font-bold text-white mb-6">Let's Connect!</h2>
-            <p class="text-warm-200 mb-10 max-w-xl mx-auto">
+            <h2 class="text-5xl font-bold tracking-tight text-midnight-ink mb-6">Let's Connect</h2>
+            <p class="text-midnight-ink font-medium mb-12 max-w-xl mx-auto text-lg leading-relaxed">
                 I'm currently looking for internships and collaborative projects. Feel free to reach out via social media or check out my code repositories.
             </p>
             
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/d" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
-                    <i class="fab fa-linkedin text-xl"></i>
-                    <span>LinkedIn</span>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/d" target="_blank" class="flex items-center justify-center w-14 h-14 bg-card-mint border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                    <i class="fab fa-linkedin text-2xl text-midnight-ink"></i>
                 </a>
                 
-                <a href="https://github.com/sagnik-devv" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
-                    <i class="fab fa-github text-xl"></i>
-                    <span>GitHub</span>
+                <a href="https://github.com/sagnik-devv" target="_blank" class="flex items-center justify-center w-14 h-14 bg-card-pink border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                    <i class="fab fa-github text-2xl text-midnight-ink"></i>
                 </a>
 
-                <a href="https://leetcode.com/u/canbesagnik/" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
-                    <i class="fas fa-code text-xl"></i>
-                    <span>LeetCode</span>
+                <a href="https://leetcode.com/u/canbesagnik/" target="_blank" class="flex items-center justify-center w-14 h-14 bg-card-saffron border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                    <svg class="w-6 h-6 fill-current text-midnight-ink" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
                 </a>
 
-                <a href="https://www.instagram.com/canbe.sagnik/?next=%2F" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
-                    <i class="fab fa-instagram text-xl"></i>
-                    <span>Instagram</span>
+                <a href="https://www.instagram.com/canbe.sagnik/?next=%2F" target="_blank" class="flex items-center justify-center w-14 h-14 bg-card-lavender border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                    <i class="fab fa-instagram text-2xl text-midnight-ink"></i>
                 </a>
 
-                <a href="https://x.com/canbesagnik" target="_blank" class="flex items-center gap-2 bg-warm-700 hover:bg-warm-600 px-5 py-3 rounded-xl transition duration-300">
-                    <i class="fab fa-x-twitter text-xl"></i>
-                    <span>Twitter/X</span>
+                <a href="https://x.com/canbesagnik" target="_blank" class="flex items-center justify-center w-14 h-14 bg-canvas-white border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                    <i class="fab fa-x-twitter text-2xl text-midnight-ink"></i>
                 </a>
             </div>
 
-            <div class="mt-16 pt-8 border-t border-warm-700 text-sm text-warm-400">
-                <p>&copy; 2025 Sagnik Chakraborty. Made with <i class="fas fa-heart text-warm-500"></i> & Coffee.</p>
+            <div class="mt-20 pt-8 border-t border-charcoal-border text-sm font-bold text-midnight-ink">
+                <p>&copy; 2026 Sagnik Chakraborty. Build playfully.</p>
             </div>
         </div>
     </section>
