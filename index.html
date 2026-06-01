@@ -83,13 +83,8 @@
             border-bottom: 2px solid #171717;
         }
         .funky-scrollbar::-webkit-scrollbar-thumb {
-            background: #fde047;
-            border: 2px solid #171717;
-            border-radius: 9999px;
-            cursor: pointer;
-        }
-        .funky-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #f472b6;
+            background-color: #171717;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -201,15 +196,22 @@
                     </div>
                 </div>
 
-                <div class="flex-1 relative w-full flex justify-center">
-                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto group cursor-pointer">
+                <div class="flex-1 relative w-full flex justify-center z-10">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto group cursor-pointer" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="absolute inset-0 bg-highlight-yellow rounded-lg border-2 border-charcoal-border transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300"></div>
-                        <img src="IMG_1054.jpeg" 
-                             onerror="this.src='https://ui-avatars.com/api/?name=Sagnik+Chakraborty&size=400&background=a3e635&color=000000'"
-                             alt="Sagnik Chakraborty" 
-                             class="w-full h-full object-cover rounded-lg border-2 border-charcoal-border relative z-10 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300">
                         
-                        <div class="absolute -bottom-6 -left-6 z-20 bg-card-pink p-4 rounded-lg shadow-subtle-2 border border-charcoal-border flex items-center gap-4 transform rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300">
+                        <video
+                          autoplay
+                          muted
+                          loop
+                          playsinline
+                          preload="auto"
+                          class="w-full h-full object-cover rounded-lg border-2 border-charcoal-border relative z-10 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300"
+                        >
+                          <source src="video.mp4" type="video/mp4">
+                        </video>
+                        
+                        <div class="absolute -bottom-6 -left-6 z-20 bg-card-pink p-4 rounded-lg shadow-subtle-2 border border-charcoal-border flex items-center gap-4 transform rotate-3 group-hover:rotate-0 group-hover:scale-105 transition-all duration-300" style="transform-style: preserve-3d; transform: translateZ(50px);">
                             <div class="bg-canvas-white p-2 rounded-md border border-charcoal-border">
                                 <i class="fas fa-code text-lg text-midnight-ink"></i>
                             </div>
@@ -264,9 +266,9 @@
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">A quick look at the languages and tools I use to build data-driven applications.</p>
             </div>
 
-            <div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 md:gap-8 lg:gap-8 mb-12 pb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 pb-4">
                 <!-- Languages Category -->
-                <div class="min-w-[85vw] snap-center shrink-0 md:min-w-0 md:shrink bg-card-saffron p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <div class="bg-card-saffron p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-code text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Languages</h3>
@@ -321,7 +323,7 @@
                 </div>
 
                 <!-- Data Analysis Category -->
-                <div class="min-w-[85vw] snap-center shrink-0 md:min-w-0 md:shrink bg-card-mint p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <div class="bg-card-mint p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-chart-line text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Data Analysis</h3>
@@ -365,7 +367,7 @@
                 </div>
 
                 <!-- Frameworks & Tools Category -->
-                <div class="min-w-[85vw] snap-center shrink-0 md:min-w-0 md:shrink bg-card-lavender p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <div class="bg-card-lavender p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-toolbox text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Frameworks & Tools</h3>
@@ -528,7 +530,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-lavender flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-qrcode text-4xl text-midnight-ink mb-2"></i>
@@ -554,7 +556,7 @@
                     </div>
                 </div>
 
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-mint flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform -rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-laptop-code text-4xl text-midnight-ink mb-2"></i>
@@ -579,7 +581,7 @@
                     </div>
                 </div>
 
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group">
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-graduation-cap text-4xl text-midnight-ink mb-2"></i>
@@ -750,6 +752,47 @@
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
+            });
+        });
+    </script>
+    <!-- 3D Scripts & Particles -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // GSAP Animations
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate Sections
+            gsap.utils.toArray('section').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+
+            // Stagger Cards in Skills & Projects
+            gsap.utils.toArray('#skills .space-y-4 > div, #projects .grid > div').forEach(card => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "back.out(1.7)"
+                });
             });
         });
     </script>
