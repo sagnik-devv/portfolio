@@ -201,12 +201,11 @@
                         <div class="absolute inset-0 bg-highlight-yellow rounded-lg border-2 border-charcoal-border transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300"></div>
                         
                         <video
-                          autoplay
-                          muted
+                          controls
                           loop
                           playsinline
                           preload="auto"
-                          class="w-full h-full object-cover rounded-lg border-2 border-charcoal-border relative z-10 group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300"
+                          class="w-full h-full object-cover rounded-lg relative z-10"
                         >
                           <source src="video.mp4" type="video/mp4">
                         </video>
@@ -259,7 +258,7 @@
         </div>
     </section>
 
-    <section id="skills" class="py-24 bg-canvas-white border-b border-charcoal-border">
+    <section id="skills" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 text-center">
                 <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Technical Arsenal</h2>
@@ -476,7 +475,7 @@
         </div>
     </section>
 
-    <section id="experience" class="py-24 bg-pale-ash border-b border-charcoal-border relative">
+    <section id="experience" class="py-12 md:py-24 bg-pale-ash border-b border-charcoal-border relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-16">
                 
@@ -523,7 +522,7 @@
         </div>
     </section>
 
-    <section id="projects" class="py-24 bg-lime-spritz-gradient border-b border-charcoal-border">
+    <section id="projects" class="py-12 md:py-24 bg-lime-spritz-gradient border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
                 <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
@@ -610,7 +609,7 @@
         </div>
     </section>
 
-    <section id="achievements" class="py-24 bg-canvas-white border-b border-charcoal-border">
+    <section id="achievements" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
                 <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Achievements</h2>
@@ -645,29 +644,30 @@
         </div>
     </section>
 
-    <section id="certifications" class="py-24 bg-canvas-white border-b border-charcoal-border">
+    <section id="certifications" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
                 <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Certifications</h2>
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl">Official courses and credentials I've earned to level up my skills.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Cert 1: IBM -->
-                <div class="bg-card-lavender p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
-                                <i class="fas fa-certificate text-2xl text-midnight-ink group-hover:rotate-12 transition-transform"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-midnight-ink uppercase tracking-wider">Sep 2025</p>
-                                <p class="text-sm font-medium text-midnight-ink">IBM (Coursera)</p>
-                            </div>
+                <div class="bg-card-lavender p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
+                            <i class="fas fa-certificate text-2xl text-midnight-ink group-hover:rotate-12 transition-transform"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-midnight-ink mb-4 leading-tight">Getting Started with Front-End and Web Development</h3>
+                        <div>
+                            <p class="text-xs font-bold text-midnight-ink uppercase tracking-wider">Sep 2025</p>
+                            <p class="text-sm font-medium text-midnight-ink">IBM (Coursera)</p>
+                        </div>
                     </div>
-                    <div class="mt-8 pt-6 border-t-2 border-charcoal-border/20">
+                    <h3 class="text-2xl font-bold text-midnight-ink mb-6 leading-tight">Getting Started with Front-End and Web Development</h3>
+                    <div class="mt-auto mb-6">
+                        <img src="ibm.png" alt="IBM Certificate" class="w-full h-48 object-cover object-top rounded-lg border border-charcoal-border shadow-subtle-3">
+                    </div>
+                    <div class="pt-6 border-t-2 border-charcoal-border/20">
                         <a href="https://coursera.org/verify/3JVHH96SWPQO" target="_blank" class="inline-flex items-center gap-2 font-bold text-midnight-ink hover:gap-3 transition-all">
                             Verify Credential <i class="fas fa-arrow-right"></i>
                         </a>
@@ -675,21 +675,44 @@
                 </div>
 
                 <!-- Cert 2: Cisco -->
-                <div class="bg-card-saffron p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
-                    <div>
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
-                                <i class="fas fa-award text-2xl text-midnight-ink group-hover:rotate-12 transition-transform"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-midnight-ink uppercase tracking-wider">Feb 2026</p>
-                                <p class="text-sm font-medium text-midnight-ink">Cisco Networking Academy</p>
-                            </div>
+                <div class="bg-card-saffron p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
+                            <i class="fas fa-award text-2xl text-midnight-ink group-hover:rotate-12 transition-transform"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-midnight-ink mb-4 leading-tight">Data Science Essentials with Python</h3>
+                        <div>
+                            <p class="text-xs font-bold text-midnight-ink uppercase tracking-wider">Feb 2026</p>
+                            <p class="text-sm font-medium text-midnight-ink">Cisco Networking Academy</p>
+                        </div>
                     </div>
-                    <div class="mt-8 pt-6 border-t-2 border-charcoal-border/20">
+                    <h3 class="text-2xl font-bold text-midnight-ink mb-6 leading-tight">Data Science Essentials with Python</h3>
+                    <div class="mt-auto mb-6">
+                        <img src="cisco.png" alt="Cisco Certificate" class="w-full h-48 object-cover object-top rounded-lg border border-charcoal-border shadow-subtle-3">
+                    </div>
+                    <div class="pt-6 border-t-2 border-charcoal-border/20">
                         <a href="https://www.credly.com/badges/a3eeda5f-52e7-4691-bffc-6600d7350ae8" target="_blank" class="inline-flex items-center gap-2 font-bold text-midnight-ink hover:gap-3 transition-all">
+                            Verify Credential <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cert 3: Python -->
+                <div class="bg-card-mint p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
+                            <i class="fab fa-python text-2xl text-midnight-ink group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-midnight-ink uppercase tracking-wider">2026</p>
+                            <p class="text-sm font-medium text-midnight-ink">Python Certification</p>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-midnight-ink mb-6 leading-tight">Python Certificate</h3>
+                    <div class="mt-auto mb-6">
+                        <img src="python.png" alt="Python Certificate" class="w-full h-48 object-cover object-top rounded-lg border border-charcoal-border shadow-subtle-3">
+                    </div>
+                    <div class="pt-6 border-t-2 border-charcoal-border/20">
+                        <a href="https://www.udemy.com/certificate/UC-f7680551-3826-4ac9-b7da-5f884ea8d46c/" target="_blank" class="inline-flex items-center gap-2 font-bold text-midnight-ink hover:gap-3 transition-all">
                             Verify Credential <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -698,7 +721,7 @@
         </div>
     </section>
 
-    <section id="contact" class="bg-canvas-white text-midnight-ink py-24">
+    <section id="contact" class="bg-canvas-white text-midnight-ink py-12 md:py-24">
         <div class="max-w-4xl mx-auto px-4 text-center">
 
             <h2 class="text-5xl font-bold tracking-tight text-midnight-ink mb-6">
