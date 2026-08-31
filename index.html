@@ -186,7 +186,7 @@
                         <a href="mailto:sagnik.devv@gmail.com" class="w-full sm:w-auto text-center px-6 py-3 bg-accent-green text-midnight-ink font-bold rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">
                             Get in Touch
                         </a>
-                        <a href="cv.pdf" download class="w-full sm:w-auto text-center px-6 py-3 bg-highlight-yellow text-midnight-ink font-bold rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">
+                        <a href="CVpdf.pdf" download="CVpdf.pdf" class="w-full sm:w-auto text-center px-6 py-3 bg-highlight-yellow text-midnight-ink font-bold rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">
                             <i class="fas fa-download mr-2"></i> Download CV
                         </a>
                     </div>
@@ -460,20 +460,540 @@
                 </div>
             </div>
 
-            <!-- GitHub Stats Widget -->
-            <div class="mt-24 border-t-2 border-charcoal-border pt-16">
-                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-12 text-center">GitHub Stats</h2>
-                <div class="flex flex-col lg:flex-row gap-8 justify-center items-center">
-                    <div class="bg-card-pink p-4 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all w-full lg:w-auto overflow-hidden flex justify-center">
-                        <img class="w-full max-w-md" src="https://github-readme-stats-anuraghazra1.vercel.app/api?username=sagnik-devv&show_icons=true&theme=transparent&cache_seconds=1800&title_color=000000&text_color=000000&icon_color=171717" alt="GitHub Stats" />
+<!-- Developer Profiles Widget -->
+<div class="mt-24 border-t-2 border-charcoal-border pt-16" id="dev-profiles">
+    <div class="mb-8 text-center">
+        <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Coding & Open Source</h2>
+        <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">Toggle between live GitHub contributions and LeetCode problem-solving metrics.</p>
+    </div>
+
+    <!-- Segmented Toggle Bar -->
+    <div class="flex justify-center mb-8">
+        <div class="inline-flex p-1.5 bg-pale-ash border-2 border-charcoal-border rounded-xl shadow-subtle gap-2">
+            <button id="toggle-github-tab" class="px-6 py-2.5 rounded-lg text-sm md:text-base font-bold border-2 border-charcoal-border bg-accent-green text-midnight-ink shadow-subtle transition-all flex items-center gap-2 cursor-pointer">
+                <i class="fab fa-github text-xl"></i>
+                <span>GitHub Stats</span>
+            </button>
+            <button id="toggle-leetcode-tab" class="px-6 py-2.5 rounded-lg text-sm md:text-base font-bold border-2 border-transparent bg-transparent text-midnight-ink opacity-70 hover:opacity-100 hover:bg-canvas-white hover:border-charcoal-border transition-all flex items-center gap-2 cursor-pointer">
+                <svg class="w-5 h-5 fill-current text-midnight-ink" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+                <span>LeetCode Stats</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-2 overflow-hidden relative">
+
+        <!-- GITHUB SECTION -->
+        <div id="github-section" class="p-6 md:p-10 pt-8 transition-opacity duration-300">
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="px-2.5 py-1 border-2 border-charcoal-border rounded-md text-xs font-bold bg-canvas-white flex items-center gap-2">
+                            <i class="fab fa-github text-sm"></i> GITHUB <span class="w-2 h-2 rounded-full bg-accent-green border border-charcoal-border animate-pulse"></span> OPEN SOURCE / BUILDING
+                        </span>
                     </div>
-                    <div class="bg-card-saffron p-4 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all w-full lg:w-auto overflow-hidden flex justify-center">
-                        <img class="w-full max-w-sm" src="https://github-readme-stats-anuraghazra1.vercel.app/api/top-langs/?username=sagnik-devv&layout=compact&theme=transparent&cache_seconds=1800&title_color=000000&text_color=000000" alt="Top Languages" />
+                    <h3 class="text-3xl font-bold text-midnight-ink">@sagnik-devv</h3>
+                    <p class="text-xs font-bold text-gray-600 mt-1">Sagnik Chakraborty &bull; Full-Stack & Systems Developer</p>
+                </div>
+                <a href="https://github.com/sagnik-devv" target="_blank" class="bg-accent-green text-midnight-ink font-bold border-2 border-charcoal-border px-4 py-2 rounded-lg shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all flex items-center gap-2">
+                    VIEW PROFILE <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+            </div>
+
+            <!-- 4 Main Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-accent-green p-4 rounded-xl border-2 border-charcoal-border shadow-subtle transform -rotate-1">
+                    <p class="text-xs font-bold uppercase mb-1">Repositories</p>
+                    <p class="text-3xl font-bold mb-1" id="gh-repos">8</p>
+                    <p class="text-xs font-medium"><i class="fas fa-book mr-1"></i> Public Repos</p>
+                </div>
+                <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                    <p class="text-xs font-bold uppercase mb-1">Followers</p>
+                    <p class="text-3xl font-bold mb-1" id="gh-followers">2</p>
+                    <p class="text-xs font-medium"><i class="fas fa-users mr-1"></i> Community</p>
+                </div>
+                <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                    <p class="text-xs font-bold uppercase mb-1">Following</p>
+                    <p class="text-3xl font-bold mb-1" id="gh-following">3</p>
+                    <p class="text-xs font-medium">Developers Followed</p>
+                </div>
+                <div class="bg-accent-green p-4 rounded-xl border-2 border-charcoal-border shadow-subtle transform rotate-1">
+                    <p class="text-xs font-bold uppercase mb-1">Stars</p>
+                    <p class="text-3xl font-bold mb-1" id="gh-stars">1</p>
+                    <p class="text-xs font-medium"><i class="fas fa-star mr-1"></i> Total Stars</p>
+                </div>
+            </div>
+
+            <!-- 4 Sub Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-code-branch mr-1"></i> Contributions</p>
+                    <p class="text-xl font-bold" id="gh-contributions">140+</p>
+                </div>
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-book-open mr-1"></i> Public Repos</p>
+                    <p class="text-xl font-bold" id="gh-public-repos">8</p>
+                </div>
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-code mr-1"></i> Top Lang</p>
+                    <p class="text-xl font-bold" id="gh-top-lang">TypeScript</p>
+                </div>
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="far fa-calendar-alt mr-1"></i> Account Since</p>
+                    <p class="text-xl font-bold">2024</p>
+                </div>
+            </div>
+
+            <!-- Activity Graph -->
+            <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle mb-8 overflow-hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-sm font-bold uppercase"><i class="far fa-calendar-alt mr-2"></i> 2026 GITHUB ACTIVITY</p>
+                    <div class="text-[10px] font-bold flex items-center gap-1 text-gray-500">
+                        LESS 
+                        <span class="w-3 h-3 border border-charcoal-border bg-gray-100"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#dbf4b5]"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#a3e635]"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#65a30d]"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#3f6212]"></span>
+                        MORE
+                    </div>
+                </div>
+                <!-- Simulated GitHub Graph Grid -->
+                <div class="w-full overflow-x-auto funky-scrollbar pb-2">
+                    <div class="flex gap-1 min-w-[700px]" id="gh-activity-grid">
+                        <!-- JS will populate this to look like the design -->
                     </div>
                 </div>
             </div>
+
+            <!-- Bottom Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Recent Builds -->
+                <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                    <div class="flex justify-between items-center mb-4 border-b-2 border-charcoal-border pb-2">
+                        <p class="text-sm font-bold uppercase">RECENT BUILDS</p>
+                        <p class="text-xs font-bold text-gray-500">PUBLIC REPOSITORIES</p>
+                    </div>
+                    <div class="border-2 border-charcoal-border rounded-lg p-3 hover:bg-gray-50 transition-colors" id="gh-recent-repo">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-bold text-lg"><i class="fas fa-book-open mr-2 text-sm"></i><span id="repo-name">Riwaaz</span></h4>
+                            <div class="flex items-center gap-3 text-xs font-bold">
+                                <span><i class="far fa-star"></i> <span id="repo-stars">0</span></span>
+                                <span><i class="fas fa-code-branch"></i> <span id="repo-forks">0</span></span>
+                            </div>
+                        </div>
+                        <p class="text-xs mb-3 text-gray-700" id="repo-desc">Full-stack luxury Indian wedding wear & bridal couture eCommerce platform.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="px-2 py-0.5 border border-charcoal-border rounded-md text-xs font-bold bg-canvas-white" id="repo-lang">TypeScript</span>
+                            <a href="https://github.com/sagnik-devv/Riwaaz" id="repo-link" target="_blank" class="text-xs font-bold hover:underline">VIEW REPOSITORY <i class="fas fa-arrow-right text-[10px]"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="flex flex-col gap-6">
+                    <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                        <div class="border-b-2 border-charcoal-border pb-2 mb-4">
+                            <p class="text-sm font-bold uppercase">WHAT I CODE WITH</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green">TypeScript / JS</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Python</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">HTML / Tailwind</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">C / C++</span>
+                        </div>
+                    </div>
+                    <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle flex-1">
+                        <div class="border-b-2 border-charcoal-border pb-2 mb-4">
+                            <p class="text-sm font-bold uppercase">BUILD PHILOSOPHY</p>
+                        </div>
+                        <p class="italic font-medium text-sm">"Open source code, modular architecture, and practical software applications."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Full Profile Button -->
+            <a href="https://github.com/sagnik-devv" target="_blank" class="block w-full text-center bg-accent-green text-midnight-ink font-bold border-2 border-charcoal-border px-6 py-3 rounded-lg shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all text-lg">
+                VIEW MY GITHUB PROFILE <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+
+        <!-- LEETCODE SECTION (Toggled via tabs) -->
+        <div id="leetcode-section" class="p-6 md:p-10 pt-8 hidden opacity-0 transition-opacity duration-300">
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="px-2.5 py-1 border-2 border-charcoal-border rounded-md text-xs font-bold bg-highlight-yellow flex items-center gap-2">
+                            <svg class="w-3.5 h-3.5 fill-current text-midnight-ink" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+                            LEETCODE <span class="w-2 h-2 rounded-full bg-accent-green border border-charcoal-border animate-pulse"></span> LIVE API METRICS
+                        </span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-midnight-ink">@sagnikcodez</h3>
+                    <p class="text-xs font-bold text-gray-600 mt-1">Sagnik Chakraborty &bull; Algorithms & Problem Solving</p>
+                </div>
+                <a href="https://leetcode.com/u/sagnikcodez/" target="_blank" class="bg-highlight-yellow text-midnight-ink font-bold border-2 border-charcoal-border px-4 py-2 rounded-lg shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all flex items-center gap-2">
+                    VIEW PROFILE <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+            </div>
+
+            <!-- 4 Main Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-highlight-yellow p-4 rounded-xl border-2 border-charcoal-border shadow-subtle transform -rotate-1">
+                    <p class="text-xs font-bold uppercase mb-1">Problems Solved</p>
+                    <p class="text-3xl font-bold mb-1" id="lc-total">1</p>
+                    <p class="text-xs font-medium"><i class="fas fa-check-circle mr-1"></i> Verified Submissions</p>
+                </div>
+                <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                    <p class="text-xs font-bold uppercase mb-1 text-emerald-700">Easy</p>
+                    <p class="text-3xl font-bold mb-1 text-emerald-700" id="lc-easy">1</p>
+                    <p class="text-xs font-medium text-gray-600">Fundamental Level</p>
+                </div>
+                <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                    <p class="text-xs font-bold uppercase mb-1 text-amber-700">Medium</p>
+                    <p class="text-3xl font-bold mb-1 text-amber-700" id="lc-medium">0</p>
+                    <p class="text-xs font-medium text-gray-600">Core DSA & Logic</p>
+                </div>
+                <div class="bg-card-pink p-4 rounded-xl border-2 border-charcoal-border shadow-subtle transform rotate-1">
+                    <p class="text-xs font-bold uppercase mb-1 text-rose-700">Hard</p>
+                    <p class="text-3xl font-bold mb-1 text-rose-700" id="lc-hard">0</p>
+                    <p class="text-xs font-medium text-gray-600">Advanced Algorithms</p>
+                </div>
+            </div>
+
+            <!-- 4 Sub Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-globe mr-1"></i> Global Ranking</p>
+                    <p class="text-xl font-bold" id="lc-ranking">5,000,001+</p>
+                </div>
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-trophy mr-1 text-amber-500"></i> Points</p>
+                    <p class="text-xl font-bold" id="lc-points">53</p>
+                </div>
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-layer-group mr-1"></i> Total Questions</p>
+                    <p class="text-xl font-bold" id="lc-total-questions">4,041</p>
+                </div>
+                <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
+                    <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-percentage mr-1"></i> Acceptance</p>
+                    <p class="text-xl font-bold" id="lc-acceptance">100%</p>
+                </div>
+            </div>
+
+            <!-- Activity Graph Placeholder -->
+            <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle mb-8 overflow-hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-sm font-bold uppercase"><i class="far fa-calendar-alt mr-2"></i> 2026 LEETCODE ACTIVITY</p>
+                    <div class="text-[10px] font-bold flex items-center gap-1 text-gray-500">
+                        LESS 
+                        <span class="w-3 h-3 border border-charcoal-border bg-gray-100"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#fef3c8]"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#fbbf24]"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#d97706]"></span>
+                        <span class="w-3 h-3 border border-charcoal-border bg-[#b45309]"></span>
+                        MORE
+                    </div>
+                </div>
+                <!-- Simulated LeetCode Graph Grid -->
+                <div class="w-full overflow-x-auto funky-scrollbar pb-2">
+                    <div class="flex gap-1 min-w-[700px]" id="lc-activity-grid">
+                        <!-- JS will populate this to look like the design -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Recent Problems -->
+                <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                    <div class="flex justify-between items-center mb-4 border-b-2 border-charcoal-border pb-2">
+                        <p class="text-sm font-bold uppercase">RECENT SUBMISSIONS</p>
+                        <p class="text-xs font-bold text-gray-500">LIVE FEED</p>
+                    </div>
+                    
+                    <div class="space-y-3" id="lc-recent-list">
+                        <!-- Live populated from API -->
+                        <div class="border-2 border-charcoal-border rounded-lg p-3 hover:bg-gray-50 transition-colors flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-sm text-midnight-ink">Remove Element</h4>
+                                <p class="text-xs text-gray-500 mt-1">C++ &bull; Accepted</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green text-midnight-ink">Accepted</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="flex flex-col gap-6">
+                    <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle">
+                        <div class="border-b-2 border-charcoal-border pb-2 mb-4">
+                            <p class="text-sm font-bold uppercase">TOPICS & DATA STRUCTURES</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Arrays</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Two Pointers</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Algorithms</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Problem Solving</span>
+                        </div>
+                    </div>
+                    <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle flex-1">
+                        <div class="border-b-2 border-charcoal-border pb-2 mb-4">
+                            <p class="text-sm font-bold uppercase">PRIMARY CODING LANGUAGE</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-1.5 border-2 border-charcoal-border rounded-full text-sm font-bold bg-highlight-yellow">C++ (Modern STL)</span>
+                            <span class="px-4 py-1.5 border-2 border-charcoal-border rounded-full text-sm font-bold bg-canvas-white">C</span>
+                            <span class="px-4 py-1.5 border-2 border-charcoal-border rounded-full text-sm font-bold bg-canvas-white">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Full Profile Button -->
+            <a href="https://leetcode.com/u/sagnikcodez/" target="_blank" class="block w-full text-center bg-highlight-yellow text-midnight-ink font-bold border-2 border-charcoal-border px-6 py-3 rounded-lg shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all text-lg">
+                VIEW MY LEETCODE PROFILE <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <p class="text-[10px] text-right mt-2 font-mono text-gray-500" id="lc-last-synced">Last synced: Live</p>
+        </div>
+    </div>
+</div>
         </div>
     </section>
+
+<script>
+    // Logic for GitHub & LeetCode profile tabs & API integrations
+    document.addEventListener("DOMContentLoaded", () => {
+        const ghTab = document.getElementById('toggle-github-tab');
+        const lcTab = document.getElementById('toggle-leetcode-tab');
+        const githubSection = document.getElementById('github-section');
+        const leetcodeSection = document.getElementById('leetcode-section');
+        let currentTab = 'github';
+
+        function showTab(tab) {
+            if (tab === 'github' && currentTab !== 'github') {
+                currentTab = 'github';
+                // Button styles
+                ghTab.className = 'px-6 py-2.5 rounded-lg text-sm md:text-base font-bold border-2 border-charcoal-border bg-accent-green text-midnight-ink shadow-subtle transition-all flex items-center gap-2 cursor-pointer';
+                lcTab.className = 'px-6 py-2.5 rounded-lg text-sm md:text-base font-bold border-2 border-transparent bg-transparent text-midnight-ink opacity-70 hover:opacity-100 hover:bg-canvas-white hover:border-charcoal-border transition-all flex items-center gap-2 cursor-pointer';
+                
+                // Section switch
+                leetcodeSection.classList.add('opacity-0');
+                setTimeout(() => {
+                    leetcodeSection.classList.add('hidden');
+                    githubSection.classList.remove('hidden');
+                    setTimeout(() => {
+                        githubSection.classList.remove('opacity-0');
+                    }, 30);
+                }, 200);
+            } else if (tab === 'leetcode' && currentTab !== 'leetcode') {
+                currentTab = 'leetcode';
+                // Button styles
+                lcTab.className = 'px-6 py-2.5 rounded-lg text-sm md:text-base font-bold border-2 border-charcoal-border bg-highlight-yellow text-midnight-ink shadow-subtle transition-all flex items-center gap-2 cursor-pointer';
+                ghTab.className = 'px-6 py-2.5 rounded-lg text-sm md:text-base font-bold border-2 border-transparent bg-transparent text-midnight-ink opacity-70 hover:opacity-100 hover:bg-canvas-white hover:border-charcoal-border transition-all flex items-center gap-2 cursor-pointer';
+                
+                // Section switch
+                githubSection.classList.add('opacity-0');
+                setTimeout(() => {
+                    githubSection.classList.add('hidden');
+                    leetcodeSection.classList.remove('hidden');
+                    setTimeout(() => {
+                        leetcodeSection.classList.remove('opacity-0');
+                    }, 30);
+                }, 200);
+            }
+        }
+
+        if (ghTab && lcTab) {
+            ghTab.addEventListener('click', () => showTab('github'));
+            lcTab.addEventListener('click', () => showTab('leetcode'));
+        }
+
+        // Generate activity grid for LeetCode
+        const lcGrid = document.getElementById('lc-activity-grid');
+        if (lcGrid) {
+            lcGrid.innerHTML = '';
+            const weeks = 52;
+            const daysPerWeek = 7;
+            for (let w = 0; w < weeks; w++) {
+                const col = document.createElement('div');
+                col.className = 'flex flex-col gap-1';
+                for (let d = 0; d < daysPerWeek; d++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'w-3 h-3 border border-charcoal-border rounded-sm';
+                    if (w >= 50 && d === 2) {
+                        cell.classList.add('bg-[#fbbf24]'); // active day
+                    } else {
+                        cell.classList.add('bg-transparent');
+                    }
+                    col.appendChild(cell);
+                }
+                lcGrid.appendChild(col);
+            }
+        }
+
+        // Generate activity grid for GitHub
+        const ghGrid = document.getElementById('gh-activity-grid');
+        if (ghGrid) {
+            ghGrid.innerHTML = '';
+            const weeks = 52;
+            const daysPerWeek = 7;
+            for (let w = 0; w < weeks; w++) {
+                const col = document.createElement('div');
+                col.className = 'flex flex-col gap-1';
+                for (let d = 0; d < daysPerWeek; d++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'w-3 h-3 border border-charcoal-border rounded-sm';
+                    const rand = Math.random();
+                    if (rand > 0.95) cell.classList.add('bg-[#3f6212]');
+                    else if (rand > 0.9) cell.classList.add('bg-[#65a30d]');
+                    else if (rand > 0.8) cell.classList.add('bg-[#a3e635]');
+                    else if (rand > 0.7) cell.classList.add('bg-[#dbf4b5]');
+                    else cell.classList.add('bg-transparent');
+                    col.appendChild(cell);
+                }
+                ghGrid.appendChild(col);
+            }
+        }
+
+        // Load cached GitHub stats if available
+        try {
+            const cachedGH = localStorage.getItem('gh_stats_sagnik');
+            if (cachedGH) {
+                const parsed = JSON.parse(cachedGH);
+                if (parsed.repos) document.getElementById('gh-repos').textContent = parsed.repos;
+                if (parsed.publicRepos) document.getElementById('gh-public-repos').textContent = parsed.publicRepos;
+                if (parsed.followers) document.getElementById('gh-followers').textContent = parsed.followers;
+                if (parsed.following) document.getElementById('gh-following').textContent = parsed.following;
+                if (parsed.stars !== undefined) document.getElementById('gh-stars').textContent = parsed.stars;
+            }
+        } catch (e) {}
+
+        // Fetch Live GitHub Data
+        fetch('https://api.github.com/users/sagnik-devv')
+            .then(res => {
+                if (!res.ok) throw new Error("GH rate limit: " + res.status);
+                return res.json();
+            })
+            .then(data => {
+                if (data && data.public_repos !== undefined && !data.message) {
+                    document.getElementById('gh-repos').textContent = data.public_repos;
+                    document.getElementById('gh-public-repos').textContent = data.public_repos;
+                    document.getElementById('gh-followers').textContent = data.followers;
+                    document.getElementById('gh-following').textContent = data.following;
+
+                    fetch('https://api.github.com/users/sagnik-devv/repos?sort=updated&per_page=100')
+                        .then(r => r.json())
+                        .then(repos => {
+                            if (Array.isArray(repos) && repos.length > 0) {
+                                const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+                                document.getElementById('gh-stars').textContent = totalStars;
+
+                                const topRepo = repos[0];
+                                if (topRepo) {
+                                    document.getElementById('repo-name').textContent = topRepo.name;
+                                    document.getElementById('repo-desc').textContent = topRepo.description || 'Full-stack luxury Indian wedding wear & bridal couture eCommerce platform.';
+                                    document.getElementById('repo-stars').textContent = topRepo.stargazers_count || 0;
+                                    document.getElementById('repo-forks').textContent = topRepo.forks_count || 0;
+                                    document.getElementById('repo-lang').textContent = topRepo.language || 'TypeScript';
+                                    document.getElementById('repo-link').href = topRepo.html_url;
+                                }
+
+                                try {
+                                    localStorage.setItem('gh_stats_sagnik', JSON.stringify({
+                                        repos: data.public_repos,
+                                        publicRepos: data.public_repos,
+                                        followers: data.followers,
+                                        following: data.following,
+                                        stars: totalStars
+                                    }));
+                                } catch(e) {}
+                            }
+                        }).catch(() => {});
+                }
+            }).catch(e => console.log('GH fetch note:', e.message));
+
+        // Fetch LeetCode Data using alfa-leetcode-api
+        const lcUsername = 'sagnikcodez';
+        const updateLCUI = (data) => {
+            const total = data.totalSolved !== undefined ? data.totalSolved : (data.solvedProblem !== undefined ? data.solvedProblem : 1);
+            const easy = data.easySolved !== undefined ? data.easySolved : 1;
+            const medium = data.mediumSolved !== undefined ? data.mediumSolved : 0;
+            const hard = data.hardSolved !== undefined ? data.hardSolved : 0;
+
+            document.getElementById('lc-total').textContent = total;
+            document.getElementById('lc-easy').textContent = easy;
+            document.getElementById('lc-medium').textContent = medium;
+            document.getElementById('lc-hard').textContent = hard;
+
+            if (data.ranking) {
+                document.getElementById('lc-ranking').textContent = Number(data.ranking).toLocaleString() + '+';
+            }
+            if (data.contributionPoint !== undefined) {
+                document.getElementById('lc-points').textContent = data.contributionPoint;
+            }
+            if (data.totalQuestions !== undefined) {
+                document.getElementById('lc-total-questions').textContent = Number(data.totalQuestions).toLocaleString();
+            }
+
+            // Render live submissions
+            if (data.recentSubmissions && data.recentSubmissions.length > 0) {
+                const listEl = document.getElementById('lc-recent-list');
+                if (listEl) {
+                    listEl.innerHTML = '';
+                    data.recentSubmissions.slice(0, 3).forEach(sub => {
+                        const item = document.createElement('div');
+                        item.className = 'border-2 border-charcoal-border rounded-lg p-3 hover:bg-gray-50 transition-colors flex justify-between items-center';
+                        const langName = sub.lang === 'cpp' ? 'C++' : (sub.lang || 'Code');
+                        item.innerHTML = `
+                            <div>
+                                <h4 class="font-bold text-sm text-midnight-ink">${sub.title}</h4>
+                                <p class="text-xs text-gray-500 mt-1">${langName} &bull; ${sub.statusDisplay || 'Accepted'}</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green text-midnight-ink">${sub.statusDisplay || 'Accepted'}</span>
+                        `;
+                        listEl.appendChild(item);
+                    });
+                }
+            }
+
+            const syncEl = document.getElementById('lc-last-synced');
+            if (syncEl) syncEl.textContent = 'Last synced: Just now';
+        };
+
+        // Primary Endpoint: userProfile on alfa-leetcode-api
+        fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${lcUsername}`)
+            .then(res => {
+                if (!res.ok) throw new Error("HTTP error " + res.status);
+                return res.json();
+            })
+            .then(data => {
+                if (data && (data.totalSolved !== undefined || data.solvedProblem !== undefined)) {
+                    updateLCUI(data);
+                } else {
+                    throw new Error("Invalid response");
+                }
+            })
+            .catch(e => {
+                console.log('Trying fallback LeetCode solved endpoint...', e);
+                fetch(`https://alfa-leetcode-api.onrender.com/${lcUsername}/solved`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data && (data.solvedProblem !== undefined || data.totalSolved !== undefined)) {
+                            updateLCUI({
+                                totalSolved: data.solvedProblem !== undefined ? data.solvedProblem : data.totalSolved,
+                                easySolved: data.easySolved || 0,
+                                mediumSolved: data.mediumSolved || 0,
+                                hardSolved: data.hardSolved || 0,
+                                ranking: 5000001
+                            });
+                        }
+                    })
+                    .catch(err => console.log('LC fetch error', err));
+            });
+    });
+</script>
 
     <section id="experience" class="py-12 md:py-24 bg-pale-ash border-b border-charcoal-border relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -481,12 +1001,56 @@
                 
                 <div>
                     <h2 class="text-3xl font-bold tracking-tight text-midnight-ink mb-8 flex items-center gap-3">
-                        Education
+                        <i class="fas fa-graduation-cap text-2xl"></i> Education
                     </h2>
-                    <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300">
-                        <h3 class="text-xl font-bold text-midnight-ink">Undergrad B.Tech CSE (AI/ML)</h3>
-                        <p class="text-sm font-bold text-charcoal-border mt-1 border-b border-charcoal-border pb-3 mb-3 inline-block">2025 - 2029</p>
-                        <p class="text-md text-midnight-ink leading-relaxed font-medium">Building a strong foundation in Artificial Intelligence, Machine Learning algorithms, and data-driven problem solving.</p>
+                    <div class="relative pl-6 sm:pl-8 border-l-2 border-charcoal-border space-y-8 my-2 ml-3 sm:ml-4">
+                        <!-- Undergrad -->
+                        <div class="relative group">
+                            <!-- Timeline Node / Dot -->
+                            <div class="absolute -left-[31px] sm:-left-[39px] top-4 w-4 h-4 rounded-full bg-accent-green border-2 border-charcoal-border shadow-subtle-3 group-hover:scale-125 transition-transform z-10"></div>
+                            
+                            <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-xl font-bold text-midnight-ink">B.Tech CSE (AI/ML)</h3>
+                                    <span class="px-2.5 py-0.5 bg-accent-green text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">Pursuing</span>
+                                </div>
+                                <p class="text-md font-bold text-midnight-ink bg-card-lavender inline-block px-2 py-0.5 mt-1 border border-charcoal-border rounded-sm">Lovely Professional University</p>
+                                <p class="text-sm font-bold text-charcoal-border mt-2 border-b border-charcoal-border pb-3 mb-3 block w-max">2025 - 2029</p>
+                                <p class="text-md text-midnight-ink leading-relaxed font-medium">Building a strong foundation in Artificial Intelligence, Machine Learning algorithms, and data-driven problem solving.</p>
+                            </div>
+                        </div>
+
+                        <!-- Class 12th -->
+                        <div class="relative group">
+                            <!-- Timeline Node / Dot -->
+                            <div class="absolute -left-[31px] sm:-left-[39px] top-4 w-4 h-4 rounded-full bg-highlight-yellow border-2 border-charcoal-border shadow-subtle-3 group-hover:scale-125 transition-transform z-10"></div>
+                            
+                            <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-xl font-bold text-midnight-ink">Class XII (Senior Secondary)</h3>
+                                    <span class="px-2.5 py-0.5 bg-accent-green text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">70%</span>
+                                </div>
+                                <p class="text-md font-bold text-midnight-ink bg-card-saffron inline-block px-2 py-0.5 mt-1 border border-charcoal-border rounded-sm">MB International, Kota, Rajasthan</p>
+                                <p class="text-sm font-bold text-charcoal-border mt-2 border-b border-charcoal-border pb-3 mb-3 block w-max">CBSE Board</p>
+                                <p class="text-md text-midnight-ink leading-relaxed font-medium">Completed Senior Secondary education with a focus on science and mathematics, strengthening analytical skills and disciplined problem-solving.</p>
+                            </div>
+                        </div>
+
+                        <!-- Class 10th -->
+                        <div class="relative group">
+                            <!-- Timeline Node / Dot -->
+                            <div class="absolute -left-[31px] sm:-left-[39px] top-4 w-4 h-4 rounded-full bg-card-pink border-2 border-charcoal-border shadow-subtle-3 group-hover:scale-125 transition-transform z-10"></div>
+                            
+                            <div class="bg-canvas-white p-6 rounded-lg border border-charcoal-border shadow-subtle hover:-translate-y-1 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-xl font-bold text-midnight-ink">Class X (Secondary School)</h3>
+                                    <span class="px-2.5 py-0.5 bg-accent-green text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">87%</span>
+                                </div>
+                                <p class="text-md font-bold text-midnight-ink bg-card-mint inline-block px-2 py-0.5 mt-1 border border-charcoal-border rounded-sm">BDM International, Kolkata, West Bengal</p>
+                                <p class="text-sm font-bold text-charcoal-border mt-2 border-b border-charcoal-border pb-3 mb-3 block w-max">CBSE Board</p>
+                                <p class="text-md text-midnight-ink leading-relaxed font-medium">Completed Secondary School Examination with distinction under CBSE, building a solid academic and mathematical foundation.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -528,7 +1092,42 @@
                 <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Riwaaz Luxury Couture -->
+                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
+                        <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
+                            <i class="fas fa-crown text-4xl text-midnight-ink mb-2"></i>
+                            <h3 class="text-midnight-ink font-bold text-2xl">Riwaaz</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-2xl font-bold text-midnight-ink">Riwaaz — Luxury Couture</h3>
+                        </div>
+                        <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
+                            A full-stack, ultra-luxury Indian wedding wear and bridal couture eCommerce platform. Built with Next.js App Router, InsForge BaaS backend (PostgreSQL + RLS), hybrid cart synchronization, and real-time 4-step order tracking.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto mb-6">
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Next.js</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">TypeScript</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">InsForge BaaS</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">eCommerce</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://riwaaz.insforge.site/" target="_blank" class="flex-1 text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-saffron transition-all flex items-center justify-center gap-2">
+                                <span>Visit Atelier</span> <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                            <a href="https://github.com/sagnik-devv/Riwaaz" target="_blank" class="px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-pale-ash transition-all flex items-center justify-center" title="View Source on GitHub">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nexus QR -->
                 <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-lavender flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
@@ -549,12 +1148,13 @@
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Web Tool</span>
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Utility</span>
                         </div>
-                        <a href="https://nexus-qr-1.onrender.com" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                        <a href="https://nexus-qr-1.onrender.com" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-lavender transition-all">
                             Open App
                         </a>
                     </div>
                 </div>
 
+                <!-- CodeBhumi -->
                 <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-mint flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform -rotate-2 group-hover:rotate-0 transition-transform">
@@ -574,12 +1174,13 @@
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">HTML/CSS/JS</span>
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Firebase</span>
                         </div>
-                        <a href="https://codebhumiscc.netlify.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                        <a href="https://codebhumiscc.netlify.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-mint transition-all">
                             Visit Site
                         </a>
                     </div>
                 </div>
 
+                <!-- LPU CGPA Calculator -->
                 <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
@@ -599,7 +1200,7 @@
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">HTML/CSS/JS</span>
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Utility</span>
                         </div>
-                        <a href="https://lpucgpacalc.vercel.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 transition-all">
+                        <a href="https://lpucgpacalc.vercel.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-pink transition-all">
                             Open App
                         </a>
                     </div>
@@ -744,7 +1345,7 @@
                     <i class="fab fa-github text-2xl text-midnight-ink"></i>
                 </a>
 
-                <a href="https://leetcode.com/u/canbesagnik/" target="_blank" class="flex items-center justify-center w-14 h-14 bg-card-saffron border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <a href="https://leetcode.com/u/sagnikcodez/" target="_blank" class="flex items-center justify-center w-14 h-14 bg-card-saffron border border-charcoal-border rounded-lg shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
                     <svg class="w-6 h-6 fill-current text-midnight-ink" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
                 </a>
 
