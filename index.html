@@ -98,6 +98,7 @@
                 </div>
                 <div class="hidden md:flex space-x-6 items-center">
                     <a href="#about" class="text-midnight-ink border border-transparent hover:bg-card-saffron hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">About</a>
+                    <a href="#pitch-game" class="text-midnight-ink border border-transparent hover:bg-accent-green hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all"> Game</a>
                     <a href="#skills" class="text-midnight-ink border border-transparent hover:bg-card-lavender hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Arsenal</a>
                     <a href="#experience" class="text-midnight-ink border border-transparent hover:bg-card-mint hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Experience</a>
                     <a href="#projects" class="text-midnight-ink border border-transparent hover:bg-card-pink hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Projects</a>
@@ -114,6 +115,7 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-canvas-white px-4 pt-2 pb-4 border-b border-charcoal-border">
             <a href="#about" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-saffron hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">About</a>
+            <a href="#pitch-game" class="block text-midnight-ink font-bold border border-transparent hover:bg-accent-green hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">⚽ Mini-Game</a>
             <a href="#skills" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-lavender hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Arsenal</a>
             <a href="#experience" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-mint hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Experience</a>
             <a href="#projects" class="block text-midnight-ink font-bold border border-transparent hover:bg-card-pink hover:border-charcoal-border px-3 py-2 rounded-md text-base transition-all">Projects</a>
@@ -254,6 +256,170 @@
                         <img src="postit 6.jpg" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1v1 Football Mini-Game (Below Hero Section) -->
+    <section id="pitch-game" class="py-12 md:py-20 bg-pale-ash border-b border-charcoal-border relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="mb-8 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-green text-midnight-ink font-bold border border-charcoal-border rounded-pill text-xs shadow-subtle mb-4 hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all cursor-pointer">
+                    <i class="fas fa-gamepad"></i> Playable Roblox 1v1 Soccer
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-midnight-ink mb-3">
+                    Built a game. <span class="bg-card-saffron px-2 border border-charcoal-border shadow-subtle-3 inline-block transform -rotate-1">Now lemme build your product</span>
+                </h2>
+                <p class="text-base sm:text-lg text-midnight-ink font-medium max-w-2xl mx-auto">
+                    Take the pitch against Sagnik's custom Roblox avatar in a retro pixel football match! Score goals, make clutch saves, and let's create something extraordinary together.
+                </p>
+            </div>
+
+            <!-- Game Card Container -->
+            <div class="bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4">
+                <!-- Top Status Bar & Action Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-500 text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> Sagnik (CPU)
+                        </span>
+                        <span class="font-bold text-xs text-midnight-ink bg-pale-ash px-2 py-0.5 rounded border border-charcoal-border">VS</span>
+                        <span id="arena-visitor-badge" class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-600 text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> <span id="arena-visitor-display">Visitor</span> (You)
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="arena-name-btn" class="px-3 py-1.5 bg-card-lavender hover:bg-card-pink text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-user-edit mr-1"></i> Edit Name
+                        </button>
+                        <button id="arena-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-redo-alt mr-1"></i> Reset
+                        </button>
+                        <button id="arena-mute-btn" class="px-3 py-1.5 bg-canvas-white hover:bg-pale-ash text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-volume-up"></i> Sound On
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Canvas Wrapper -->
+                <div class="relative w-full overflow-hidden rounded-lg border-2 border-charcoal-border bg-[#090d16] shadow-subtle">
+                    <canvas id="football-canvas" class="w-full block select-none" style="aspect-ratio: 1000 / 420; touch-action: none;"></canvas>
+                </div>
+
+                <!-- Touch Controls (Mobile & Tablets) -->
+                <div class="mt-4 md:hidden">
+                    <div class="text-center font-bold text-xs text-midnight-ink mb-2 uppercase tracking-wide">
+                        🎮 Touch Controls (Tap & Hold to Move)
+                    </div>
+                    <div class="flex items-center justify-between gap-2 select-none px-1">
+                        <!-- Directional Buttons -->
+                        <div class="flex gap-2">
+                            <button id="btn-touch-left" aria-label="Move Left" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button id="btn-touch-right" aria-label="Move Right" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Action Buttons (Jump / Kick) -->
+                        <div class="flex gap-2">
+                            <button id="btn-touch-jump" aria-label="Jump" class="w-16 h-14 bg-card-mint active:bg-accent-green text-midnight-ink font-bold text-xs rounded-lg border-2 border-charcoal-border shadow-subtle flex flex-col items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                                <i class="fas fa-arrow-up text-sm mb-0.5"></i>
+                                <span>JUMP</span>
+                            </button>
+                            <button id="btn-touch-kick" aria-label="Kick" class="w-16 h-14 bg-accent-green active:bg-highlight-yellow text-midnight-ink font-bold text-xs rounded-lg border-2 border-charcoal-border shadow-subtle flex flex-col items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                                <i class="fas fa-bolt text-sm mb-0.5"></i>
+                                <span>KICK</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Key Controls Hint -->
+                <div class="hidden md:flex items-center justify-between mt-4 pt-3 border-t border-charcoal-border text-xs font-bold text-midnight-ink">
+                    <div class="flex items-center gap-4">
+                        <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">A</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">D</kbd> or <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">←</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">→</kbd> Run</span>
+                        <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">W</kbd> or <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">↑</kbd> Jump</span>
+                        <span><kbd class="px-3 py-1 bg-accent-green border border-charcoal-border rounded shadow-subtle-3">Space</kbd> or <kbd class="px-2 py-1 bg-accent-green border border-charcoal-border rounded shadow-subtle-3">K</kbd> Kick Ball</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-neutral-600">
+                        <i class="fas fa-trophy text-highlight-yellow"></i> First to 3 Goals Wins (or 90s)!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Name & Character Selection Modal -->
+        <div id="arena-name-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+            <div class="bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-6 sm:p-8 max-w-md w-full relative">
+                <button id="arena-modal-close" class="absolute top-4 right-4 w-8 h-8 rounded-md bg-pale-ash hover:bg-card-pink border border-charcoal-border shadow-subtle flex items-center justify-center font-bold text-midnight-ink transition-all">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 bg-accent-green border-2 border-charcoal-border rounded-lg shadow-subtle flex items-center justify-center mx-auto mb-3 text-2xl">
+                        ⚽
+                    </div>
+                    <h3 class="text-2xl font-bold text-midnight-ink">Enter Sagnik's Pitch!</h3>
+                    <p class="text-sm text-neutral-600 font-medium mt-1">
+                        What should we call you on the stadium scoreboard?
+                    </p>
+                </div>
+
+                <form id="arena-name-form" class="space-y-4">
+                    <div>
+                        <label for="arena-player-name-input" class="block text-xs font-bold uppercase text-midnight-ink mb-1.5">
+                            Your Player / Visitor Name
+                        </label>
+                        <input
+                            type="text"
+                            id="arena-player-name-input"
+                            maxlength="10"
+                            placeholder="e.g. Cristiano, Leo, Alex"
+                            class="w-full px-4 py-2.5 rounded-md border-2 border-charcoal-border bg-pale-ash focus:bg-canvas-white focus:outline-none focus:ring-2 focus:ring-accent-green text-midnight-ink font-bold text-base transition-all"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-midnight-ink mb-2">
+                            Choose Your Roblox Jersey Color
+                        </label>
+                        <div class="grid grid-cols-4 gap-2">
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="arena-jersey-color" value="#2563eb" checked class="peer sr-only">
+                                <span class="w-10 h-10 rounded-md bg-blue-600 border-2 border-charcoal-border peer-checked:ring-4 peer-checked:ring-accent-green peer-checked:scale-105 transition-all shadow-subtle"></span>
+                                <span class="text-[11px] font-bold text-midnight-ink">Blue</span>
+                            </label>
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="arena-jersey-color" value="#10b981" class="peer sr-only">
+                                <span class="w-10 h-10 rounded-md bg-emerald-500 border-2 border-charcoal-border peer-checked:ring-4 peer-checked:ring-accent-green peer-checked:scale-105 transition-all shadow-subtle"></span>
+                                <span class="text-[11px] font-bold text-midnight-ink">Emerald</span>
+                            </label>
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="arena-jersey-color" value="#f59e0b" class="peer sr-only">
+                                <span class="w-10 h-10 rounded-md bg-amber-500 border-2 border-charcoal-border peer-checked:ring-4 peer-checked:ring-accent-green peer-checked:scale-105 transition-all shadow-subtle"></span>
+                                <span class="text-[11px] font-bold text-midnight-ink">Gold</span>
+                            </label>
+                            <label class="flex flex-col items-center gap-1 cursor-pointer">
+                                <input type="radio" name="arena-jersey-color" value="#8b5cf6" class="peer sr-only">
+                                <span class="w-10 h-10 rounded-md bg-purple-500 border-2 border-charcoal-border peer-checked:ring-4 peer-checked:ring-accent-green peer-checked:scale-105 transition-all shadow-subtle"></span>
+                                <span class="text-[11px] font-bold text-midnight-ink">Violet</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full mt-4 py-3 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-bold text-base rounded-md border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2"
+                    >
+                        <span>Kick Off Match!</span>
+                        <i class="fas fa-futbol"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -1154,28 +1320,36 @@
                     </div>
                 </div>
 
-                <!-- CodeBhumi -->
+                <!-- PujoNavigation -->
                 <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
-                    <div class="h-48 border-b border-charcoal-border bg-card-mint flex items-center justify-center relative overflow-hidden">
+                    <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-3 right-3 z-20">
+                            <span class="px-2.5 py-1 bg-accent-green text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-700 animate-pulse"></span> Live Platform
+                            </span>
+                        </div>
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform -rotate-2 group-hover:rotate-0 transition-transform">
-                            <i class="fas fa-laptop-code text-4xl text-midnight-ink mb-2"></i>
-                            <h3 class="text-midnight-ink font-bold text-2xl">CodeBhumi</h3>
+                            <i class="fas fa-map-marked-alt text-4xl text-midnight-ink mb-2"></i>
+                            <h3 class="text-midnight-ink font-bold text-2xl">PujoNavigation</h3>
                         </div>
                     </div>
                     
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-3">
-                            <h3 class="text-2xl font-bold text-midnight-ink">CodeBhumi Website</h3>
+                            <h3 class="text-2xl font-bold text-midnight-ink">PujoNavigation</h3>
+                            <span class="px-2 py-0.5 bg-card-mint text-midnight-ink text-xs font-bold border border-charcoal-border rounded">248+ Pandals</span>
                         </div>
                         <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
-                            The official platform for CodeBhumi. Built completely from scratch with a focus on modern design, responsive UI, and fast performance.
+                            A smart geospatial navigation and crowd intelligence platform built for Kolkata's Durga Puja. Mapping 248+ pandals, 45 metro stations, and 180+ bus routes, it solves festive urban mobility with multi-modal route scoring (Metro, Bus, Walk, Cab) and TSP itinerary optimization. It features live crowd telemetry, 'Hop with Friends' real-time GPS group rooms, public amenity radars, and cultural art dossiers.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto mb-6">
-                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">HTML/CSS/JS</span>
-                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Firebase</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Geospatial AI</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Crowd Telemetry</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Transit Routing</span>
                         </div>
-                        <a href="https://codebhumiscc.netlify.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-mint transition-all">
-                            Visit Site
+                        <a href="https://www.pujo-navigation.in" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-saffron transition-all flex items-center justify-center gap-2">
+                            <span>Explore Platform</span>
+                            <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -1183,6 +1357,11 @@
                 <!-- LPU CGPA Calculator -->
                 <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-3 right-3 z-20">
+                            <span class="px-2.5 py-1 bg-highlight-yellow text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
+                                <i class="fas fa-users text-xs"></i> 1K+ Visitors
+                            </span>
+                        </div>
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-graduation-cap text-4xl text-midnight-ink mb-2"></i>
                             <h3 class="text-midnight-ink font-bold text-2xl">CGPA Calc</h3>
@@ -1192,16 +1371,19 @@
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-3">
                             <h3 class="text-2xl font-bold text-midnight-ink">LPU CGPA Calculator</h3>
+                            <span class="px-2 py-0.5 bg-accent-green text-midnight-ink text-xs font-bold border border-charcoal-border rounded">1,000+ Users</span>
                         </div>
                         <p class="text-md text-midnight-ink font-medium mb-6 leading-relaxed flex-1">
-                            A fast, responsive web application for students to easily calculate their semester CGPA. Built with a focus on usability and precision.
+                            A fast, high-precision academic grade calculator trusted by over 1,000+ active university students to calculate, forecast, and plan their semester SGPA and CGPA seamlessly with zero friction.
                         </p>
                         <div class="flex flex-wrap gap-2 mt-auto mb-6">
                             <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">HTML/CSS/JS</span>
-                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Utility</span>
+                            <span class="px-3 py-1 bg-pale-ash border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">Student Tool</span>
+                            <span class="px-3 py-1 bg-card-mint border border-charcoal-border text-xs font-bold rounded-pill text-midnight-ink">📈 1K+ Hits</span>
                         </div>
-                        <a href="https://lpucgpacalc.vercel.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-pink transition-all">
-                            Open App
+                        <a href="https://lpucgpacalc.vercel.app" target="_blank" class="w-full text-center px-4 py-3 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-md shadow-subtle hover:shadow-subtle-2 hover:bg-card-pink transition-all flex items-center justify-center gap-2">
+                            <span>Open App</span>
+                            <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -1420,5 +1602,7 @@
             });
         });
     </script>
+    <!-- 1v1 Football Arena Script -->
+    <script src="football-game.js"></script>
 </body>
 </html>
