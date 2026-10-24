@@ -923,9 +923,15 @@
             this.setupUI();
             this.resizeCanvas();
 
+            // Arcade lifecycle state
+            this.isActive = true;
+            this.isRunning = true;
+            this.isPaused = false;
+            this.animationFrameId = null;
+
             // Start game loop
             this.lastTime = performance.now();
-            requestAnimationFrame((t) => this.gameLoop(t));
+            this.animationFrameId = requestAnimationFrame((t) => this.gameLoop(t));
         }
 
         setupEvents() {
@@ -933,6 +939,9 @@
 
             // Keyboard
             window.addEventListener('keydown', (e) => {
+                if (!this.isActive) return;
+                if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
+
                 if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
                     // Prevent page scroll only when playing or focused in arena
                     const rect = this.canvas.getBoundingClientRect();
@@ -948,6 +957,7 @@
             });
 
             window.addEventListener('keyup', (e) => {
+                if (!this.isActive) return;
                 if (e.code === 'ArrowLeft' || e.key === 'a' || e.key === 'A') this.keys.left = false;
                 if (e.code === 'ArrowRight' || e.key === 'd' || e.key === 'D') this.keys.right = false;
                 if (e.code === 'ArrowUp' || e.key === 'w' || e.key === 'W') this.keys.up = false;
@@ -1169,13 +1179,40 @@
         }
 
         gameLoop(currentTime) {
-            const dt = (currentTime - this.lastTime) / 1000;
+            if (!this.isRunning) return;
+
+            const dt = Math.min((currentTime - this.lastTime) / 1000, 0.1);
             this.lastTime = currentTime;
 
-            this.update(dt);
+            if (!this.isPaused) {
+                this.update(dt);
+            }
             this.render();
 
-            requestAnimationFrame((t) => this.gameLoop(t));
+            this.animationFrameId = requestAnimationFrame((t) => this.gameLoop(t));
+        }
+
+        pause() {
+            this.isPaused = true;
+            this.isActive = false;
+            this.keys.left = false;
+            this.keys.right = false;
+            this.keys.up = false;
+            this.keys.kick = false;
+            if (this.animationFrameId) {
+                cancelAnimationFrame(this.animationFrameId);
+                this.animationFrameId = null;
+            }
+        }
+
+        resume() {
+            this.isPaused = false;
+            this.isActive = true;
+            this.lastTime = performance.now();
+            if (!this.animationFrameId) {
+                this.isRunning = true;
+                this.animationFrameId = requestAnimationFrame((t) => this.gameLoop(t));
+            }
         }
 
         update(dt) {
@@ -1648,10 +1685,18 @@
         }
     }
 
-    // Initialize on DOMContentLoaded
+    // Export FootballArena to window and initialize
+    window.FootballArena = FootballArena;
+
+    function initFootball() {
+        const arena = new FootballArena();
+        window.footballArenaInstance = arena;
+        return arena;
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => new FootballArena());
+        document.addEventListener('DOMContentLoaded', initFootball);
     } else {
-        new FootballArena();
+        initFootball();
     }
 })();

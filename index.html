@@ -86,6 +86,21 @@
             background-color: #171717;
             border-radius: 4px;
         }
+        /* Arcade specific styling */
+        .touch-manipulation {
+            touch-action: manipulation;
+        }
+        .border-3 {
+            border-width: 3px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body class="selection:bg-accent-green selection:text-midnight-ink font-satoshi bg-canvas-white text-midnight-ink">
@@ -264,20 +279,43 @@
     <section id="pitch-game" class="py-12 md:py-20 bg-pale-ash border-b border-charcoal-border relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="mb-8 text-center">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-green text-midnight-ink font-bold border border-charcoal-border rounded-pill text-xs shadow-subtle mb-4 hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all cursor-pointer">
-                    <i class="fas fa-gamepad"></i> Playable Roblox 1v1 Soccer
+            <div class="mb-6 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-green text-midnight-ink font-bold border border-charcoal-border rounded-pill text-xs shadow-subtle mb-3 hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all cursor-pointer">
+                    <i class="fas fa-gamepad"></i> Playable Games
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-midnight-ink mb-3">
-                    Built a game. <span class="bg-card-saffron px-2 border border-charcoal-border shadow-subtle-3 inline-block transform -rotate-1">Now lemme build your product</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-midnight-ink mb-4">
+                    Built games. <span class="bg-card-saffron px-2 border border-charcoal-border shadow-subtle-3 inline-block transform -rotate-1">Now lemme build your product</span>
                 </h2>
-                <p class="text-base sm:text-lg text-midnight-ink font-medium max-w-2xl mx-auto">
-                    Take the pitch against Sagnik's custom Roblox avatar in a retro pixel football match! Score goals, make clutch saves, and let's create something extraordinary together.
-                </p>
+
+                <!-- Compact THE ARCADE Label -->
+                <div class="flex items-center justify-center gap-2 mb-3">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs uppercase tracking-widest rounded-md border border-charcoal-border shadow-subtle">
+                        <i class="fas fa-dice"></i> THE ARCADE
+                    </span>
+                </div>
+
+                <!-- Five-Game Selector -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6" role="tablist" aria-label="Arcade Game Selector">
+                    <button id="tab-btn-football" role="tab" aria-selected="true" aria-controls="game-panel-football" class="arcade-tab-btn active-tab px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle-2 -translate-y-0.5 bg-accent-green text-midnight-ink transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                        <i class="fas fa-futbol"></i> <span>Football Arena</span>
+                    </button>
+                    <button id="tab-btn-snake" role="tab" aria-selected="false" aria-controls="game-panel-snake" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                        <i class="fas fa-worm text-emerald-600"></i> <span>Nokia Snake</span>
+                    </button>
+                    <button id="tab-btn-type" role="tab" aria-selected="false" aria-controls="game-panel-type" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                        <i class="fas fa-keyboard text-amber-600"></i> <span>Type or Die</span>
+                    </button>
+                    <button id="tab-btn-terminal" role="tab" aria-selected="false" aria-controls="game-panel-terminal" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                        <i class="fas fa-terminal text-purple-600"></i> <span>Hack the Terminal</span>
+                    </button>
+                    <button id="tab-btn-reflex" role="tab" aria-selected="false" aria-controls="game-panel-reflex" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                        <i class="fas fa-bolt text-red-500"></i> <span>Reflex.exe</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Game Card Container -->
-            <div class="bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4">
+            <!-- GAME 1: FOOTBALL ARENA (Default Active Game) -->
+            <div id="game-panel-football" class="arcade-game-panel bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4">
                 <!-- Top Status Bar & Action Controls -->
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
@@ -347,6 +385,387 @@
                     </div>
                     <div class="flex items-center gap-2 text-neutral-600">
                         <i class="fas fa-trophy text-highlight-yellow"></i> First to 3 Goals Wins (or 90s)!
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 2: NOKIA SNAKE -->
+            <div id="game-panel-snake" class="arcade-game-panel hidden bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4">
+                <!-- Status Bar & Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-600 text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-apple-alt"></i> Score: <span id="snake-score-val" class="font-mono ml-1">0</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-crown"></i> High: <span id="snake-high-val" class="font-mono ml-1">0</span>
+                        </span>
+                        <div class="flex items-center gap-1">
+                            <label for="snake-diff-select" class="text-xs font-bold text-midnight-ink">Speed:</label>
+                            <select id="snake-diff-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none">
+                                <option value="easy">Easy (Casual)</option>
+                                <option value="normal" selected>Normal</option>
+                                <option value="hard">Hard (Fast)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <label for="snake-mode-select" class="text-xs font-bold text-midnight-ink">Wall:</label>
+                            <select id="snake-mode-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none">
+                                <option value="solid" selected>Solid Wall</option>
+                                <option value="wrap">Wrap-Around</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="snake-pause-btn" class="px-3 py-1.5 bg-card-mint hover:bg-accent-green text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-play mr-1"></i> Start
+                        </button>
+                        <button id="snake-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-redo-alt mr-1"></i> Restart
+                        </button>
+                        <button id="snake-sound-btn" class="px-3 py-1.5 bg-canvas-white hover:bg-pale-ash text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-volume-up"></i> Sound On
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Nokia LCD Screen Wrapper -->
+                <div class="flex justify-center my-2">
+                    <div class="relative w-full max-w-xl bg-[#7c9269] p-3 sm:p-5 rounded-2xl border-4 border-charcoal-border shadow-subtle-4">
+                        <div class="flex justify-between items-center text-[11px] font-mono font-bold text-[#172214] mb-1.5 px-1">
+                            <span>NOKIA 3310</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-signal"></i> ▮▮▮▮ <i class="fas fa-battery-three-quarters ml-1"></i></span>
+                        </div>
+                        <div class="relative w-full overflow-hidden rounded-lg border-3 border-[#172214] shadow-inner bg-[#9cb884]">
+                            <canvas id="snake-canvas" class="w-full block select-none cursor-pointer" style="aspect-ratio: 5 / 4; touch-action: none;"></canvas>
+                        </div>
+                        <div class="text-center mt-2 text-[10px] font-mono tracking-widest text-[#172214] font-bold uppercase">
+                            Swipe screen or use D-Pad below
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile / Tablet D-Pad Controls -->
+                <div class="mt-4 max-w-xs mx-auto">
+                    <div class="text-center font-bold text-xs text-midnight-ink mb-2 uppercase tracking-wide">
+                        🎮 4-Way D-Pad
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 w-48 mx-auto">
+                        <div></div>
+                        <button id="snake-dpad-up" aria-label="Move Up" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                        <div></div>
+                        <button id="snake-dpad-left" aria-label="Move Left" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button id="snake-dpad-down" aria-label="Move Down" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                        <button id="snake-dpad-right" aria-label="Move Right" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Desktop Controls Hint -->
+                <div class="hidden md:flex items-center justify-between mt-4 pt-3 border-t border-charcoal-border text-xs font-bold text-midnight-ink">
+                    <div class="flex items-center gap-4">
+                        <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">W</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">A</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">S</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">D</kbd> or <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">Arrow Keys</kbd> Navigate</span>
+                        <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">Space</kbd> Pause/Resume</span>
+                        <span><kbd class="px-2 py-1 bg-accent-green border border-charcoal-border rounded shadow-subtle-3">Enter</kbd> Restart</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-neutral-600">
+                        <i class="fas fa-trophy text-highlight-yellow"></i> Eat pixel apples to grow without biting your tail!
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 3: TYPE OR DIE -->
+            <div id="game-panel-type" class="arcade-game-panel hidden bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4 relative">
+                <!-- Status Bar & Mode Pickers -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <!-- Mode Selector (15s, 30s, 60s) -->
+                        <div class="inline-flex rounded-md border border-charcoal-border p-0.5 bg-pale-ash text-xs font-bold">
+                            <button class="type-time-btn px-2.5 py-1 rounded bg-canvas-white text-midnight-ink hover:bg-card-saffron transition-all" data-time="15">15s</button>
+                            <button class="type-time-btn px-2.5 py-1 rounded bg-accent-green shadow-subtle-2 text-midnight-ink transition-all" data-time="30">30s</button>
+                            <button class="type-time-btn px-2.5 py-1 rounded bg-canvas-white text-midnight-ink hover:bg-card-saffron transition-all" data-time="60">60s</button>
+                        </div>
+
+                        <!-- Category Selector -->
+                        <div class="inline-flex rounded-md border border-charcoal-border p-0.5 bg-pale-ash text-xs font-bold">
+                            <button class="type-diff-btn px-2.5 py-1 rounded bg-highlight-yellow shadow-subtle-2 text-midnight-ink transition-all" data-diff="beginner">Beginner</button>
+                            <button class="type-diff-btn px-2.5 py-1 rounded bg-canvas-white text-midnight-ink hover:bg-card-saffron transition-all" data-diff="intermediate">Tech Prose</button>
+                            <button class="type-diff-btn px-2.5 py-1 rounded bg-canvas-white text-midnight-ink hover:bg-card-saffron transition-all" data-diff="code">Code Snippet</button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="type-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-redo-alt mr-1"></i> New Prompt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Metrics Dashboard -->
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-4">
+                    <div class="bg-pale-ash p-2.5 rounded-lg border border-charcoal-border text-center shadow-subtle">
+                        <div class="text-[11px] font-bold text-neutral-500 uppercase">WPM</div>
+                        <div id="type-wpm-val" class="text-xl sm:text-2xl font-bold font-mono text-midnight-ink">0</div>
+                    </div>
+                    <div class="bg-pale-ash p-2.5 rounded-lg border border-charcoal-border text-center shadow-subtle">
+                        <div class="text-[11px] font-bold text-neutral-500 uppercase">Accuracy</div>
+                        <div id="type-accuracy-val" class="text-xl sm:text-2xl font-bold font-mono text-emerald-600">100%</div>
+                    </div>
+                    <div class="bg-pale-ash p-2.5 rounded-lg border border-charcoal-border text-center shadow-subtle">
+                        <div class="text-[11px] font-bold text-neutral-500 uppercase">Time Left</div>
+                        <div id="type-timer-val" class="text-xl sm:text-2xl font-bold font-mono text-blue-600">30s</div>
+                    </div>
+                    <div class="bg-pale-ash p-2.5 rounded-lg border border-charcoal-border text-center shadow-subtle">
+                        <div class="text-[11px] font-bold text-neutral-500 uppercase">Errors</div>
+                        <div id="type-errors-val" class="text-xl sm:text-2xl font-bold font-mono text-red-500">0</div>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1 bg-card-saffron p-2.5 rounded-lg border border-charcoal-border text-center shadow-subtle">
+                        <div class="text-[11px] font-bold text-midnight-ink uppercase">Best WPM</div>
+                        <div id="type-best-val" class="text-xl sm:text-2xl font-bold font-mono text-midnight-ink">0</div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full h-2 bg-pale-ash rounded-pill border border-charcoal-border overflow-hidden mb-4">
+                    <div id="type-progress-bar" class="h-full bg-accent-green transition-all duration-300" style="width: 100%;"></div>
+                </div>
+
+                <!-- Text Prompt Box -->
+                <div id="type-prompt-box" class="relative min-h-[160px] sm:min-h-[180px] p-4 sm:p-6 bg-pale-ash rounded-xl border-2 border-charcoal-border shadow-subtle cursor-text overflow-hidden select-none">
+                    <div id="type-prompt-text" class="leading-relaxed whitespace-pre-wrap tracking-wide font-medium"></div>
+
+                    <!-- Hidden Input for Smooth Keyboard Capture (Mobile & Desktop) -->
+                    <textarea id="type-hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="absolute inset-0 opacity-0 cursor-default resize-none w-full h-full" style="font-size: 16px;"></textarea>
+                </div>
+
+                <!-- Mobile Tap Prompt Banner -->
+                <div class="mt-3 md:hidden">
+                    <button id="type-focus-tap-btn" class="w-full py-2.5 bg-accent-green text-midnight-ink font-bold text-xs rounded-lg border border-charcoal-border shadow-subtle active:translate-y-0.5 flex items-center justify-center gap-2">
+                        <i class="fas fa-keyboard"></i> Tap here to open keyboard and start typing
+                    </button>
+                </div>
+
+                <!-- Desktop Hint -->
+                <div class="hidden md:flex items-center justify-between mt-4 pt-3 border-t border-charcoal-border text-xs font-bold text-midnight-ink">
+                    <span><i class="fas fa-info-circle text-accent-green mr-1"></i> Timer starts automatically on your first keystroke. Backspace supported.</span>
+                    <span class="text-neutral-500">Test your engineering typing cadence</span>
+                </div>
+
+                <!-- Results Modal Overlay -->
+                <div id="type-results-modal" class="absolute inset-0 bg-black/60 backdrop-blur-xs rounded-xl hidden items-center justify-center p-4 z-20">
+                    <div class="bg-canvas-white border-3 border-charcoal-border rounded-xl shadow-subtle-4 p-6 sm:p-8 max-w-sm w-full text-center">
+                        <div id="type-res-best-banner" class="hidden inline-block px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs uppercase rounded-md border border-charcoal-border shadow-subtle mb-3">
+                            ★ NEW PERSONAL BEST! ★
+                        </div>
+                        <h3 class="text-2xl font-bold text-midnight-ink mb-1">Challenge Complete!</h3>
+                        <div id="type-res-badge" class="inline-block px-3 py-1 bg-card-lavender text-midnight-ink font-bold text-xs rounded-pill border border-charcoal-border mb-4">
+                            Senior Typist
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 mb-5 font-mono text-sm">
+                            <div class="p-2 bg-pale-ash rounded border border-charcoal-border">
+                                <span class="text-xs text-neutral-500 block">WPM</span>
+                                <span id="type-res-wpm" class="text-xl font-bold text-midnight-ink">0</span>
+                            </div>
+                            <div class="p-2 bg-pale-ash rounded border border-charcoal-border">
+                                <span class="text-xs text-neutral-500 block">Accuracy</span>
+                                <span id="type-res-accuracy" class="text-xl font-bold text-emerald-600">0%</span>
+                            </div>
+                            <div class="p-2 bg-pale-ash rounded border border-charcoal-border">
+                                <span class="text-xs text-neutral-500 block">Characters</span>
+                                <span id="type-res-chars" class="text-sm font-bold text-midnight-ink">0/0</span>
+                            </div>
+                            <div class="p-2 bg-pale-ash rounded border border-charcoal-border">
+                                <span class="text-xs text-neutral-500 block">Errors</span>
+                                <span id="type-res-errors" class="text-sm font-bold text-red-500">0</span>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button id="type-play-again-btn" class="flex-1 py-2.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all">
+                                Try Again
+                            </button>
+                            <button id="type-new-prompt-btn" class="flex-1 py-2.5 bg-card-mint hover:bg-accent-green text-midnight-ink font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all">
+                                Next Prompt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 4: HACK THE TERMINAL -->
+            <div id="game-panel-terminal" class="arcade-game-panel hidden bg-[#0b0f19] text-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4 relative overflow-hidden">
+                <!-- Top Status Bar & Difficulty -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-neutral-800">
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-900/60 text-purple-300 font-mono font-bold text-xs rounded-md border border-purple-500/40">
+                            <i class="fas fa-terminal"></i> MAIN_CONSOLE_v4.2
+                        </span>
+                        <div class="inline-flex rounded-md border border-neutral-700 p-0.5 bg-neutral-900 text-xs font-mono font-bold">
+                            <button class="term-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="easy">Novice (3D)</button>
+                            <button class="term-diff-btn px-2.5 py-1 rounded bg-purple-600 text-white shadow-subtle transition-all" data-diff="normal">Analyst (4D)</button>
+                            <button class="term-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="hard">Cyber-Ops (5D)</button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="term-reset-btn" class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-white font-mono font-bold text-xs rounded-md border border-neutral-600 transition-all">
+                            <i class="fas fa-redo-alt mr-1"></i> Re-init
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Attempts Bar & Status line -->
+                <div class="flex items-center justify-between gap-2 mb-2 font-mono text-xs text-neutral-400">
+                    <span id="term-status-msg" class="text-neutral-400">Ready for decryption sequence. Enter digits.</span>
+                    <span class="font-bold text-neutral-300">Attempts: <span id="term-attempts-val" class="text-accent-green">8/8</span></span>
+                </div>
+                <div class="w-full h-1.5 bg-neutral-900 rounded-pill border border-neutral-800 overflow-hidden mb-5">
+                    <div id="term-attempts-bar" class="h-full bg-accent-green transition-all duration-300" style="width: 100%;"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    <!-- Left: Interactive Keypad & Input Slots (7 cols) -->
+                    <div class="lg:col-span-7 flex flex-col items-center">
+                        <div class="text-[11px] font-mono text-neutral-400 uppercase tracking-widest mb-2 font-bold">
+                            CURRENT DECRYPTION PIN BUFFER
+                        </div>
+
+                        <!-- Digit Slots Display -->
+                        <div id="term-slots-container" class="flex gap-2 sm:gap-3 mb-5"></div>
+
+                        <!-- On-screen Numeric Keypad -->
+                        <div class="grid grid-cols-3 gap-2 w-full max-w-[280px]">
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="1">1</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="2">2</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="3">3</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="4">4</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="5">5</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="6">6</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="7">7</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="8">8</button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="9">9</button>
+                            <button id="term-key-del" class="h-12 bg-neutral-900 hover:bg-neutral-800 text-red-400 font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all flex items-center justify-center">
+                                <i class="fas fa-backspace"></i>
+                            </button>
+                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="0">0</button>
+                            <button id="term-key-submit" class="h-12 bg-accent-green hover:bg-highlight-yellow active:bg-emerald-400 text-midnight-ink font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all flex items-center justify-center">
+                                ENTER
+                            </button>
+                        </div>
+                        <div class="mt-3 text-[11px] font-mono text-neutral-400 text-center">
+                            Digits must be unique • Keypad dims eliminated numbers
+                        </div>
+                    </div>
+
+                    <!-- Right: Guess History Log (5 cols) -->
+                    <div class="lg:col-span-5 flex flex-col">
+                        <div class="flex items-center justify-between text-[11px] font-mono text-neutral-400 uppercase tracking-widest mb-2 font-bold">
+                            <span>DECRYPTION LOGS</span>
+                            <span class="text-[10px] text-neutral-500">FEEDBACK HINTS</span>
+                        </div>
+                        <div id="term-history-feed" class="flex-1 space-y-2 max-h-[260px] overflow-y-auto pr-1"></div>
+                    </div>
+                </div>
+
+                <!-- Rules hint footer -->
+                <div class="mt-4 pt-3 border-t border-neutral-800 flex flex-wrap items-center justify-between text-xs font-mono text-neutral-400 gap-2">
+                    <div class="flex items-center gap-3">
+                        <span>🟢 <strong>Exact</strong> = Right digit, right spot</span>
+                        <span>🟡 <strong>Partial</strong> = Right digit, wrong spot</span>
+                    </div>
+                    <span class="text-neutral-500">Keyboard 0-9 & Enter supported</span>
+                </div>
+
+                <!-- Win/Loss Overlay Modal -->
+                <div id="term-result-overlay" class="absolute inset-0 bg-black/80 backdrop-blur-xs rounded-xl hidden items-center justify-center p-4 z-20">
+                    <div class="bg-neutral-900 border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-6 sm:p-8 max-w-sm w-full text-center">
+                        <div id="term-res-icon" class="mb-3"></div>
+                        <h3 id="term-res-title" class="text-2xl font-bold font-mono mb-1"></h3>
+                        <p id="term-res-desc" class="text-xs font-mono text-neutral-400 mb-4"></p>
+                        <div id="term-res-code" class="p-3 bg-neutral-950 rounded-lg border border-neutral-800 mb-5 font-mono"></div>
+                        <button id="term-play-again-btn" class="w-full py-2.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all">
+                            Initialize Next Cipher
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 5: REFLEX.EXE -->
+            <div id="game-panel-reflex" class="arcade-game-panel hidden bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4 relative">
+                <!-- Status Bar & Stats -->
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
+                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-500 text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-stopwatch"></i> Round: <span id="reflex-round-val" class="font-mono ml-1">1/5</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-trophy"></i> Best Avg: <span id="reflex-best-val" class="font-mono ml-1">—</span>
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button id="reflex-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                            <i class="fas fa-redo-alt mr-1"></i> Reset Test
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Reaction Zone Box -->
+                <div id="reflex-arena-box" class="w-full min-h-[300px] sm:min-h-[360px] rounded-xl border-3 border-charcoal-border shadow-subtle-4 flex flex-col items-center justify-center p-6 text-center select-none cursor-pointer transition-colors duration-150 touch-manipulation bg-card-saffron">
+                    <div id="reflex-status-icon"></div>
+                    <h2 id="reflex-status-title" class="text-2xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-2"></h2>
+                    <p id="reflex-status-desc" class="text-sm sm:text-base font-medium max-w-md"></p>
+                </div>
+
+                <!-- Rounds Tracker Badges -->
+                <div class="mt-4">
+                    <div class="text-[11px] font-bold uppercase text-midnight-ink mb-2">5-Round Performance Log</div>
+                    <div id="reflex-rounds-list" class="grid grid-cols-2 sm:grid-cols-5 gap-2"></div>
+                </div>
+
+                <!-- Desktop Hint -->
+                <div class="hidden md:flex items-center justify-between mt-4 pt-3 border-t border-charcoal-border text-xs font-bold text-midnight-ink">
+                    <span><i class="fas fa-bolt text-highlight-yellow mr-1"></i> Tests nervous system synaptic response using precision millisecond timers. Spacebar or Mouse Click.</span>
+                    <span class="text-neutral-500">Zero touch latency on mobile</span>
+                </div>
+
+                <!-- Results Modal Overlay -->
+                <div id="reflex-results-modal" class="absolute inset-0 bg-black/60 backdrop-blur-xs rounded-xl hidden items-center justify-center p-4 z-20">
+                    <div class="bg-canvas-white border-3 border-charcoal-border rounded-xl shadow-subtle-4 p-6 sm:p-8 max-w-sm w-full text-center">
+                        <div id="reflex-res-best-banner" class="hidden inline-block px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs uppercase rounded-md border border-charcoal-border shadow-subtle mb-3">
+                            ★ NEW PERSONAL BEST! ★
+                        </div>
+                        <h3 class="text-2xl font-bold text-midnight-ink mb-1">Reflex Scorecard</h3>
+                        <div id="reflex-res-tier" class="inline-block px-3 py-1 bg-card-mint text-midnight-ink font-bold text-xs rounded-pill border border-charcoal-border mb-4">
+                            Pro Esports Reflexes
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 mb-4 font-mono text-sm">
+                            <div class="p-2.5 bg-pale-ash rounded-lg border border-charcoal-border">
+                                <span class="text-xs text-neutral-500 block">5-Round Average</span>
+                                <span id="reflex-res-avg" class="text-2xl font-bold text-midnight-ink">0 ms</span>
+                            </div>
+                            <div class="p-2.5 bg-pale-ash rounded-lg border border-charcoal-border">
+                                <span class="text-xs text-neutral-500 block">Best Round</span>
+                                <span id="reflex-res-best" class="text-2xl font-bold text-emerald-600">0 ms</span>
+                            </div>
+                        </div>
+
+                        <!-- Per round table breakdown -->
+                        <div id="reflex-res-table" class="bg-pale-ash rounded-lg border border-charcoal-border p-2.5 mb-5"></div>
+
+                        <button id="reflex-play-again-btn" class="w-full py-2.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all">
+                            Test Again
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1602,7 +2021,12 @@
             });
         });
     </script>
-    <!-- 1v1 Football Arena Script -->
+    <!-- Developer Arcade Game Scripts -->
     <script src="football-game.js"></script>
+    <script src="snake-game.js"></script>
+    <script src="type-game.js"></script>
+    <script src="terminal-game.js"></script>
+    <script src="reflex-game.js"></script>
+    <script src="arcade-manager.js"></script>
 </body>
 </html>
