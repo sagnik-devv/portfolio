@@ -1070,13 +1070,6 @@
                     this.closeNameModal();
                 });
             }
-
-            // Auto show modal on first time if no name saved
-            if (!this.visitorName) {
-                setTimeout(() => {
-                    this.openNameModal();
-                }, 600);
-            }
         }
 
         openNameModal() {
