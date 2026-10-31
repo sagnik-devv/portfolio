@@ -1293,17 +1293,17 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div class="bg-highlight-yellow p-4 rounded-xl border-2 border-charcoal-border shadow-subtle transform -rotate-1">
                     <p class="text-xs font-bold uppercase mb-1">Problems Solved</p>
-                    <p class="text-3xl font-bold mb-1" id="lc-total">1</p>
+                    <p class="text-3xl font-bold mb-1" id="lc-total">9</p>
                     <p class="text-xs font-medium"><i class="fas fa-check-circle mr-1"></i> Verified Submissions</p>
                 </div>
                 <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle">
                     <p class="text-xs font-bold uppercase mb-1 text-emerald-700">Easy</p>
-                    <p class="text-3xl font-bold mb-1 text-emerald-700" id="lc-easy">1</p>
+                    <p class="text-3xl font-bold mb-1 text-emerald-700" id="lc-easy">8</p>
                     <p class="text-xs font-medium text-gray-600">Fundamental Level</p>
                 </div>
                 <div class="bg-canvas-white p-4 rounded-xl border-2 border-charcoal-border shadow-subtle">
                     <p class="text-xs font-bold uppercase mb-1 text-amber-700">Medium</p>
-                    <p class="text-3xl font-bold mb-1 text-amber-700" id="lc-medium">0</p>
+                    <p class="text-3xl font-bold mb-1 text-amber-700" id="lc-medium">1</p>
                     <p class="text-xs font-medium text-gray-600">Core DSA & Logic</p>
                 </div>
                 <div class="bg-card-pink p-4 rounded-xl border-2 border-charcoal-border shadow-subtle transform rotate-1">
@@ -1321,15 +1321,15 @@
                 </div>
                 <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
                     <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-trophy mr-1 text-amber-500"></i> Points</p>
-                    <p class="text-xl font-bold" id="lc-points">53</p>
+                    <p class="text-xl font-bold" id="lc-points">58</p>
                 </div>
                 <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
                     <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-layer-group mr-1"></i> Total Questions</p>
-                    <p class="text-xl font-bold" id="lc-total-questions">4,041</p>
+                    <p class="text-xl font-bold" id="lc-total-questions">4,096</p>
                 </div>
                 <div class="bg-canvas-white p-3 rounded-lg border-2 border-charcoal-border shadow-subtle-3">
                     <p class="text-xs font-bold uppercase mb-1 text-gray-600"><i class="fas fa-percentage mr-1"></i> Acceptance</p>
-                    <p class="text-xl font-bold" id="lc-acceptance">100%</p>
+                    <p class="text-xl font-bold" id="lc-acceptance">52.0%</p>
                 </div>
             </div>
 
@@ -1350,7 +1350,7 @@
                 <!-- Simulated LeetCode Graph Grid -->
                 <div class="w-full overflow-x-auto funky-scrollbar pb-2">
                     <div class="flex gap-1 min-w-[700px]" id="lc-activity-grid">
-                        <!-- JS will populate this to look like the design -->
+                        <!-- JS will populate this with live LeetCode submissionCalendar -->
                     </div>
                 </div>
             </div>
@@ -1366,13 +1366,36 @@
                     
                     <div class="space-y-3" id="lc-recent-list">
                         <!-- Live populated from API -->
-                        <div class="border-2 border-charcoal-border rounded-lg p-3 hover:bg-gray-50 transition-colors flex justify-between items-center">
+                        <a href="https://leetcode.com/problems/minimum-distance-between-bst-nodes/" target="_blank" rel="noopener noreferrer" class="border-2 border-charcoal-border rounded-lg p-3 hover:bg-pale-ash hover:border-midnight-ink transition-all flex justify-between items-center group block text-midnight-ink">
                             <div>
-                                <h4 class="font-bold text-sm text-midnight-ink">Remove Element</h4>
+                                <h4 class="font-bold text-sm text-midnight-ink group-hover:underline flex items-center gap-1.5">
+                                    Minimum Distance Between BST Nodes
+                                    <i class="fas fa-external-link-alt text-[10px] opacity-0 group-hover:opacity-100 transition-opacity text-gray-500"></i>
+                                </h4>
                                 <p class="text-xs text-gray-500 mt-1">C++ &bull; Accepted</p>
                             </div>
                             <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green text-midnight-ink">Accepted</span>
-                        </div>
+                        </a>
+                        <a href="https://leetcode.com/problems/balanced-binary-tree/" target="_blank" rel="noopener noreferrer" class="border-2 border-charcoal-border rounded-lg p-3 hover:bg-pale-ash hover:border-midnight-ink transition-all flex justify-between items-center group block text-midnight-ink">
+                            <div>
+                                <h4 class="font-bold text-sm text-midnight-ink group-hover:underline flex items-center gap-1.5">
+                                    Balanced Binary Tree
+                                    <i class="fas fa-external-link-alt text-[10px] opacity-0 group-hover:opacity-100 transition-opacity text-gray-500"></i>
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">C++ &bull; Accepted</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green text-midnight-ink">Accepted</span>
+                        </a>
+                        <a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/" target="_blank" rel="noopener noreferrer" class="border-2 border-charcoal-border rounded-lg p-3 hover:bg-pale-ash hover:border-midnight-ink transition-all flex justify-between items-center group block text-midnight-ink">
+                            <div>
+                                <h4 class="font-bold text-sm text-midnight-ink group-hover:underline flex items-center gap-1.5">
+                                    Maximum Depth of N-ary Tree
+                                    <i class="fas fa-external-link-alt text-[10px] opacity-0 group-hover:opacity-100 transition-opacity text-gray-500"></i>
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">C++ &bull; Accepted</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green text-midnight-ink">Accepted</span>
+                        </a>
                     </div>
                 </div>
 
@@ -1383,10 +1406,11 @@
                             <p class="text-sm font-bold uppercase">TOPICS & DATA STRUCTURES</p>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Arrays</span>
-                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Two Pointers</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Binary Search Trees</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Binary Trees</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">DFS & BFS</span>
+                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Arrays & Two Pointers</span>
                             <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Algorithms</span>
-                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-canvas-white">Problem Solving</span>
                         </div>
                     </div>
                     <div class="bg-canvas-white p-5 rounded-xl border-2 border-charcoal-border shadow-subtle flex-1">
@@ -1459,29 +1483,6 @@
         if (ghTab && lcTab) {
             ghTab.addEventListener('click', () => showTab('github'));
             lcTab.addEventListener('click', () => showTab('leetcode'));
-        }
-
-        // Generate activity grid for LeetCode
-        const lcGrid = document.getElementById('lc-activity-grid');
-        if (lcGrid) {
-            lcGrid.innerHTML = '';
-            const weeks = 52;
-            const daysPerWeek = 7;
-            for (let w = 0; w < weeks; w++) {
-                const col = document.createElement('div');
-                col.className = 'flex flex-col gap-1';
-                for (let d = 0; d < daysPerWeek; d++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'w-3 h-3 border border-charcoal-border rounded-sm';
-                    if (w >= 50 && d === 2) {
-                        cell.classList.add('bg-[#fbbf24]'); // active day
-                    } else {
-                        cell.classList.add('bg-transparent');
-                    }
-                    col.appendChild(cell);
-                }
-                lcGrid.appendChild(col);
-            }
         }
 
         // Generate activity grid for GitHub
@@ -1565,84 +1566,322 @@
                 }
             }).catch(e => console.log('GH fetch note:', e.message));
 
-        // Fetch LeetCode Data using alfa-leetcode-api
+        // LeetCode Stats, Activity Grid & Submissions Logic
         const lcUsername = 'sagnikcodez';
-        const updateLCUI = (data) => {
-            const total = data.totalSolved !== undefined ? data.totalSolved : (data.solvedProblem !== undefined ? data.solvedProblem : 1);
-            const easy = data.easySolved !== undefined ? data.easySolved : 1;
-            const medium = data.mediumSolved !== undefined ? data.mediumSolved : 0;
-            const hard = data.hardSolved !== undefined ? data.hardSolved : 0;
 
-            document.getElementById('lc-total').textContent = total;
-            document.getElementById('lc-easy').textContent = easy;
-            document.getElementById('lc-medium').textContent = medium;
-            document.getElementById('lc-hard').textContent = hard;
+        function renderLCActivityGrid(calObj) {
+            const lcGrid = document.getElementById('lc-activity-grid');
+            if (!lcGrid) return;
+            lcGrid.innerHTML = '';
+
+            const activityByDate = {};
+            if (calObj) {
+                try {
+                    const parsed = typeof calObj === 'string' ? JSON.parse(calObj) : calObj;
+                    for (const [secStr, count] of Object.entries(parsed)) {
+                        const d = new Date(parseInt(secStr, 10) * 1000);
+                        const ymd = d.toISOString().split('T')[0];
+                        activityByDate[ymd] = (activityByDate[ymd] || 0) + Number(count);
+                    }
+                } catch (e) {
+                    console.log('Error parsing submission calendar', e);
+                }
+            }
+
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0 is Sun, 6 is Sat
+            const startDate = new Date(today);
+            startDate.setDate(today.getDate() - (51 * 7 + dayOfWeek));
+
+            let currentDate = new Date(startDate);
+            for (let w = 0; w < 52; w++) {
+                const col = document.createElement('div');
+                col.className = 'flex flex-col gap-1';
+                for (let d = 0; d < 7; d++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'w-3 h-3 border border-charcoal-border rounded-sm transition-transform hover:scale-125 cursor-pointer';
+                    
+                    const ymd = currentDate.toISOString().split('T')[0];
+                    const count = activityByDate[ymd] || 0;
+                    const dateStr = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                    if (count >= 10) {
+                        cell.classList.add('bg-[#b45309]');
+                    } else if (count >= 5) {
+                        cell.classList.add('bg-[#d97706]');
+                    } else if (count >= 3) {
+                        cell.classList.add('bg-[#fbbf24]');
+                    } else if (count >= 1) {
+                        cell.classList.add('bg-[#fef3c8]');
+                    } else {
+                        cell.classList.add('bg-transparent');
+                    }
+
+                    cell.title = count > 0 ? `${count} submission${count > 1 ? 's' : ''} on ${dateStr}` : `No submissions on ${dateStr}`;
+                    col.appendChild(cell);
+
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+                lcGrid.appendChild(col);
+            }
+        }
+
+        function renderRecentSubmissions(submissions) {
+            const listEl = document.getElementById('lc-recent-list');
+            if (!listEl || !Array.isArray(submissions) || submissions.length === 0) return;
+
+            // Pick distinct recent problems
+            const uniqueMap = new Map();
+            for (const sub of submissions) {
+                if (!sub || !sub.title) continue;
+                if (!uniqueMap.has(sub.title)) {
+                    uniqueMap.set(sub.title, sub);
+                } else if (sub.statusDisplay === 'Accepted' && uniqueMap.get(sub.title).statusDisplay !== 'Accepted') {
+                    uniqueMap.set(sub.title, sub);
+                }
+            }
+
+            const uniqueList = Array.from(uniqueMap.values()).slice(0, 4);
+            if (uniqueList.length === 0) return;
+
+            listEl.innerHTML = '';
+            uniqueList.forEach(sub => {
+                const item = document.createElement('a');
+                item.href = sub.titleSlug ? `https://leetcode.com/problems/${sub.titleSlug}/` : `https://leetcode.com/u/${lcUsername}/`;
+                item.target = '_blank';
+                item.rel = 'noopener noreferrer';
+                item.className = 'border-2 border-charcoal-border rounded-lg p-3 hover:bg-pale-ash hover:border-midnight-ink transition-all flex justify-between items-center group block text-midnight-ink';
+
+                let langFormatted = sub.langName || (sub.lang === 'cpp' ? 'C++' : (sub.lang === 'python' || sub.lang === 'python3' ? 'Python' : (sub.lang || 'Code')));
+                const isAccepted = (sub.statusDisplay === 'Accepted' || sub.status === 10);
+                const badgeClass = isAccepted
+                    ? 'bg-accent-green text-midnight-ink border-charcoal-border'
+                    : 'bg-card-pink text-rose-800 border-charcoal-border';
+                const statusText = sub.statusDisplay || (isAccepted ? 'Accepted' : 'Submitted');
+
+                item.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-sm text-midnight-ink group-hover:underline flex items-center gap-1.5">
+                            ${sub.title}
+                            <i class="fas fa-external-link-alt text-[10px] opacity-0 group-hover:opacity-100 transition-opacity text-gray-500"></i>
+                        </h4>
+                        <p class="text-xs text-gray-500 mt-1">${langFormatted} &bull; ${statusText}</p>
+                    </div>
+                    <span class="px-3 py-1 border-2 rounded-full text-xs font-bold ${badgeClass}">${statusText}</span>
+                `;
+                listEl.appendChild(item);
+            });
+        }
+
+        const updateLCUI = (data, isLive = false) => {
+            if (!data) return;
+
+            if (data.totalSolved !== undefined) document.getElementById('lc-total').textContent = data.totalSolved;
+            if (data.easySolved !== undefined) document.getElementById('lc-easy').textContent = data.easySolved;
+            if (data.mediumSolved !== undefined) document.getElementById('lc-medium').textContent = data.mediumSolved;
+            if (data.hardSolved !== undefined) document.getElementById('lc-hard').textContent = data.hardSolved;
 
             if (data.ranking) {
-                document.getElementById('lc-ranking').textContent = Number(data.ranking).toLocaleString() + '+';
+                const rankNum = Number(data.ranking);
+                document.getElementById('lc-ranking').textContent = (rankNum >= 5000000) ? '5,000,001+' : (rankNum.toLocaleString() + '+');
             }
-            if (data.contributionPoint !== undefined) {
-                document.getElementById('lc-points').textContent = data.contributionPoint;
+            if (data.points !== undefined && data.points !== null) {
+                document.getElementById('lc-points').textContent = data.points;
             }
-            if (data.totalQuestions !== undefined) {
+            if (data.totalQuestions !== undefined && data.totalQuestions !== null) {
                 document.getElementById('lc-total-questions').textContent = Number(data.totalQuestions).toLocaleString();
             }
+            if (data.acceptance) {
+                document.getElementById('lc-acceptance').textContent = data.acceptance;
+            }
 
-            // Render live submissions
-            if (data.recentSubmissions && data.recentSubmissions.length > 0) {
-                const listEl = document.getElementById('lc-recent-list');
-                if (listEl) {
-                    listEl.innerHTML = '';
-                    data.recentSubmissions.slice(0, 3).forEach(sub => {
-                        const item = document.createElement('div');
-                        item.className = 'border-2 border-charcoal-border rounded-lg p-3 hover:bg-gray-50 transition-colors flex justify-between items-center';
-                        const langName = sub.lang === 'cpp' ? 'C++' : (sub.lang || 'Code');
-                        item.innerHTML = `
-                            <div>
-                                <h4 class="font-bold text-sm text-midnight-ink">${sub.title}</h4>
-                                <p class="text-xs text-gray-500 mt-1">${langName} &bull; ${sub.statusDisplay || 'Accepted'}</p>
-                            </div>
-                            <span class="px-3 py-1 border-2 border-charcoal-border rounded-full text-xs font-bold bg-accent-green text-midnight-ink">${sub.statusDisplay || 'Accepted'}</span>
-                        `;
-                        listEl.appendChild(item);
-                    });
-                }
+            if (data.calendar) {
+                renderLCActivityGrid(data.calendar);
+            }
+            if (data.submissions && data.submissions.length > 0) {
+                renderRecentSubmissions(data.submissions);
             }
 
             const syncEl = document.getElementById('lc-last-synced');
-            if (syncEl) syncEl.textContent = 'Last synced: Just now';
+            if (syncEl) {
+                if (isLive) {
+                    syncEl.textContent = 'Last synced: Just now';
+                } else {
+                    const savedTime = localStorage.getItem('lc_stats_timestamp');
+                    syncEl.textContent = savedTime ? `Last synced: ${savedTime}` : 'Last synced: Cached';
+                }
+            }
         };
 
-        // Primary Endpoint: userProfile on alfa-leetcode-api
-        fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${lcUsername}`)
-            .then(res => {
-                if (!res.ok) throw new Error("HTTP error " + res.status);
-                return res.json();
-            })
-            .then(data => {
-                if (data && (data.totalSolved !== undefined || data.solvedProblem !== undefined)) {
-                    updateLCUI(data);
-                } else {
-                    throw new Error("Invalid response");
+        function normalizeLCData(raw) {
+            if (!raw) return null;
+            let totalSolved = 0, easySolved = 0, mediumSolved = 0, hardSolved = 0;
+            let ranking = null, points = null, totalQuestions = null, acceptance = null;
+            let submissions = [];
+            let calendar = null;
+
+            if (raw.totalSolved !== undefined || raw.solvedProblem !== undefined) {
+                totalSolved = raw.totalSolved !== undefined ? raw.totalSolved : (raw.solvedProblem || 0);
+                easySolved = raw.easySolved || 0;
+                mediumSolved = raw.mediumSolved || 0;
+                hardSolved = raw.hardSolved || 0;
+                ranking = raw.ranking || null;
+                points = raw.contributionPoint !== undefined ? raw.contributionPoint : null;
+                totalQuestions = raw.totalQuestions || null;
+                calendar = raw.submissionCalendar || null;
+                submissions = Array.isArray(raw.recentSubmissions) ? raw.recentSubmissions : [];
+
+                if (raw.matchedUserStats && raw.matchedUserStats.acSubmissionNum && raw.matchedUserStats.totalSubmissionNum) {
+                    const ac = raw.matchedUserStats.acSubmissionNum[0]?.submissions || 0;
+                    const total = raw.matchedUserStats.totalSubmissionNum[0]?.submissions || 0;
+                    if (total > 0) acceptance = ((ac / total) * 100).toFixed(1) + '%';
+                } else if (raw.totalSubmissions && raw.totalSubmissions.length > 0) {
+                    const ac = raw.totalSolved || 0;
+                    const total = raw.totalSubmissions[0]?.submissions || 0;
+                    if (total > 0) acceptance = ((ac / total) * 100).toFixed(1) + '%';
                 }
-            })
-            .catch(e => {
-                console.log('Trying fallback LeetCode solved endpoint...', e);
-                fetch(`https://alfa-leetcode-api.onrender.com/${lcUsername}/solved`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && (data.solvedProblem !== undefined || data.totalSolved !== undefined)) {
-                            updateLCUI({
-                                totalSolved: data.solvedProblem !== undefined ? data.solvedProblem : data.totalSolved,
-                                easySolved: data.easySolved || 0,
-                                mediumSolved: data.mediumSolved || 0,
-                                hardSolved: data.hardSolved || 0,
-                                ranking: 5000001
-                            });
+            } else if (raw.submitStats && raw.submitStats.acSubmissionNum) {
+                const acList = raw.submitStats.acSubmissionNum;
+                const totalList = raw.submitStats.totalSubmissionNum || [];
+                
+                const allAc = acList.find(x => x.difficulty === 'All');
+                const easyAc = acList.find(x => x.difficulty === 'Easy');
+                const medAc = acList.find(x => x.difficulty === 'Medium');
+                const hardAc = acList.find(x => x.difficulty === 'Hard');
+
+                totalSolved = allAc?.count || 0;
+                easySolved = easyAc?.count || 0;
+                mediumSolved = medAc?.count || 0;
+                hardSolved = hardAc?.count || 0;
+
+                ranking = raw.profile?.ranking || null;
+                points = raw.profile?.reputation || null;
+
+                const allTotal = totalList.find(x => x.difficulty === 'All');
+                if (allAc && allTotal && allTotal.submissions > 0) {
+                    acceptance = ((allAc.submissions / allTotal.submissions) * 100).toFixed(1) + '%';
+                }
+            }
+
+            if (!totalSolved && totalSolved !== 0) return null;
+
+            return {
+                totalSolved,
+                easySolved,
+                mediumSolved,
+                hardSolved,
+                ranking,
+                points,
+                totalQuestions,
+                acceptance,
+                calendar,
+                submissions
+            };
+        }
+
+        async function fetchWithTimeout(url, timeoutMs = 5000) {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeoutMs);
+            try {
+                const res = await fetch(url, { signal: controller.signal });
+                clearTimeout(id);
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return await res.json();
+            } catch (err) {
+                clearTimeout(id);
+                throw err;
+            }
+        }
+
+        async function fetchLeetCodeProfile(username) {
+            // 1. Primary endpoint: faisal-shohag vercel API
+            try {
+                const data = await fetchWithTimeout(`https://leetcode-api-faisalshohag.vercel.app/${username}`, 6000);
+                const normalized = normalizeLCData(data);
+                if (normalized && (normalized.totalSolved > 0 || normalized.totalQuestions)) {
+                    return normalized;
+                }
+            } catch (e) {
+                console.log('Primary LeetCode API failed, trying fallback 1...', e.message);
+            }
+
+            // 2. Fallback 1: noworneverev vercel API
+            try {
+                const [userRes, subsRes, calRes] = await Promise.allSettled([
+                    fetchWithTimeout(`https://leetcode-api-pied.vercel.app/user/${username}`, 6000),
+                    fetchWithTimeout(`https://leetcode-api-pied.vercel.app/user/${username}/submissions`, 6000),
+                    fetchWithTimeout(`https://leetcode-api-pied.vercel.app/user/${username}/calendar`, 6000)
+                ]);
+
+                if (userRes.status === 'fulfilled' && userRes.value) {
+                    const normalized = normalizeLCData(userRes.value);
+                    if (normalized) {
+                        if (subsRes.status === 'fulfilled' && Array.isArray(subsRes.value)) {
+                            normalized.submissions = subsRes.value;
                         }
-                    })
-                    .catch(err => console.log('LC fetch error', err));
-            });
+                        if (calRes.status === 'fulfilled' && calRes.value?.submissionCalendar) {
+                            normalized.calendar = calRes.value.submissionCalendar;
+                        }
+                        return normalized;
+                    }
+                }
+            } catch (e) {
+                console.log('Fallback 1 LeetCode API failed, trying fallback 2...', e.message);
+            }
+
+            // 3. Fallback 2: alfa-leetcode-api on render
+            try {
+                const data = await fetchWithTimeout(`https://alfa-leetcode-api.onrender.com/userProfile/${username}`, 6000);
+                const normalized = normalizeLCData(data);
+                if (normalized && normalized.totalSolved > 0) return normalized;
+            } catch (e) {
+                console.log('Fallback 2 LeetCode API failed, trying fallback 3...', e.message);
+            }
+
+            // 4. Fallback 3: alfa-leetcode-api /solved
+            try {
+                const data = await fetchWithTimeout(`https://alfa-leetcode-api.onrender.com/${username}/solved`, 6000);
+                if (data && (data.solvedProblem !== undefined || data.totalSolved !== undefined)) {
+                    return {
+                        totalSolved: data.solvedProblem !== undefined ? data.solvedProblem : data.totalSolved,
+                        easySolved: data.easySolved || 0,
+                        mediumSolved: data.mediumSolved || 0,
+                        hardSolved: data.hardSolved || 0,
+                        ranking: 5000001
+                    };
+                }
+            } catch (e) {
+                console.log('All LeetCode APIs failed or timed out:', e.message);
+            }
+
+            return null;
+        }
+
+        // Initialize LeetCode from cache or defaults
+        try {
+            const cachedLC = localStorage.getItem('lc_stats_sagnik');
+            if (cachedLC) {
+                const parsed = JSON.parse(cachedLC);
+                updateLCUI(parsed, false);
+            } else {
+                // Default initial activity grid with recent activity
+                renderLCActivityGrid({"1787702400":1,"1792886400":2,"1793059200":2,"1793145600":6,"1793232000":14});
+            }
+        } catch (e) {
+            renderLCActivityGrid({"1787702400":1,"1792886400":2,"1793059200":2,"1793145600":6,"1793232000":14});
+        }
+
+        // Fetch live LeetCode data
+        fetchLeetCodeProfile(lcUsername).then(data => {
+            if (data) {
+                updateLCUI(data, true);
+                try {
+                    localStorage.setItem('lc_stats_sagnik', JSON.stringify(data));
+                    const now = new Date();
+                    localStorage.setItem('lc_stats_timestamp', now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+                } catch (e) {}
+            }
+        });
     });
 </script>
 
