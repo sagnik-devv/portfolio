@@ -50,6 +50,35 @@
         }
     </script>
     <style>
+        /* Custom Website Cursor */
+        html,
+        body,
+        *,
+        *::before,
+        *::after {
+            cursor: -webkit-image-set(url('cursor.png') 1x, url('cursor-64.png') 2x) 15 1, url('cursor.png') 15 1, auto;
+        }
+
+        /* Interactive elements maintain the custom cursor */
+        a,
+        button,
+        [role="button"],
+        [role="tab"],
+        .cursor-pointer,
+        label,
+        select,
+        summary {
+            cursor: -webkit-image-set(url('cursor.png') 1x, url('cursor-64.png') 2x) 15 1, url('cursor.png') 15 1, pointer !important;
+        }
+
+        /* Keep text cursor for editable inputs and typing fields */
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        .cursor-text {
+            cursor: text !important;
+        }
+
         body {
             background-color: #ffffff;
             color: #000000;
