@@ -419,8 +419,8 @@
                     <button id="tab-btn-type" role="tab" aria-selected="false" aria-controls="game-panel-type" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
                         <i class="fas fa-keyboard text-amber-600"></i> <span>Type or Die</span>
                     </button>
-                    <button id="tab-btn-terminal" role="tab" aria-selected="false" aria-controls="game-panel-terminal" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
-                        <i class="fas fa-terminal text-purple-600"></i> <span>Hack the Terminal</span>
+                    <button id="tab-btn-fighter" role="tab" aria-selected="false" aria-controls="game-panel-fighter" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                        <i class="fas fa-fist-raised text-rose-600"></i> <span>Street Tekken</span>
                     </button>
                     <button id="tab-btn-reflex" role="tab" aria-selected="false" aria-controls="game-panel-reflex" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
                         <i class="fas fa-bolt text-red-500"></i> <span>Reflex.exe</span>
@@ -715,100 +715,191 @@
                 </div>
             </div>
 
-            <!-- GAME 4: HACK THE TERMINAL -->
-            <div id="game-panel-terminal" class="arcade-game-panel hidden bg-[#0b0f19] text-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4 relative overflow-hidden">
+            <!-- GAME 4: STREET TEKKEN / NEO STREET BRAWLER -->
+            <div id="game-panel-fighter" class="arcade-game-panel hidden bg-[#0a0d18] text-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-5 mb-4 relative overflow-hidden">
                 <!-- Top Status Bar & Difficulty -->
-                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-neutral-800">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-neutral-800">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-900/60 text-purple-300 font-mono font-bold text-xs rounded-md border border-purple-500/40">
-                            <i class="fas fa-terminal"></i> MAIN_CONSOLE_v4.2
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-950/70 text-rose-400 font-mono font-bold text-xs rounded-md border border-rose-600/40 shadow-subtle-3">
+                            <i class="fas fa-fist-raised text-rose-500"></i> NEO STREET BRAWLER
                         </span>
                         <div class="inline-flex rounded-md border border-neutral-700 p-0.5 bg-neutral-900 text-xs font-mono font-bold">
-                            <button class="term-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="easy">Novice (3D)</button>
-                            <button class="term-diff-btn px-2.5 py-1 rounded bg-purple-600 text-white shadow-subtle transition-all" data-diff="normal">Analyst (4D)</button>
-                            <button class="term-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="hard">Cyber-Ops (5D)</button>
+                            <button class="fighter-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="easy">Novice</button>
+                            <button class="fighter-diff-btn px-2.5 py-1 rounded bg-rose-600 text-white shadow-subtle transition-all" data-diff="normal">Fighter</button>
+                            <button class="fighter-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="hard">Master</button>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <button id="term-reset-btn" class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-white font-mono font-bold text-xs rounded-md border border-neutral-600 transition-all">
-                            <i class="fas fa-redo-alt mr-1"></i> Re-init
+                        <button id="fighter-name-btn" class="px-2.5 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-bold text-xs rounded-md border border-neutral-600 transition-all">
+                            <i class="fas fa-user-edit mr-1"></i> Name
+                        </button>
+                        <button id="fighter-sound-btn" class="px-2.5 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-bold text-xs rounded-md border border-neutral-600 transition-all">
+                            <i class="fas fa-volume-up text-emerald-500"></i> Sound On
+                        </button>
+                        <button id="fighter-reset-btn" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-mono font-bold text-xs rounded-md border border-charcoal-border shadow-subtle transition-all">
+                            <i class="fas fa-redo-alt mr-1"></i> Reset
                         </button>
                     </div>
                 </div>
 
-                <!-- Attempts Bar & Status line -->
-                <div class="flex items-center justify-between gap-2 mb-2 font-mono text-xs text-neutral-400">
-                    <span id="term-status-msg" class="text-neutral-400">Ready for decryption sequence. Enter digits.</span>
-                    <span class="font-bold text-neutral-300">Attempts: <span id="term-attempts-val" class="text-accent-green">8/8</span></span>
-                </div>
-                <div class="w-full h-1.5 bg-neutral-900 rounded-pill border border-neutral-800 overflow-hidden mb-5">
-                    <div id="term-attempts-bar" class="h-full bg-accent-green transition-all duration-300" style="width: 100%;"></div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-                    <!-- Left: Interactive Keypad & Input Slots (7 cols) -->
-                    <div class="lg:col-span-7 flex flex-col items-center">
-                        <div class="text-[11px] font-mono text-neutral-400 uppercase tracking-widest mb-2 font-bold">
-                            CURRENT DECRYPTION PIN BUFFER
+                <!-- Tekken / Street Fighter Style Health Bars & Timer HUD -->
+                <div class="grid grid-cols-12 gap-2 sm:gap-3 items-center mb-3 font-mono">
+                    <!-- Left: Player 1 (You) -->
+                    <div class="col-span-5 flex flex-col">
+                        <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center gap-1.5">
+                                <span id="fighter-p1-name" class="font-extrabold text-xs sm:text-sm text-accent-green truncate max-w-[130px] sm:max-w-[200px]">SAGNIK (P1)</span>
+                                <span class="text-[10px] bg-accent-green/20 text-accent-green px-1.5 py-0.2 rounded border border-accent-green/40 font-bold">P1</span>
+                            </div>
+                            <!-- Round Win Dots -->
+                            <div id="fighter-p1-rounds" class="flex gap-1">
+                                <span class="inline-block w-3 h-3 rounded-full bg-neutral-800 border border-neutral-700"></span>
+                                <span class="inline-block w-3 h-3 rounded-full bg-neutral-800 border border-neutral-700"></span>
+                            </div>
                         </div>
 
-                        <!-- Digit Slots Display -->
-                        <div id="term-slots-container" class="flex gap-2 sm:gap-3 mb-5"></div>
-
-                        <!-- On-screen Numeric Keypad -->
-                        <div class="grid grid-cols-3 gap-2 w-full max-w-[280px]">
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="1">1</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="2">2</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="3">3</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="4">4</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="5">5</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="6">6</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="7">7</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="8">8</button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="9">9</button>
-                            <button id="term-key-del" class="h-12 bg-neutral-900 hover:bg-neutral-800 text-red-400 font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all flex items-center justify-center">
-                                <i class="fas fa-backspace"></i>
-                            </button>
-                            <button class="term-key-digit h-12 bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 text-white font-mono font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle transition-all" data-digit="0">0</button>
-                            <button id="term-key-submit" class="h-12 bg-accent-green hover:bg-highlight-yellow active:bg-emerald-400 text-midnight-ink font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all flex items-center justify-center">
-                                ENTER
-                            </button>
+                        <!-- P1 Dual Health Bar (Active Green + Delayed Yellow) -->
+                        <div class="h-5 sm:h-6 bg-neutral-900 border-2 border-charcoal-border rounded-md overflow-hidden relative shadow-subtle">
+                            <!-- Delayed Yellow Damage Trail -->
+                            <div id="fighter-p1-hp-trail" class="h-full bg-amber-400 absolute left-0 top-0 transition-all duration-300" style="width: 100%;"></div>
+                            <!-- Active Current HP -->
+                            <div id="fighter-p1-hp-fill" class="h-full bg-accent-green absolute left-0 top-0 transition-all duration-75" style="width: 100%;"></div>
                         </div>
-                        <div class="mt-3 text-[11px] font-mono text-neutral-400 text-center">
-                            Digits must be unique • Keypad dims eliminated numbers
+
+                        <!-- P1 Super Meter Gauge -->
+                        <div class="flex items-center gap-1.5 mt-1">
+                            <span class="text-[9px] font-bold text-cyan-400 tracking-wider">SUPER</span>
+                            <div class="flex-1 h-2 bg-neutral-900 rounded-pill border border-neutral-700 overflow-hidden">
+                                <div id="fighter-p1-super-fill" class="h-full bg-cyan-400 transition-all duration-150" style="width: 0%;"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Right: Guess History Log (5 cols) -->
-                    <div class="lg:col-span-5 flex flex-col">
-                        <div class="flex items-center justify-between text-[11px] font-mono text-neutral-400 uppercase tracking-widest mb-2 font-bold">
-                            <span>DECRYPTION LOGS</span>
-                            <span class="text-[10px] text-neutral-500">FEEDBACK HINTS</span>
+                    <!-- Center: Round Timer & VS -->
+                    <div class="col-span-2 flex flex-col items-center justify-center">
+                        <div class="bg-neutral-900 border-2 border-charcoal-border px-2.5 py-1 rounded-lg shadow-subtle text-center min-w-[54px]">
+                            <span id="fighter-timer-val" class="font-mono font-black text-xl sm:text-2xl text-highlight-yellow tracking-wider">60</span>
                         </div>
-                        <div id="term-history-feed" class="flex-1 space-y-2 max-h-[260px] overflow-y-auto pr-1"></div>
+                        <span class="text-[10px] font-extrabold text-neutral-400 mt-0.5 tracking-widest">VS</span>
+                    </div>
+
+                    <!-- Right: CPU Opponent (Shadow Bot) -->
+                    <div class="col-span-5 flex flex-col">
+                        <div class="flex items-center justify-between mb-1 flex-row-reverse">
+                            <div class="flex items-center gap-1.5 flex-row-reverse">
+                                <span id="fighter-p2-name" class="font-extrabold text-xs sm:text-sm text-rose-400 truncate max-w-[130px] sm:max-w-[200px]">SHADOW BOT</span>
+                                <span class="text-[10px] bg-rose-500/20 text-rose-400 px-1.5 py-0.2 rounded border border-rose-500/40 font-bold">CPU</span>
+                            </div>
+                            <!-- Round Win Dots -->
+                            <div id="fighter-p2-rounds" class="flex gap-1 flex-row-reverse">
+                                <span class="inline-block w-3 h-3 rounded-full bg-neutral-800 border border-neutral-700"></span>
+                                <span class="inline-block w-3 h-3 rounded-full bg-neutral-800 border border-neutral-700"></span>
+                            </div>
+                        </div>
+
+                        <!-- CPU Dual Health Bar (Mirrored) -->
+                        <div class="h-5 sm:h-6 bg-neutral-900 border-2 border-charcoal-border rounded-md overflow-hidden relative shadow-subtle">
+                            <!-- Delayed Yellow Damage Trail -->
+                            <div id="fighter-p2-hp-trail" class="h-full bg-amber-400 absolute right-0 top-0 transition-all duration-300" style="width: 100%;"></div>
+                            <!-- Active Current HP -->
+                            <div id="fighter-p2-hp-fill" class="h-full bg-rose-500 absolute right-0 top-0 transition-all duration-75" style="width: 100%;"></div>
+                        </div>
+
+                        <!-- CPU Super Meter Gauge -->
+                        <div class="flex items-center gap-1.5 mt-1 flex-row-reverse">
+                            <span class="text-[9px] font-bold text-amber-400 tracking-wider">SUPER</span>
+                            <div class="flex-1 h-2 bg-neutral-900 rounded-pill border border-neutral-700 overflow-hidden">
+                                <div id="fighter-p2-super-fill" class="h-full bg-amber-400 ml-auto transition-all duration-150" style="width: 0%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Rules hint footer -->
-                <div class="mt-4 pt-3 border-t border-neutral-800 flex flex-wrap items-center justify-between text-xs font-mono text-neutral-400 gap-2">
+                <!-- Canvas Arena Viewport -->
+                <div class="relative w-full overflow-hidden rounded-lg border-2 border-charcoal-border bg-[#05070d] shadow-subtle">
+                    <canvas id="fighter-canvas" class="w-full block select-none" style="aspect-ratio: 960 / 460; touch-action: none;"></canvas>
+
+                    <!-- Round Announcement Banner Overlay -->
+                    <div id="fighter-announcement-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-xs hidden items-center justify-center flex-col z-20 pointer-events-none select-none">
+                        <h2 id="fighter-announcement-text" class="text-3xl sm:text-6xl font-black font-mono text-highlight-yellow tracking-widest drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] animate-pulse">
+                            ROUND 1
+                        </h2>
+                        <p id="fighter-sub-text" class="text-base sm:text-2xl font-extrabold font-mono text-white tracking-widest mt-1">
+                            FIGHT!
+                        </p>
+                    </div>
+
+                    <!-- Match End Victory/Defeat Modal -->
+                    <div id="fighter-match-modal" class="absolute inset-0 bg-black/85 backdrop-blur-xs hidden items-center justify-center p-4 z-30">
+                        <div class="bg-neutral-900 border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-5 sm:p-7 max-w-sm w-full text-center">
+                            <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-neutral-800 border-2 border-charcoal-border flex items-center justify-center text-2xl text-highlight-yellow shadow-subtle">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 id="fighter-modal-title" class="text-2xl font-black font-mono mb-2"></h3>
+                            <p id="fighter-modal-desc" class="text-xs font-mono text-neutral-400 mb-5"></p>
+                            <button id="fighter-play-again-btn" class="w-full py-2.5 bg-accent-green hover:bg-highlight-yellow active:bg-emerald-400 text-midnight-ink font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all cursor-pointer">
+                                <i class="fas fa-play mr-1"></i> Rematch / Play Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Touch Controls (Mobile & Tablets) -->
+                <div class="mt-3 md:hidden">
+                    <div class="text-center font-bold text-[11px] text-neutral-400 mb-2 uppercase tracking-wider font-mono">
+                        🕹️ Arcade Touch Controls (Hold & Tap)
+                    </div>
+                    <div class="flex items-center justify-between gap-2 select-none px-1">
+                        <!-- Directional Movement Pad -->
+                        <div class="grid grid-cols-3 gap-1.5 w-36">
+                            <div></div>
+                            <button id="btn-touch-f-jump" aria-label="Jump" class="h-11 bg-neutral-800 active:bg-highlight-yellow active:text-midnight-ink text-white font-bold text-base rounded-lg border border-neutral-700 flex items-center justify-center transition-all touch-manipulation">
+                                <i class="fas fa-arrow-up"></i>
+                            </button>
+                            <div></div>
+                            <button id="btn-touch-f-left" aria-label="Move Left" class="h-11 bg-neutral-800 active:bg-highlight-yellow active:text-midnight-ink text-white font-bold text-base rounded-lg border border-neutral-700 flex items-center justify-center transition-all touch-manipulation">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button id="btn-touch-f-crouch" aria-label="Crouch" class="h-11 bg-neutral-800 active:bg-highlight-yellow active:text-midnight-ink text-white font-bold text-base rounded-lg border border-neutral-700 flex items-center justify-center transition-all touch-manipulation">
+                                <i class="fas fa-arrow-down"></i>
+                            </button>
+                            <button id="btn-touch-f-right" aria-label="Move Right" class="h-11 bg-neutral-800 active:bg-highlight-yellow active:text-midnight-ink text-white font-bold text-base rounded-lg border border-neutral-700 flex items-center justify-center transition-all touch-manipulation">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Combat Action Buttons -->
+                        <div class="grid grid-cols-2 gap-1.5 w-44">
+                            <button id="btn-touch-f-punch" aria-label="Punch" class="h-11 bg-neutral-800 active:bg-accent-green active:text-midnight-ink text-white font-mono font-bold text-xs rounded-lg border border-neutral-700 flex items-center justify-center transition-all touch-manipulation">
+                                👊 PUNCH
+                            </button>
+                            <button id="btn-touch-f-kick" aria-label="Kick" class="h-11 bg-neutral-800 active:bg-rose-500 active:text-white text-white font-mono font-bold text-xs rounded-lg border border-neutral-700 flex items-center justify-center transition-all touch-manipulation">
+                                🥋 KICK
+                            </button>
+                            <button id="btn-touch-f-guard" aria-label="Guard" class="h-11 bg-neutral-900 active:bg-cyan-500 active:text-midnight-ink text-cyan-400 font-mono font-bold text-xs rounded-lg border border-cyan-800/60 flex items-center justify-center transition-all touch-manipulation">
+                                🛡️ GUARD
+                            </button>
+                            <button id="btn-touch-f-special" aria-label="Special" class="h-11 bg-amber-500 hover:bg-amber-400 active:bg-yellow-300 text-midnight-ink font-mono font-black text-xs rounded-lg border border-charcoal-border shadow-subtle flex items-center justify-center transition-all touch-manipulation">
+                                ⚡ SPECIAL
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Key Controls Hint -->
+                <div class="hidden md:flex items-center justify-between mt-3 pt-2.5 border-t border-neutral-800 text-xs font-mono text-neutral-300">
                     <div class="flex items-center gap-3">
-                        <span>🟢 <strong>Exact</strong> = Right digit, right spot</span>
-                        <span>🟡 <strong>Partial</strong> = Right digit, wrong spot</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-accent-green">A</kbd> <kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-accent-green">D</kbd> Move</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-accent-green">W</kbd> Jump</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-accent-green">S</kbd> Crouch</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-accent-green">J</kbd> Punch</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-rose-400">K</kbd> Kick</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-800 border border-neutral-700 rounded text-cyan-400">L</kbd> Block</span>
+                        <span><kbd class="px-2 py-0.5 bg-amber-500 text-midnight-ink font-bold border border-charcoal-border rounded">Space / U</kbd> Special / Super Art</span>
                     </div>
-                    <span class="text-neutral-500">Keyboard 0-9 & Enter supported</span>
-                </div>
-
-                <!-- Win/Loss Overlay Modal -->
-                <div id="term-result-overlay" class="absolute inset-0 bg-black/80 backdrop-blur-xs rounded-xl hidden items-center justify-center p-4 z-20">
-                    <div class="bg-neutral-900 border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-6 sm:p-8 max-w-sm w-full text-center">
-                        <div id="term-res-icon" class="mb-3"></div>
-                        <h3 id="term-res-title" class="text-2xl font-bold font-mono mb-1"></h3>
-                        <p id="term-res-desc" class="text-xs font-mono text-neutral-400 mb-4"></p>
-                        <div id="term-res-code" class="p-3 bg-neutral-950 rounded-lg border border-neutral-800 mb-5 font-mono"></div>
-                        <button id="term-play-again-btn" class="w-full py-2.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all">
-                            Initialize Next Cipher
-                        </button>
+                    <div class="flex items-center gap-2 text-neutral-400">
+                        <i class="fas fa-trophy text-highlight-yellow"></i> Best of 3 Rounds • 60s
                     </div>
                 </div>
             </div>
@@ -2645,7 +2736,7 @@
     <script src="football-game.js?v=2"></script>
     <script src="snake-game.js"></script>
     <script src="type-game.js"></script>
-    <script src="terminal-game.js"></script>
+    <script src="fighter-game.js"></script>
     <script src="reflex-game.js"></script>
     <script src="arcade-manager.js"></script>
 

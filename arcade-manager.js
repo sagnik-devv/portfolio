@@ -8,14 +8,14 @@
 
     class ArcadeManager {
         constructor() {
-            this.games = ['football', 'snake', 'type', 'terminal', 'reflex'];
+            this.games = ['football', 'snake', 'type', 'fighter', 'reflex'];
             this.activeGame = 'football';
 
             this.tabButtons = {
                 football: document.getElementById('tab-btn-football'),
                 snake: document.getElementById('tab-btn-snake'),
                 type: document.getElementById('tab-btn-type'),
-                terminal: document.getElementById('tab-btn-terminal'),
+                fighter: document.getElementById('tab-btn-fighter'),
                 reflex: document.getElementById('tab-btn-reflex')
             };
 
@@ -23,7 +23,7 @@
                 football: document.getElementById('game-panel-football'),
                 snake: document.getElementById('game-panel-snake'),
                 type: document.getElementById('game-panel-type'),
-                terminal: document.getElementById('game-panel-terminal'),
+                fighter: document.getElementById('game-panel-fighter'),
                 reflex: document.getElementById('game-panel-reflex')
             };
 
@@ -134,9 +134,9 @@
                         window.typeOrDieInstance.onDeactivate();
                     }
                     break;
-                case 'terminal':
-                    if (window.hackTerminalInstance) {
-                        window.hackTerminalInstance.onDeactivate();
+                case 'fighter':
+                    if (window.fighterGameInstance) {
+                        window.fighterGameInstance.onDeactivate();
                     }
                     break;
                 case 'reflex':
@@ -165,9 +165,9 @@
                         window.typeOrDieInstance.onActivate();
                     }
                     break;
-                case 'terminal':
-                    if (window.hackTerminalInstance) {
-                        window.hackTerminalInstance.onActivate();
+                case 'fighter':
+                    if (window.fighterGameInstance) {
+                        window.fighterGameInstance.onActivate();
                     }
                     break;
                 case 'reflex':
