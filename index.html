@@ -408,7 +408,7 @@
                     </span>
                 </div>
 
-                <!-- Five-Game Selector -->
+                <!-- Four-Game Selector -->
                 <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6" role="tablist" aria-label="Arcade Game Selector">
                     <button id="tab-btn-football" role="tab" aria-selected="true" aria-controls="game-panel-football" class="arcade-tab-btn active-tab px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle-2 -translate-y-0.5 bg-accent-green text-midnight-ink transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
                         <i class="fas fa-futbol"></i> <span>Football Arena</span>
@@ -421,9 +421,6 @@
                     </button>
                     <button id="tab-btn-fighter" role="tab" aria-selected="false" aria-controls="game-panel-fighter" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
                         <i class="fas fa-fist-raised text-rose-600"></i> <span>Street Tekken</span>
-                    </button>
-                    <button id="tab-btn-reflex" role="tab" aria-selected="false" aria-controls="game-panel-reflex" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
-                        <i class="fas fa-bolt text-red-500"></i> <span>Reflex.exe</span>
                     </button>
                 </div>
             </div>
@@ -900,77 +897,6 @@
                     </div>
                     <div class="flex items-center gap-2 text-neutral-400">
                         <i class="fas fa-trophy text-highlight-yellow"></i> Best of 3 Rounds • 60s
-                    </div>
-                </div>
-            </div>
-
-            <!-- GAME 5: REFLEX.EXE -->
-            <div id="game-panel-reflex" class="arcade-game-panel hidden bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4 relative">
-                <!-- Status Bar & Stats -->
-                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
-                    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-500 text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
-                            <i class="fas fa-stopwatch"></i> Round: <span id="reflex-round-val" class="font-mono ml-1">1/5</span>
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
-                            <i class="fas fa-trophy"></i> Best Avg: <span id="reflex-best-val" class="font-mono ml-1">—</span>
-                        </span>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <button id="reflex-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
-                            <i class="fas fa-redo-alt mr-1"></i> Reset Test
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Main Reaction Zone Box -->
-                <div id="reflex-arena-box" class="w-full min-h-[300px] sm:min-h-[360px] rounded-xl border-3 border-charcoal-border shadow-subtle-4 flex flex-col items-center justify-center p-6 text-center select-none cursor-pointer transition-colors duration-150 touch-manipulation bg-card-saffron">
-                    <div id="reflex-status-icon"></div>
-                    <h2 id="reflex-status-title" class="text-2xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-2"></h2>
-                    <p id="reflex-status-desc" class="text-sm sm:text-base font-medium max-w-md"></p>
-                </div>
-
-                <!-- Rounds Tracker Badges -->
-                <div class="mt-4">
-                    <div class="text-[11px] font-bold uppercase text-midnight-ink mb-2">5-Round Performance Log</div>
-                    <div id="reflex-rounds-list" class="grid grid-cols-2 sm:grid-cols-5 gap-2"></div>
-                </div>
-
-                <!-- Desktop Hint -->
-                <div class="hidden md:flex items-center justify-between mt-4 pt-3 border-t border-charcoal-border text-xs font-bold text-midnight-ink">
-                    <span><i class="fas fa-bolt text-highlight-yellow mr-1"></i> Tests nervous system synaptic response using precision millisecond timers. Spacebar or Mouse Click.</span>
-                    <span class="text-neutral-500">Zero touch latency on mobile</span>
-                </div>
-
-                <!-- Results Modal Overlay -->
-                <div id="reflex-results-modal" class="absolute inset-0 bg-black/60 backdrop-blur-xs rounded-xl hidden items-center justify-center p-4 z-20">
-                    <div class="bg-canvas-white border-3 border-charcoal-border rounded-xl shadow-subtle-4 p-6 sm:p-8 max-w-sm w-full text-center">
-                        <div id="reflex-res-best-banner" class="hidden inline-block px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs uppercase rounded-md border border-charcoal-border shadow-subtle mb-3">
-                            ★ NEW PERSONAL BEST! ★
-                        </div>
-                        <h3 class="text-2xl font-bold text-midnight-ink mb-1">Reflex Scorecard</h3>
-                        <div id="reflex-res-tier" class="inline-block px-3 py-1 bg-card-mint text-midnight-ink font-bold text-xs rounded-pill border border-charcoal-border mb-4">
-                            Pro Esports Reflexes
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-2 mb-4 font-mono text-sm">
-                            <div class="p-2.5 bg-pale-ash rounded-lg border border-charcoal-border">
-                                <span class="text-xs text-neutral-500 block">5-Round Average</span>
-                                <span id="reflex-res-avg" class="text-2xl font-bold text-midnight-ink">0 ms</span>
-                            </div>
-                            <div class="p-2.5 bg-pale-ash rounded-lg border border-charcoal-border">
-                                <span class="text-xs text-neutral-500 block">Best Round</span>
-                                <span id="reflex-res-best" class="text-2xl font-bold text-emerald-600">0 ms</span>
-                            </div>
-                        </div>
-
-                        <!-- Per round table breakdown -->
-                        <div id="reflex-res-table" class="bg-pale-ash rounded-lg border border-charcoal-border p-2.5 mb-5"></div>
-
-                        <button id="reflex-play-again-btn" class="w-full py-2.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle transition-all">
-                            Test Again
-                        </button>
                     </div>
                 </div>
             </div>
@@ -2737,7 +2663,6 @@
     <script src="snake-game.js"></script>
     <script src="type-game.js"></script>
     <script src="fighter-game.js"></script>
-    <script src="reflex-game.js"></script>
     <script src="arcade-manager.js"></script>
 
     <!-- ================= FLOATING ROBLOX AVATAR COMPANION ================= -->

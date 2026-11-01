@@ -31,7 +31,7 @@ Built with a bold **Neo-Brutalist** aesthetic, this portfolio pairs modular soft
 
 ## 🚀 Key Features
 
-### 1. 🕹️ The Developer Arcade (5 Playable Mini-Games)
+### 1. 🕹️ The Developer Arcade (4 Playable Mini-Games)
 An interactive game suite embedded directly into the portfolio, featuring real-time canvas rendering, physics engines, touch controls, sound effects (synthesized via Web Audio API), and persistent local high scores:
 
 | Game | Module | Description |
@@ -40,7 +40,6 @@ An interactive game suite embedded directly into the portfolio, featuring real-t
 | **🐍 Retro Snake** | [`snake-game.js`](snake-game.js) | Classic grid-based snake with adjustable game speeds, food spawning, high-score tracking, and mobile touch pads. |
 | **⌨️ Speed Typing** | [`type-game.js`](type-game.js) | Real-time typing test measuring WPM and accuracy using real-world software engineering and systems architecture quotes. |
 | **🥋 Street Tekken** | [`fighter-game.js`](fighter-game.js) | Street Fighter / Tekken-style 1v1 arcade brawler with dual health bars, combo counter, special fireball attacks, block mechanics, round timer, and intelligent AI rival. |
-| **⚡ Reflex Speed Test** | [`reflex-game.js`](reflex-game.js) | High-precision reaction timer testing developer reaction speed with millisecond grading and attempt history. |
 | **🎛️ Arcade Manager** | [`arcade-manager.js`](arcade-manager.js) | Unified tabbed manager handling game state transitions, audio synthesis, and event delegation. |
 
 ---
@@ -91,7 +90,6 @@ portfolio/
 ├── snake-game.js                # Retro Snake game logic & controls
 ├── type-game.js                 # Speed typing test engine & WPM metrics
 ├── fighter-game.js              # Street Fighter / Tekken arcade brawler engine
-├── reflex-game.js               # Millisecond reflex tester & grading
 │
 ├── roblox_avtar.mp4             # 3D Roblox avatar animation source
 ├── roblox_avatar_transparent.png# Instant pre-render avatar placeholder

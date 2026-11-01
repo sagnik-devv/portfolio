@@ -1,5 +1,5 @@
 /**
- * Arcade Manager - Five-Game Developer Arcade Orchestrator
+ * Arcade Manager - Four-Game Developer Arcade Orchestrator
  * Built for Sagnik's Developer Arcade (sagnik.site)
  */
 
@@ -8,23 +8,21 @@
 
     class ArcadeManager {
         constructor() {
-            this.games = ['football', 'snake', 'type', 'fighter', 'reflex'];
+            this.games = ['football', 'snake', 'type', 'fighter'];
             this.activeGame = 'football';
 
             this.tabButtons = {
                 football: document.getElementById('tab-btn-football'),
                 snake: document.getElementById('tab-btn-snake'),
                 type: document.getElementById('tab-btn-type'),
-                fighter: document.getElementById('tab-btn-fighter'),
-                reflex: document.getElementById('tab-btn-reflex')
+                fighter: document.getElementById('tab-btn-fighter')
             };
 
             this.panels = {
                 football: document.getElementById('game-panel-football'),
                 snake: document.getElementById('game-panel-snake'),
                 type: document.getElementById('game-panel-type'),
-                fighter: document.getElementById('game-panel-fighter'),
-                reflex: document.getElementById('game-panel-reflex')
+                fighter: document.getElementById('game-panel-fighter')
             };
 
             this.initTabs();
@@ -139,11 +137,6 @@
                         window.fighterGameInstance.onDeactivate();
                     }
                     break;
-                case 'reflex':
-                    if (window.reflexGameInstance) {
-                        window.reflexGameInstance.onDeactivate();
-                    }
-                    break;
             }
         }
 
@@ -168,11 +161,6 @@
                 case 'fighter':
                     if (window.fighterGameInstance) {
                         window.fighterGameInstance.onActivate();
-                    }
-                    break;
-                case 'reflex':
-                    if (window.reflexGameInstance) {
-                        window.reflexGameInstance.onActivate();
                     }
                     break;
             }
