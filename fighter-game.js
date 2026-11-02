@@ -14,6 +14,10 @@
     const GRAVITY = 0.72;
     const ROUND_TIME_LIMIT = 60; // 60 seconds per round
 
+    // Load Sagnik's 3D Roblox Avatar Image
+    const sagnikAvatarImg = typeof Image !== 'undefined' ? new Image() : null;
+    if (sagnikAvatarImg) sagnikAvatarImg.src = 'roblox_avatar_transparent.png';
+
     // -------------------------------------------------------------
     // Web Audio Synthesizer for Arcade Fighting Sounds
     // -------------------------------------------------------------
@@ -403,6 +407,7 @@
             this.id = config.id; // 'p1' or 'cpu'
             this.name = config.name || 'FIGHTER';
             this.isPlayer = config.isPlayer;
+            this.isAvatar = config.isAvatar || false;
             this.audio = config.audio;
             this.particles = config.particles;
 
@@ -865,10 +870,252 @@
             this.drawFighterBody(ctx);
 
             ctx.restore();
+
+            // Overhead Fighter Name Badge
+            this.drawNameTag(ctx);
+        }
+
+        drawNameTag(ctx) {
+            ctx.save();
+            const tagY = this.y - (this.state === 'crouch' ? 85 : this.height) - 18;
+            const label = this.isAvatar ? '👑 SAGNIK (Host)' : `⭐ ${this.name}`;
+            ctx.font = 'bold 11px monospace, "Courier New", sans-serif';
+            const textWidth = ctx.measureText ? ctx.measureText(label).width : 65;
+
+            // Neo-brutalist badge
+            ctx.fillStyle = this.isAvatar ? '#fbbf24' : '#a3e635';
+            ctx.strokeStyle = '#171717';
+            ctx.lineWidth = 1.5;
+            ctx.fillRect(this.x - textWidth / 2 - 6, tagY - 10, textWidth + 12, 16);
+            ctx.strokeRect(this.x - textWidth / 2 - 6, tagY - 10, textWidth + 12, 16);
+
+            ctx.fillStyle = '#171717';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, this.x, tagY - 2);
+
+            // Pointer arrow
+            ctx.beginPath();
+            ctx.moveTo(this.x - 4, tagY + 6);
+            ctx.lineTo(this.x + 4, tagY + 6);
+            ctx.lineTo(this.x, tagY + 10);
+            ctx.closePath();
+            ctx.fillStyle = '#171717';
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        drawAvatarBody(ctx, time) {
+            const targetH = 132;
+            const targetW = targetH * (186 / 441); // ~55.7px
+            const halfW = targetW / 2;
+
+            if (this.state === 'ko') {
+                ctx.save();
+                ctx.translate(0, -14);
+                ctx.rotate(-Math.PI / 2);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+                ctx.restore();
+
+                // Floating dizzy stars
+                const starPhase = time * 0.15;
+                for (let i = 0; i < 3; i++) {
+                    const sx = Math.cos(starPhase + i * 2.1) * 20;
+                    const sy = -28 + Math.sin(starPhase + i * 2.1) * 8;
+                    ctx.font = '14px sans-serif';
+                    ctx.fillText('💫', sx - 7, sy);
+                }
+                return;
+            }
+
+            if (this.state === 'knockdown') {
+                ctx.save();
+                ctx.translate(-22, -18);
+                ctx.rotate(-0.85);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'hit_stun') {
+                ctx.save();
+                ctx.translate(-12, 0);
+                ctx.rotate(-0.25);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+                ctx.strokeStyle = 'rgba(239, 68, 68, 0.7)';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(-halfW - 3, -targetH - 3, targetW + 6, targetH + 6);
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'crouch' || this.state === 'crouch_kick') {
+                ctx.save();
+                ctx.scale(1.15, 0.65);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+                ctx.restore();
+
+                if (this.state === 'crouch_kick') {
+                    ctx.save();
+                    ctx.strokeStyle = '#fbbf24';
+                    ctx.lineWidth = 5;
+                    ctx.beginPath();
+                    ctx.moveTo(-10, -14);
+                    ctx.lineTo(72, -14);
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#f59e0b';
+                    ctx.beginPath();
+                    ctx.arc(72, -14, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+                return;
+            }
+
+            if (this.state === 'punch') {
+                const punchSlide = Math.sin((time / 14) * Math.PI) * 26;
+                ctx.save();
+                ctx.drawImage(sagnikAvatarImg, -halfW + punchSlide, -targetH, targetW, targetH);
+
+                // Cyber punch fist overlay
+                ctx.fillStyle = '#fbbf24';
+                ctx.strokeStyle = '#171717';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.roundRect(-halfW + punchSlide + targetW - 6, -78, 28, 18, [4]);
+                ctx.fill();
+                ctx.stroke();
+
+                // Motion streak
+                ctx.strokeStyle = 'rgba(251, 191, 36, 0.85)';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.moveTo(-halfW + punchSlide - 10, -69);
+                ctx.lineTo(-halfW + punchSlide + targetW + 22, -69);
+                ctx.stroke();
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'kick') {
+                const kickProgress = Math.sin((time / 19) * Math.PI);
+                const kickAngle = kickProgress * 1.35;
+                ctx.save();
+                ctx.rotate(-kickProgress * 0.18);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+
+                // Power kick golden energy arc
+                ctx.strokeStyle = '#f59e0b';
+                ctx.lineWidth = 6;
+                ctx.beginPath();
+                ctx.arc(8, -48, 76, -0.3, -kickAngle, true);
+                ctx.stroke();
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'jump_kick') {
+                ctx.save();
+                ctx.rotate(0.48);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+
+                ctx.strokeStyle = '#fbbf24';
+                ctx.lineWidth = 5;
+                ctx.beginPath();
+                ctx.moveTo(10, -25);
+                ctx.lineTo(65, 8);
+                ctx.stroke();
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'special') {
+                ctx.save();
+                const chargeRadius = Math.sin(time * 0.35) * 6 + 14;
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+
+                // Glowing power orb at hands
+                const glow = ctx.createRadialGradient(targetW * 0.5 + 10, -68, 2, targetW * 0.5 + 10, -68, chargeRadius + 6);
+                glow.addColorStop(0, '#ffffff');
+                glow.addColorStop(0.5, '#fbbf24');
+                glow.addColorStop(1, 'rgba(251, 191, 36, 0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath();
+                ctx.arc(targetW * 0.5 + 10, -68, chargeRadius + 6, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'super') {
+                ctx.save();
+                // Golden after-image shadows
+                ctx.globalAlpha = 0.3;
+                ctx.drawImage(sagnikAvatarImg, -halfW - 35, -targetH, targetW, targetH);
+                ctx.globalAlpha = 0.55;
+                ctx.drawImage(sagnikAvatarImg, -halfW - 18, -targetH, targetW, targetH);
+                ctx.globalAlpha = 1.0;
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+
+                // Lightning crackle
+                ctx.strokeStyle = '#fbbf24';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(-15, -110);
+                ctx.lineTo(5, -70);
+                ctx.lineTo(35, -50);
+                ctx.stroke();
+                ctx.restore();
+                return;
+            }
+
+            if (this.state === 'win') {
+                ctx.save();
+                const winBounce = Math.abs(Math.sin(time * 0.2)) * 12;
+                ctx.translate(0, -winBounce);
+                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+
+                ctx.font = '24px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('👑', 0, -targetH - 8);
+                ctx.restore();
+                return;
+            }
+
+            // Upright states (idle, walk_fwd, walk_back, jump, block)
+            ctx.save();
+            let offY = 0;
+            let tilt = 0;
+            if (this.state === 'idle') {
+                offY = Math.sin(time * 0.12) * 2.5;
+            } else if (this.state === 'walk_fwd') {
+                offY = Math.abs(Math.sin(time * 0.3)) * 4;
+                tilt = Math.sin(time * 0.3) * 0.08;
+            } else if (this.state === 'walk_back') {
+                tilt = -0.06;
+            } else if (this.state === 'jump') {
+                tilt = this.vy * 0.018;
+            } else if (this.state === 'block') {
+                tilt = -0.07;
+            }
+
+            ctx.translate(0, offY);
+            ctx.rotate(tilt);
+            ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
+            ctx.restore();
         }
 
         drawFighterBody(ctx) {
             const time = this.stateTime;
+
+            // If this is Sagnik's authentic avatar and image is ready, draw it!
+            if (this.isAvatar && sagnikAvatarImg && sagnikAvatarImg.complete && sagnikAvatarImg.naturalWidth > 0) {
+                this.drawAvatarBody(ctx, time);
+                return;
+            }
+
             const breathing = Math.sin(time * 0.12) * 2;
 
             // Neo-brutalist styling: heavy dark outlines
@@ -1344,14 +1591,15 @@
             this.btnTouchGuard = document.getElementById('btn-touch-f-guard');
 
             // Fighters Init
-            this.playerName = localStorage.getItem('sagnik_arcade_username') || 'SAGNIK (P1)';
+            this.playerName = localStorage.getItem('sagnik_arcade_username') || 'VISITOR (You)';
             this.p1 = new Fighter({
                 id: 'p1',
                 name: this.playerName,
                 isPlayer: true,
+                isAvatar: false,
                 startX: 250,
                 facing: 1,
-                giColor: '#a3e635', // Lime Green Gi
+                giColor: '#a3e635', // Lime Green Gi for Challenger
                 trimColor: '#171717',
                 bandColor: '#ef4444',
                 hairColor: '#0f172a',
@@ -1363,16 +1611,17 @@
 
             this.cpu = new Fighter({
                 id: 'cpu',
-                name: 'SHADOW BOT',
+                name: 'SAGNIK (Host)',
                 isPlayer: false,
+                isAvatar: true, // Sagnik's authentic Roblox avatar as the main bot!
                 startX: 710,
                 facing: -1,
-                giColor: '#e11d48', // Crimson Gi
+                giColor: '#e11d48',
                 trimColor: '#09090b',
                 bandColor: '#f59e0b',
                 hairColor: '#171717',
                 skinColor: '#fed7aa',
-                auraColor: '#f97316',
+                auraColor: '#fbbf24', // Sagnik's golden dragon aura
                 audio: this.audio,
                 particles: this.particles
             });
