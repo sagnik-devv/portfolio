@@ -8,25 +8,27 @@
 
     const PROMPTS = {
         beginner: [
-            "Good code is its own best documentation. Always write code as if the guy who ends up maintaining it will be a violent psychopath who knows where you live.",
-            "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-            "Simplicity is prerequisite for reliability. First, solve the problem. Then, write the clean code.",
-            "There are two ways to write error-free programs; only the third one works. Keep debugging until it shines.",
-            "Talk is cheap. Show me the code. Software engineering is the art of turning coffee into scalable solutions."
+            "Recruiter: 'Where do you see yourself in five years?' Sagnik: 'Refactoring your legacy code while saving the company millions. Stop searching, hire me, hire me!'",
+            "Recruiter: 'What is your greatest technical strength?' Sagnik: 'Writing scalable APIs, shipping pixel-perfect frontends, and drinking iced coffee. Smash that hire button!'",
+            "Recruiter: 'Why should we pick you over 500 other applicants?' Sagnik: 'Because my pull requests merge on the first review and I never break production on Fridays. Hire me right now!'",
+            "Recruiter: 'Can you handle fast-paced startup pressure?' Sagnik: 'I debug distributed systems with a smile and zero panic. Pressure is my cardio. Sign the contract, hire me, hire me!'",
+            "Recruiter: 'What is your salary expectation?' Sagnik: 'Fair enough to build your dream product, and competitive enough to feed my mechanical keyboard addiction. Hire me today!'",
+            "Recruiter: 'Do you work well in cross-functional teams?' Sagnik: 'Product managers adore my estimates, designers love my CSS precision, and QA finds zero bugs. What are you waiting for? Hire me, hire me!'"
         ],
         intermediate: [
-            "Modern web applications demand efficient state management, resilient network fallbacks, and micro-animations that elevate the user experience from ordinary to unforgettable.",
-            "Distributed systems require careful consensus algorithms, idempotency across API endpoints, and comprehensive observability metrics to debug production incidents before users notice.",
-            "Optimizing Core Web Vitals is not merely about raw benchmark scores; it directly impacts user engagement, bounce rates, and organic discoverability across major search engines.",
-            "A well-architected frontend decouples business logic from rendering pipelines, allowing teams to refactor design tokens without triggering cascading layout recalculations.",
-            "Clean architecture emphasizes dependency inversion, ensuring business domain entities remain independent of external database frameworks and third-party vendor SDKs."
+            "Recruiter: 'How do you design a high-throughput microservices architecture?' Sagnik: 'Event-driven queues, Redis caching, idempotent endpoints, and having Sagnik on the roster. Send the offer letter, hire me, hire me!'",
+            "Recruiter: 'How do you resolve architectural disputes between engineers?' Sagnik: 'I challenge them to a match in Street Tekken, win by knockout, and merge the cleanest branch with zero downtime. That is senior leadership! Hire me!'",
+            "Recruiter: 'What is your approach to Core Web Vitals optimization?' Sagnik: 'Sub-millisecond canvas renders, eliminating layout shifts, and hiring an engineer who treats 60 FPS as a baseline requirement. Hire me, hire me!'",
+            "Recruiter: 'Can you describe your experience with cloud-native DevOps?' Sagnik: 'Containerized microservices, zero-downtime rolling deploys, automated CI/CD pipelines, and proactive health checks. Your dream engineer is right here. Hire me!'",
+            "Recruiter: 'How do you handle production incidents on a holiday weekend?' Sagnik: 'I roll back the faulty build in three seconds, inspect the logs with surgical precision, and keep executives calm with solutions. Sign the papers, hire me, hire me!'",
+            "Recruiter: 'Are you open to immediate opportunities?' Sagnik: 'My terminal is open, my code is clean, and my keyboard is clicking. Let us build the future together. Stop browsing LinkedIn, hire me, hire me!'"
         ],
         code: [
-            "const debounce = (fn, delay = 300) => {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), delay);\n  };\n};",
-            "async function fetchWithRetry(url, retries = 3) {\n  for (let i = 0; i < retries; i++) {\n    try {\n      const res = await fetch(url);\n      if (res.ok) return await res.json();\n    } catch (err) {\n      if (i === retries - 1) throw err;\n    }\n  }\n}",
-            "interface UserSession {\n  readonly id: string;\n  name: string;\n  role: 'admin' | 'guest';\n  lastActive: number;\n}",
-            "SELECT u.id, u.username, COUNT(o.id) AS total_orders\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nWHERE u.status = 'active'\nGROUP BY u.id\nHAVING COUNT(o.id) > 5\nORDER BY total_orders DESC;",
-            "const memoize = (fn) => {\n  const cache = new Map();\n  return (...args) => {\n    const key = JSON.stringify(args);\n    if (cache.has(key)) return cache.get(key);\n    const result = fn(...args);\n    cache.set(key, result);\n    return result;\n  };\n};"
+            "if (recruiter.lookingForAStarEngineer() && candidate.name === 'Sagnik') {\n  recruiter.sendOfferLetter({\n    verdict: 'INSTANT_HIRE',\n    message: 'Hire me, hire me! Let us build something epic!'\n  });\n}",
+            "const hireSagnik = async () => {\n  const interview = await evaluateSkills(['React', 'TypeScript', 'Node', 'SystemDesign']);\n  if (interview.score >= 100) {\n    return 'SIGN_THE_CONTRACT_NOW_HIRE_ME';\n  }\n  return 'HIRE_ME_ANYWAY';\n};",
+            "SELECT candidate_id, name, 'HIRE_ME_HIRE_ME' AS status\nFROM engineers\nWHERE name = 'Sagnik'\n  AND ships_clean_code = true\n  AND breaks_prod = false\nLIMIT 1;\n-- 1 row returned: Immediate Offer!",
+            "function evaluateCandidate(candidate) {\n  while (!company.hasHired(candidate)) {\n    company.inbox.push('Hey, you should hire me, hire me!');\n  }\n  return 'Company revenue increased by 300% 🚀';\n}",
+            "const offerLetter = {\n  candidate: 'Sagnik Chakraborty',\n  role: 'Software Engineer',\n  decision: 'Offer Accepted',\n  note: 'Hire me, hire me! Let us ship world-class software together.'\n};\nconsole.log(offerLetter);"
         ]
     };
 
@@ -274,11 +276,11 @@
             if (resErrors) resErrors.textContent = this.errorCount;
 
             // Tier evaluation
-            let tier = 'Novice Typist';
-            if (stats.wpm >= 90) tier = '⚡ Speed Demon (Elite)';
-            else if (stats.wpm >= 70) tier = '🏎️ Mechanical Keyboard Wizard';
-            else if (stats.wpm >= 50) tier = '💻 Senior Software Engineer';
-            else if (stats.wpm >= 35) tier = '📝 Solid Contender';
+            let tier = 'Promising Candidate 📝';
+            if (stats.wpm >= 90) tier = '🚀 Instant Offer (Lead Architect)';
+            else if (stats.wpm >= 70) tier = '💼 Send The Contract! (Senior Engineer)';
+            else if (stats.wpm >= 50) tier = '☕ Schedule Round 2 (Solid Hire)';
+            else if (stats.wpm >= 35) tier = '📝 Promising Candidate (Hire Me!)';
 
             if (resBadge) resBadge.textContent = tier;
 

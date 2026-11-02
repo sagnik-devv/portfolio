@@ -38,7 +38,7 @@ An interactive game suite embedded directly into the portfolio, featuring real-t
 | :--- | :--- | :--- |
 | **⚽ 1v1 Roblox Football** | [`football-game.js`](football-game.js) | Full 2D physics pitch playing 1v1 against Sagnik's authentic 3D Roblox avatar as the main goalkeeper/striker bot, with dynamic physics, customizable jerseys, scoreboard, and intelligent AI. |
 | **🐍 Retro Snake** | [`snake-game.js`](snake-game.js) | Classic grid-based snake with adjustable game speeds, food spawning, high-score tracking, and mobile touch pads. |
-| **⌨️ Speed Typing** | [`type-game.js`](type-game.js) | Real-time typing test measuring WPM and accuracy using real-world software engineering and systems architecture quotes. |
+| **⌨️ Type or Die (Recruiter Edition)** | [`type-game.js`](type-game.js) | Funky speed typing test featuring hilarious recruiter interview dialogues where Sagnik cheekily pitches "Hire me, hire me!", measuring WPM, accuracy, and offer letter tiers. |
 | **🥋 Street Tekken** | [`fighter-game.js`](fighter-game.js) | Street Fighter / Tekken-style 1v1 arcade brawler fighting against Sagnik's 3D Roblox avatar as the main boss bot, with dual health bars, combo counter, special fireball attacks, block mechanics, round timer, and intelligent AI. |
 | **🎛️ Arcade Manager** | [`arcade-manager.js`](arcade-manager.js) | Unified tabbed manager handling game state transitions, audio synthesis, and event delegation. |
 
