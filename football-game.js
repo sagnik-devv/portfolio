@@ -19,9 +19,14 @@
     const FRICTION = 0.985;
     const WINNING_SCORE = 3;
 
-    // Load Sagnik's 3D Roblox Avatar Image
-    const sagnikAvatarImg = typeof Image !== 'undefined' ? new Image() : null;
-    if (sagnikAvatarImg) sagnikAvatarImg.src = 'roblox_avatar_transparent.png';
+    // Load Sagnik's authentic cursor face image
+    const sagnikFaceImg = typeof Image !== 'undefined' ? new Image() : null;
+    if (sagnikFaceImg) {
+        sagnikFaceImg.src = 'cursor-original.png';
+        sagnikFaceImg.onerror = () => {
+            sagnikFaceImg.src = 'cursor-64.png';
+        };
+    }
 
     // Web Audio Synthesizer (Zero external dependencies)
     class RetroSound {
@@ -527,52 +532,6 @@
             // If celebrating, raise arms high!
             const isCelebrating = this.celebrateTimer > 0;
 
-            // Sagnik (CPU Bot): Render authentic 3D Roblox avatar if image loaded
-            if (this.isAI && sagnikAvatarImg && sagnikAvatarImg.complete && sagnikAvatarImg.naturalWidth > 0) {
-                const targetH = 80;
-                const targetW = targetH * (186 / 441);
-
-                ctx.save();
-                const runBob = isWalking ? Math.sin(this.runCycle * 2) * 2.5 : 0;
-                const runTilt = isWalking ? Math.sin(this.runCycle) * 0.1 : 0;
-                const jumpTilt = !this.isGrounded ? this.vy * 0.025 : 0;
-                const kickPhase = Math.sin((this.kickTimer / 12) * Math.PI);
-                const kickTilt = this.isKicking ? kickPhase * 0.35 : 0;
-
-                ctx.translate(0, -runBob);
-                ctx.rotate(runTilt + jumpTilt + kickTilt);
-
-                // Celebratory golden aura
-                if (isCelebrating) {
-                    ctx.save();
-                    ctx.strokeStyle = '#fbbf24';
-                    ctx.lineWidth = 2.5;
-                    ctx.beginPath();
-                    ctx.ellipse(0, -targetH * 0.5, targetW * 0.8, targetH * 0.55, 0, 0, Math.PI * 2);
-                    ctx.stroke();
-                    ctx.restore();
-                }
-
-                // Dynamic Kick Swoosh arc
-                if (this.isKicking) {
-                    ctx.save();
-                    ctx.strokeStyle = 'rgba(251, 191, 36, 0.9)';
-                    ctx.lineWidth = 4;
-                    ctx.beginPath();
-                    ctx.arc(0, -22, 38, -0.4, 0.8);
-                    ctx.stroke();
-                    ctx.restore();
-                }
-
-                // Render Sagnik's authentic 3D Roblox Avatar
-                ctx.drawImage(sagnikAvatarImg, -targetW / 2, -targetH, targetW, targetH);
-                ctx.restore();
-
-                ctx.restore();
-                this.drawNameTag(ctx);
-                return;
-            }
-
             // 1. BACK LEG (Left when facing right)
             ctx.save();
             ctx.translate(-7, -26);
@@ -640,6 +599,25 @@
         }
 
         drawRobloxHead(ctx) {
+            // Sagnik (CPU Bot): Render authentic cursor face
+            if (this.isAI && sagnikFaceImg && sagnikFaceImg.complete && sagnikFaceImg.naturalWidth > 0) {
+                const faceH = 34;
+                const faceW = faceH * (sagnikFaceImg.naturalWidth / sagnikFaceImg.naturalHeight);
+
+                ctx.save();
+                // Celebratory golden crown if celebrating goal
+                if (this.celebrateTimer > 0) {
+                    ctx.font = '16px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('👑', 0, -faceH / 2 - 14);
+                }
+
+                // Render Sagnik's crisp cursor face centered on head/neck
+                ctx.drawImage(sagnikFaceImg, -faceW / 2, -10 - faceH / 2, faceW, faceH);
+                ctx.restore();
+                return;
+            }
+
             // Cylindrical Top Stud
             ctx.fillStyle = this.skinColor;
             ctx.strokeStyle = '#171717';

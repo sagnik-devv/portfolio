@@ -14,9 +14,14 @@
     const GRAVITY = 0.72;
     const ROUND_TIME_LIMIT = 60; // 60 seconds per round
 
-    // Load Sagnik's 3D Roblox Avatar Image
-    const sagnikAvatarImg = typeof Image !== 'undefined' ? new Image() : null;
-    if (sagnikAvatarImg) sagnikAvatarImg.src = 'roblox_avatar_transparent.png';
+    // Load Sagnik's authentic cursor face image
+    const sagnikFaceImg = typeof Image !== 'undefined' ? new Image() : null;
+    if (sagnikFaceImg) {
+        sagnikFaceImg.src = 'cursor-original.png';
+        sagnikFaceImg.onerror = () => {
+            sagnikFaceImg.src = 'cursor-64.png';
+        };
+    }
 
     // -------------------------------------------------------------
     // Web Audio Synthesizer for Arcade Fighting Sounds
@@ -906,215 +911,11 @@
             ctx.restore();
         }
 
-        drawAvatarBody(ctx, time) {
-            const targetH = 132;
-            const targetW = targetH * (186 / 441); // ~55.7px
-            const halfW = targetW / 2;
 
-            if (this.state === 'ko') {
-                ctx.save();
-                ctx.translate(0, -14);
-                ctx.rotate(-Math.PI / 2);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-                ctx.restore();
-
-                // Floating dizzy stars
-                const starPhase = time * 0.15;
-                for (let i = 0; i < 3; i++) {
-                    const sx = Math.cos(starPhase + i * 2.1) * 20;
-                    const sy = -28 + Math.sin(starPhase + i * 2.1) * 8;
-                    ctx.font = '14px sans-serif';
-                    ctx.fillText('💫', sx - 7, sy);
-                }
-                return;
-            }
-
-            if (this.state === 'knockdown') {
-                ctx.save();
-                ctx.translate(-22, -18);
-                ctx.rotate(-0.85);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'hit_stun') {
-                ctx.save();
-                ctx.translate(-12, 0);
-                ctx.rotate(-0.25);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-                ctx.strokeStyle = 'rgba(239, 68, 68, 0.7)';
-                ctx.lineWidth = 3;
-                ctx.strokeRect(-halfW - 3, -targetH - 3, targetW + 6, targetH + 6);
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'crouch' || this.state === 'crouch_kick') {
-                ctx.save();
-                ctx.scale(1.15, 0.65);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-                ctx.restore();
-
-                if (this.state === 'crouch_kick') {
-                    ctx.save();
-                    ctx.strokeStyle = '#fbbf24';
-                    ctx.lineWidth = 5;
-                    ctx.beginPath();
-                    ctx.moveTo(-10, -14);
-                    ctx.lineTo(72, -14);
-                    ctx.stroke();
-
-                    ctx.fillStyle = '#f59e0b';
-                    ctx.beginPath();
-                    ctx.arc(72, -14, 6, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.restore();
-                }
-                return;
-            }
-
-            if (this.state === 'punch') {
-                const punchSlide = Math.sin((time / 14) * Math.PI) * 26;
-                ctx.save();
-                ctx.drawImage(sagnikAvatarImg, -halfW + punchSlide, -targetH, targetW, targetH);
-
-                // Cyber punch fist overlay
-                ctx.fillStyle = '#fbbf24';
-                ctx.strokeStyle = '#171717';
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.roundRect(-halfW + punchSlide + targetW - 6, -78, 28, 18, [4]);
-                ctx.fill();
-                ctx.stroke();
-
-                // Motion streak
-                ctx.strokeStyle = 'rgba(251, 191, 36, 0.85)';
-                ctx.lineWidth = 4;
-                ctx.beginPath();
-                ctx.moveTo(-halfW + punchSlide - 10, -69);
-                ctx.lineTo(-halfW + punchSlide + targetW + 22, -69);
-                ctx.stroke();
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'kick') {
-                const kickProgress = Math.sin((time / 19) * Math.PI);
-                const kickAngle = kickProgress * 1.35;
-                ctx.save();
-                ctx.rotate(-kickProgress * 0.18);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-
-                // Power kick golden energy arc
-                ctx.strokeStyle = '#f59e0b';
-                ctx.lineWidth = 6;
-                ctx.beginPath();
-                ctx.arc(8, -48, 76, -0.3, -kickAngle, true);
-                ctx.stroke();
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'jump_kick') {
-                ctx.save();
-                ctx.rotate(0.48);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-
-                ctx.strokeStyle = '#fbbf24';
-                ctx.lineWidth = 5;
-                ctx.beginPath();
-                ctx.moveTo(10, -25);
-                ctx.lineTo(65, 8);
-                ctx.stroke();
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'special') {
-                ctx.save();
-                const chargeRadius = Math.sin(time * 0.35) * 6 + 14;
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-
-                // Glowing power orb at hands
-                const glow = ctx.createRadialGradient(targetW * 0.5 + 10, -68, 2, targetW * 0.5 + 10, -68, chargeRadius + 6);
-                glow.addColorStop(0, '#ffffff');
-                glow.addColorStop(0.5, '#fbbf24');
-                glow.addColorStop(1, 'rgba(251, 191, 36, 0)');
-                ctx.fillStyle = glow;
-                ctx.beginPath();
-                ctx.arc(targetW * 0.5 + 10, -68, chargeRadius + 6, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'super') {
-                ctx.save();
-                // Golden after-image shadows
-                ctx.globalAlpha = 0.3;
-                ctx.drawImage(sagnikAvatarImg, -halfW - 35, -targetH, targetW, targetH);
-                ctx.globalAlpha = 0.55;
-                ctx.drawImage(sagnikAvatarImg, -halfW - 18, -targetH, targetW, targetH);
-                ctx.globalAlpha = 1.0;
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-
-                // Lightning crackle
-                ctx.strokeStyle = '#fbbf24';
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(-15, -110);
-                ctx.lineTo(5, -70);
-                ctx.lineTo(35, -50);
-                ctx.stroke();
-                ctx.restore();
-                return;
-            }
-
-            if (this.state === 'win') {
-                ctx.save();
-                const winBounce = Math.abs(Math.sin(time * 0.2)) * 12;
-                ctx.translate(0, -winBounce);
-                ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-
-                ctx.font = '24px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('👑', 0, -targetH - 8);
-                ctx.restore();
-                return;
-            }
-
-            // Upright states (idle, walk_fwd, walk_back, jump, block)
-            ctx.save();
-            let offY = 0;
-            let tilt = 0;
-            if (this.state === 'idle') {
-                offY = Math.sin(time * 0.12) * 2.5;
-            } else if (this.state === 'walk_fwd') {
-                offY = Math.abs(Math.sin(time * 0.3)) * 4;
-                tilt = Math.sin(time * 0.3) * 0.08;
-            } else if (this.state === 'walk_back') {
-                tilt = -0.06;
-            } else if (this.state === 'jump') {
-                tilt = this.vy * 0.018;
-            } else if (this.state === 'block') {
-                tilt = -0.07;
-            }
-
-            ctx.translate(0, offY);
-            ctx.rotate(tilt);
-            ctx.drawImage(sagnikAvatarImg, -halfW, -targetH, targetW, targetH);
-            ctx.restore();
-        }
 
         drawFighterBody(ctx) {
             const time = this.stateTime;
 
-            // If this is Sagnik's authentic avatar and image is ready, draw it!
-            if (this.isAvatar && sagnikAvatarImg && sagnikAvatarImg.complete && sagnikAvatarImg.naturalWidth > 0) {
-                this.drawAvatarBody(ctx, time);
-                return;
-            }
 
             const breathing = Math.sin(time * 0.12) * 2;
 
@@ -1138,11 +939,30 @@
                 ctx.fill();
                 ctx.stroke();
                 // Head
-                ctx.fillStyle = this.skinColor;
-                ctx.beginPath();
-                ctx.arc(46, -14, 12, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.stroke();
+                if (this.isAvatar && sagnikFaceImg && sagnikFaceImg.complete && sagnikFaceImg.naturalWidth > 0) {
+                    const faceH = 32;
+                    const faceW = faceH * (sagnikFaceImg.naturalWidth / sagnikFaceImg.naturalHeight);
+                    ctx.save();
+                    ctx.translate(46, -14);
+                    ctx.rotate(0.35);
+                    ctx.drawImage(sagnikFaceImg, -faceW / 2, -faceH / 2, faceW, faceH);
+                    ctx.restore();
+
+                    // Floating dizzy stars
+                    const starPhase = time * 0.15;
+                    for (let i = 0; i < 3; i++) {
+                        const sx = 46 + Math.cos(starPhase + i * 2.1) * 16;
+                        const sy = -32 + Math.sin(starPhase + i * 2.1) * 6;
+                        ctx.font = '12px sans-serif';
+                        ctx.fillText('💫', sx - 6, sy);
+                    }
+                } else {
+                    ctx.fillStyle = this.skinColor;
+                    ctx.beginPath();
+                    ctx.arc(46, -14, 12, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                }
                 return;
             }
 
@@ -1210,6 +1030,11 @@
 
             if (this.state === 'jump') {
                 torsoY = -78;
+            } else if (this.state === 'win') {
+                const winBounce = Math.abs(Math.sin(time * 0.2)) * 6;
+                torsoY = -85 - winBounce;
+            } else if (this.state === 'hit_stun') {
+                torsoX = -8;
             }
 
             // Attack animations
@@ -1301,8 +1126,35 @@
             ctx.fillRect(torsoX - 4, torsoY + 42, 6, 20);
             ctx.strokeRect(torsoX - 4, torsoY + 42, 6, 20);
 
-            // Punching Arm or Guarding Arms
-            if (punchExtend > 5) {
+            // Punching Arm or Guarding Arms or Victory / Blast Pose
+            if (this.state === 'win') {
+                // Victor's raised fist pumping the air
+                ctx.fillStyle = this.giColor;
+                ctx.beginPath();
+                ctx.roundRect(torsoX + 6, torsoY - 18, 16, 32, [4]);
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.fillStyle = this.bandColor;
+                ctx.beginPath();
+                ctx.arc(torsoX + 14, torsoY - 22, 9, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+            } else if (this.state === 'special') {
+                // Dual-palm blast pose
+                ctx.fillStyle = this.giColor;
+                ctx.beginPath();
+                ctx.roundRect(torsoX + 4, torsoY + 10, 36, 16, [4]);
+                ctx.fill();
+                ctx.stroke();
+
+                // Blast energy charging in hands
+                const blastCharge = Math.sin((time / 18) * Math.PI) * 10;
+                ctx.fillStyle = this.auraColor;
+                ctx.beginPath();
+                ctx.arc(torsoX + 44, torsoY + 18, 6 + Math.max(0, blastCharge), 0, Math.PI * 2);
+                ctx.fill();
+            } else if (punchExtend > 5) {
                 // Forward Extended Punching Arm
                 ctx.fillStyle = this.giColor;
                 ctx.beginPath();
@@ -1355,6 +1207,42 @@
         }
 
         drawHead(ctx, x, y) {
+            // Sagnik (Host CPU): Render authentic cursor face
+            if (this.isAvatar && sagnikFaceImg && sagnikFaceImg.complete && sagnikFaceImg.naturalWidth > 0) {
+                const faceH = 36;
+                const faceW = faceH * (sagnikFaceImg.naturalWidth / sagnikFaceImg.naturalHeight);
+
+                ctx.save();
+                // Golden aura glow if in super move or victory
+                if (this.state === 'super' || this.state === 'win') {
+                    ctx.save();
+                    ctx.shadowColor = '#fbbf24';
+                    ctx.shadowBlur = 16;
+                    ctx.drawImage(sagnikFaceImg, x - faceW / 2, y - faceH / 2, faceW, faceH);
+                    ctx.restore();
+                } else {
+                    ctx.drawImage(sagnikFaceImg, x - faceW / 2, y - faceH / 2, faceW, faceH);
+                }
+
+                // Trailing Headband Ribbons (fluttering behind)
+                const ribbonWave = Math.sin(this.stateTime * 0.25) * 5;
+                ctx.beginPath();
+                ctx.moveTo(x - faceW * 0.35, y - 2);
+                ctx.quadraticCurveTo(x - faceW * 0.35 - 16, y - 4 + ribbonWave, x - faceW * 0.35 - 28, y + ribbonWave);
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = this.bandColor;
+                ctx.stroke();
+
+                // If winning, golden crown overhead!
+                if (this.state === 'win') {
+                    ctx.font = '20px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('👑', x, y - faceH / 2 - 8);
+                }
+                ctx.restore();
+                return;
+            }
+
             // Face
             ctx.fillStyle = this.skinColor;
             ctx.beginPath();
@@ -1404,11 +1292,18 @@
             ctx.fillStyle = this.giColor;
             ctx.fillRect(torsoX - 15, torsoY, 30, 40);
             ctx.strokeRect(torsoX - 15, torsoY, 30, 40);
-            ctx.fillStyle = this.skinColor;
-            ctx.beginPath();
-            ctx.arc(torsoX, torsoY - 12, 12, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.stroke();
+
+            if (this.isAvatar && sagnikFaceImg && sagnikFaceImg.complete && sagnikFaceImg.naturalWidth > 0) {
+                const faceH = 30;
+                const faceW = faceH * (sagnikFaceImg.naturalWidth / sagnikFaceImg.naturalHeight);
+                ctx.drawImage(sagnikFaceImg, torsoX - faceW / 2, torsoY - 12 - faceH / 2, faceW, faceH);
+            } else {
+                ctx.fillStyle = this.skinColor;
+                ctx.beginPath();
+                ctx.arc(torsoX, torsoY - 12, 12, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+            }
         }
     }
 
