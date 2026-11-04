@@ -337,6 +337,7 @@
         }
 
         reset() {
+            this.hideGameOverModal();
             const startX = 6;
             const startY = 6;
             this.snake = [
@@ -593,6 +594,35 @@
             this.audio.play('conflict');
             this.updateStatsDisplay();
             this.updateUIButtons();
+            this.showGameOverModal(reason);
+        }
+
+        showGameOverModal(reason) {
+            const modal = document.getElementById('snake-game-over-modal');
+            if (!modal) return;
+
+            const scoreEl = document.getElementById('snake-res-score');
+            const streakEl = document.getElementById('snake-res-streak');
+            const bestEl = document.getElementById('snake-res-best');
+            const liveStreakEl = document.getElementById('snake-res-livestreak');
+            const descEl = document.getElementById('snake-modal-desc');
+
+            if (scoreEl) scoreEl.textContent = this.score.toString();
+            if (streakEl) streakEl.textContent = this.sessionStreak.toString();
+            if (bestEl) bestEl.textContent = this.highScore.toString();
+            if (liveStreakEl) liveStreakEl.textContent = `${this.liveStreak} Days`;
+            if (descEl && reason) descEl.textContent = reason;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        hideGameOverModal() {
+            const modal = document.getElementById('snake-game-over-modal');
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
         }
 
         setDifficulty(diff) {
@@ -670,13 +700,11 @@
             // Draw Particles & Floating Texts
             this.renderParticlesAndTexts(ctx);
 
-            // Draw State Overlays (Idle, Paused, Game Over)
+            // Draw State Overlays (Idle, Paused)
             if (this.state === 'IDLE') {
                 this.renderIdleOverlay(ctx);
             } else if (this.state === 'PAUSED') {
                 this.renderPausedOverlay(ctx);
-            } else if (this.state === 'GAME_OVER') {
-                this.renderGameOverOverlay(ctx);
             }
 
             ctx.restore();
@@ -919,45 +947,38 @@
             const h = this.logicalHeight;
 
             ctx.save();
-            ctx.fillStyle = 'rgba(13, 17, 23, 0.90)';
+            ctx.fillStyle = 'rgba(13, 17, 23, 0.70)';
             ctx.fillRect(this.padLeft - 4, this.padTop - 4, this.cols * this.cellSize + 8, this.rows * this.cellSize + 8);
 
-            const boxW = 420;
-            const boxH = 150;
+            const boxW = 360;
+            const boxH = 76;
             const boxX = (w - boxW) / 2;
             const boxY = (h - boxH) / 2;
 
-            // Neo-brutalist modal frame
             ctx.fillStyle = '#161b22';
-            ctx.strokeStyle = '#a3e635';
-            ctx.lineWidth = 2.5;
-            ctx.shadowColor = 'rgba(163, 230, 53, 0.35)';
-            ctx.shadowBlur = 16;
+            ctx.strokeStyle = '#30363d';
+            ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.roundRect(boxX, boxY, boxW, boxH, 8);
             ctx.fill();
             ctx.stroke();
 
-            // Terminal Git Header
+            // Accent bar on the left
             ctx.fillStyle = '#a3e635';
-            ctx.font = 'bold 18px "Courier New", monospace';
+            ctx.beginPath();
+            ctx.roundRect(boxX, boxY, 6, boxH, [8, 0, 0, 8]);
+            ctx.fill();
+
+            // Title
+            ctx.fillStyle = '#a3e635';
+            ctx.font = 'bold 15px "Courier New", monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('⚡ GIT COMMIT SNAKE ⚡', w / 2, boxY + 36);
+            ctx.fillText('⚡ GIT COMMIT SNAKE', w / 2 + 3, boxY + 30);
 
             // Subtitle
             ctx.fillStyle = '#e6edf3';
-            ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
-            ctx.fillText('Slither across Sagnik\'s GitHub heatmap & grow your streak!', w / 2, boxY + 68);
-
-            // Call to Action
-            ctx.fillStyle = '#fef08a';
-            ctx.font = 'bold 12px "Courier New", monospace';
-            ctx.fillText('[ PRESS ARROW KEY / WASD OR TAP START ]', w / 2, boxY + 102);
-
-            // GitHub Profile Link Hint
-            ctx.fillStyle = '#8b949e';
-            ctx.font = '10px -apple-system, BlinkMacSystemFont, sans-serif';
-            ctx.fillText(`Connected to GitHub: @${GH_USERNAME} (${this.totalContributions} Contributions)`, w / 2, boxY + 128);
+            ctx.font = 'bold 11px "Courier New", monospace';
+            ctx.fillText('PRESS ARROW KEYS / WASD OR TAP START', w / 2 + 3, boxY + 54);
 
             ctx.restore();
         }
@@ -967,11 +988,11 @@
             const h = this.logicalHeight;
 
             ctx.save();
-            ctx.fillStyle = 'rgba(13, 17, 23, 0.85)';
+            ctx.fillStyle = 'rgba(13, 17, 23, 0.70)';
             ctx.fillRect(this.padLeft - 4, this.padTop - 4, this.cols * this.cellSize + 8, this.rows * this.cellSize + 8);
 
             const boxW = 320;
-            const boxH = 100;
+            const boxH = 70;
             const boxX = (w - boxW) / 2;
             const boxY = (h - boxH) / 2;
 
@@ -983,73 +1004,20 @@
             ctx.fill();
             ctx.stroke();
 
+            // Accent bar on the left
             ctx.fillStyle = '#f59e0b';
-            ctx.font = 'bold 16px "Courier New", monospace';
+            ctx.beginPath();
+            ctx.roundRect(boxX, boxY, 6, boxH, [8, 0, 0, 8]);
+            ctx.fill();
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = 'bold 14px "Courier New", monospace';
             ctx.textAlign = 'center';
-            ctx.fillText('⏸ COMMIT SESSION PAUSED', w / 2, boxY + 40);
+            ctx.fillText('⏸ COMMIT SESSION PAUSED', w / 2 + 3, boxY + 28);
 
             ctx.fillStyle = '#e6edf3';
-            ctx.font = '12px "Courier New", monospace';
-            ctx.fillText('PRESS SPACE OR TAP RESUME', w / 2, boxY + 70);
-
-            ctx.restore();
-        }
-
-        renderGameOverOverlay(ctx) {
-            const w = this.logicalWidth;
-            const h = this.logicalHeight;
-
-            ctx.save();
-            ctx.fillStyle = 'rgba(13, 17, 23, 0.92)';
-            ctx.fillRect(this.padLeft - 4, this.padTop - 4, this.cols * this.cellSize + 8, this.rows * this.cellSize + 8);
-
-            const boxW = 440;
-            const boxH = 165;
-            const boxX = (w - boxW) / 2;
-            const boxY = (h - boxH) / 2;
-
-            ctx.fillStyle = '#161b22';
-            ctx.strokeStyle = '#f87171';
-            ctx.lineWidth = 2.5;
-            ctx.shadowColor = 'rgba(239, 68, 68, 0.4)';
-            ctx.shadowBlur = 18;
-            ctx.beginPath();
-            ctx.roundRect(boxX, boxY, boxW, boxH, 8);
-            ctx.fill();
-            ctx.stroke();
-
-            // Conflict Alert
-            ctx.fillStyle = '#f87171';
-            ctx.font = 'bold 17px "Courier New", monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText('❌ MERGE CONFLICT: COMMIT OVERFLOW', w / 2, boxY + 34);
-
-            // Stats Breakdown
-            ctx.fillStyle = '#e6edf3';
-            ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
-            ctx.fillText(`Commits Collected: ${this.score}  •  Streak: ${this.sessionStreak}  •  Best: ${this.highScore}`, w / 2, boxY + 66);
-
-            // Direct GitHub Profile Button Area
-            ctx.fillStyle = '#238636';
-            ctx.strokeStyle = '#30363d';
-            ctx.lineWidth = 1;
-            const btnW = 280;
-            const btnH = 26;
-            const btnX = (w - btnW) / 2;
-            const btnY = boxY + 86;
-            ctx.beginPath();
-            ctx.roundRect(btnX, btnY, btnW, btnH, 5);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
-            ctx.fillText(`⭐ View @${GH_USERNAME} on GitHub ↗`, w / 2, btnY + 17);
-
-            // Restart Prompt
-            ctx.fillStyle = '#a3e635';
-            ctx.font = 'bold 12px "Courier New", monospace';
-            ctx.fillText('[ TAP RESTART OR PRESS ENTER TO RETRY ]', w / 2, boxY + 144);
+            ctx.font = 'bold 11px "Courier New", monospace';
+            ctx.fillText('PRESS SPACE OR TAP RESUME', w / 2 + 3, boxY + 50);
 
             ctx.restore();
         }
@@ -1115,30 +1083,24 @@
             }, { passive: true });
 
             // Click on Canvas
-            this.canvas.addEventListener('click', (e) => {
+            this.canvas.addEventListener('click', () => {
                 if (!this.isActive) return;
-                if (this.state === 'IDLE') {
+                if (this.state === 'IDLE' || this.state === 'GAME_OVER') {
                     this.start();
-                } else if (this.state === 'GAME_OVER') {
-                    // Check if clicked near GitHub profile button
-                    const rect = this.canvas.getBoundingClientRect();
-                    const scaleX = this.logicalWidth / rect.width;
-                    const scaleY = this.logicalHeight / rect.height;
-                    const clickX = (e.clientX - rect.left) * scaleX;
-                    const clickY = (e.clientY - rect.top) * scaleY;
-
-                    const btnY = (this.logicalHeight - 165) / 2 + 86;
-                    if (clickY >= btnY && clickY <= btnY + 28) {
-                        window.open(GH_PROFILE_URL, '_blank', 'noopener,noreferrer');
-                        return;
-                    }
-
-                    this.restart();
                 }
             });
         }
 
         initUI() {
+            // Modal Restart Button
+            const modalRestartBtn = document.getElementById('snake-modal-restart-btn');
+            if (modalRestartBtn) {
+                modalRestartBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.restart();
+                });
+            }
+
             // Pause / Resume / Start Button
             const pauseBtn = document.getElementById('snake-pause-btn');
             if (pauseBtn) {

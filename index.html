@@ -505,26 +505,26 @@
                 <!-- Status Bar & Controls -->
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#238636] text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
-                            <i class="fas fa-code-commit"></i> Commits: <span id="snake-score-val" class="font-mono ml-1">0</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-accent-green text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-code-commit"></i> Commits: <span id="snake-score-val" class="font-mono ml-1 font-extrabold">0</span>
                         </span>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
-                            <i class="fas fa-trophy"></i> Best: <span id="snake-high-val" class="font-mono ml-1">0</span>
+                            <i class="fas fa-trophy"></i> Best: <span id="snake-high-val" class="font-mono ml-1 font-extrabold">0</span>
                         </span>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-card-saffron text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3" title="Live GitHub Commit Streak">
                             <i class="fas fa-fire text-amber-600"></i> Live Streak: <span id="snake-streak-val" class="font-mono ml-1 font-extrabold">...</span>
                         </span>
                         <div class="flex items-center gap-1">
                             <label for="snake-diff-select" class="text-xs font-bold text-midnight-ink">Speed:</label>
-                            <select id="snake-diff-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none">
-                                <option value="easy">Easy (Casual)</option>
+                            <select id="snake-diff-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none cursor-pointer">
+                                <option value="easy">Easy</option>
                                 <option value="normal" selected>Normal</option>
-                                <option value="hard">Hard (Fast)</option>
+                                <option value="hard">Fast</option>
                             </select>
                         </div>
                         <div class="flex items-center gap-1">
                             <label for="snake-mode-select" class="text-xs font-bold text-midnight-ink">Wall:</label>
-                            <select id="snake-mode-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none">
+                            <select id="snake-mode-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none cursor-pointer">
                                 <option value="wrap" selected>Wrap-Around</option>
                                 <option value="solid">Solid Wall</option>
                             </select>
@@ -533,8 +533,8 @@
 
                     <div class="flex items-center gap-2 flex-wrap">
                         <!-- Direct Link to Sagnik's GitHub Profile -->
-                        <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5 cursor-pointer" title="Visit Sagnik's GitHub Profile">
-                            <i class="fab fa-github"></i> <span>@sagnik-devv</span> <i class="fas fa-external-link-alt text-[10px]"></i>
+                        <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-canvas-white hover:bg-pale-ash text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5 cursor-pointer" title="Visit Sagnik's GitHub Profile">
+                            <i class="fab fa-github text-base"></i> <span>@sagnik-devv</span> <i class="fas fa-external-link-alt text-[9px]"></i>
                         </a>
                         <button id="snake-pause-btn" class="px-3 py-1.5 bg-card-mint hover:bg-accent-green text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all cursor-pointer">
                             <i class="fas fa-play mr-1"></i> Start
@@ -567,9 +567,50 @@
                             </div>
                         </div>
 
-                        <!-- Canvas Container -->
+                        <!-- Canvas Container with Clean Neo-Brutalist HTML Modal Overlay -->
                         <div class="relative w-full overflow-hidden rounded-lg border border-[#30363d] bg-[#0d1117] shadow-inner">
                             <canvas id="snake-canvas" class="w-full block select-none cursor-pointer" style="aspect-ratio: 700 / 294; touch-action: none;"></canvas>
+
+                            <!-- Neo-Brutalist Game Over Modal -->
+                            <div id="snake-game-over-modal" class="absolute inset-0 bg-black/80 backdrop-blur-xs hidden items-center justify-center p-3 sm:p-4 z-20">
+                                <div class="bg-canvas-white text-midnight-ink border-3 border-charcoal-border rounded-xl shadow-subtle-4 p-5 sm:p-6 max-w-sm w-full text-center">
+                                    <div class="w-12 h-12 mx-auto mb-2.5 rounded-full bg-card-pink border-2 border-charcoal-border flex items-center justify-center text-xl text-midnight-ink shadow-subtle">
+                                        <i class="fas fa-code-branch"></i>
+                                    </div>
+                                    <h3 id="snake-modal-title" class="text-xl sm:text-2xl font-black font-mono text-midnight-ink mb-1">SESSION TERMINATED</h3>
+                                    <p id="snake-modal-desc" class="text-xs font-mono text-neutral-600 mb-4">Branch conflict detected while pushing commits</p>
+
+                                    <!-- Score Grid -->
+                                    <div class="grid grid-cols-2 gap-2 mb-4 font-mono text-sm">
+                                        <div class="p-2 bg-pale-ash rounded-lg border border-charcoal-border">
+                                            <span class="text-[10px] text-neutral-500 block uppercase font-bold">Commits</span>
+                                            <span id="snake-res-score" class="text-xl font-bold text-emerald-600">0</span>
+                                        </div>
+                                        <div class="p-2 bg-pale-ash rounded-lg border border-charcoal-border">
+                                            <span class="text-[10px] text-neutral-500 block uppercase font-bold">Session Streak</span>
+                                            <span id="snake-res-streak" class="text-xl font-bold text-amber-600">0</span>
+                                        </div>
+                                        <div class="p-2 bg-pale-ash rounded-lg border border-charcoal-border">
+                                            <span class="text-[10px] text-neutral-500 block uppercase font-bold">Best Commits</span>
+                                            <span id="snake-res-best" class="text-xl font-bold text-midnight-ink">0</span>
+                                        </div>
+                                        <div class="p-2 bg-pale-ash rounded-lg border border-charcoal-border">
+                                            <span class="text-[10px] text-neutral-500 block uppercase font-bold">Live GH Streak</span>
+                                            <span id="snake-res-livestreak" class="text-xl font-bold text-accent-green">5 Days</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div class="space-y-2">
+                                        <button id="snake-modal-restart-btn" class="w-full py-2.5 bg-accent-green hover:bg-highlight-yellow active:bg-emerald-400 text-midnight-ink font-mono font-bold text-sm rounded-lg border-2 border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                            <i class="fas fa-redo-alt"></i> Play Again (Restart)
+                                        </button>
+                                        <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-pale-ash hover:bg-canvas-white text-midnight-ink font-mono font-bold text-xs sm:text-sm rounded-lg border-2 border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                            <i class="fab fa-github"></i> View @sagnik-devv on GitHub <i class="fas fa-external-link-alt text-[10px]"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- GitHub Contribution Footer (matches user image) -->
@@ -1054,6 +1095,17 @@
                             <div>
                                 <h4 class="font-bold text-midnight-ink text-sm">JavaScript (HTML/CSS)</h4>
                                 <p class="text-xs font-medium text-midnight-ink">Interactive Web Development</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center gap-4 bg-canvas-white p-2 pl-4 pb-4 rounded-sm border border-charcoal-border shadow-subtle mt-4 rotate-[1.5deg] hover:rotate-0 hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                            <!-- Pushpin -->
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 border-2 border-charcoal-border shadow-[2px_2px_0_0_#171717] z-10">
+                                <div class="absolute top-0.5 left-0.5 w-1 h-1 rounded-full bg-white opacity-70"></div>
+                            </div>
+                            <span class="font-bold text-lg text-midnight-ink w-8 text-center">C++</span>
+                            <div>
+                                <h4 class="font-bold text-midnight-ink text-sm">C++</h4>
+                                <p class="text-xs font-medium text-midnight-ink">OOP &bull; DSA &bull; Modern STL</p>
                             </div>
                         </div>
                         <div class="relative flex items-center gap-4 bg-canvas-white p-2 pl-4 pb-4 rounded-sm border border-charcoal-border shadow-subtle mt-4 rotate-[1.5deg] hover:rotate-0 hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
