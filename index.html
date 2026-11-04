@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Sagnik Portfolio">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
     <title>Sagnik Chakraborty | Portfolio</title>
     <link rel="icon" type="image/png" href="cursor.png">
     <link rel="apple-touch-icon" href="cursor-64.png">
@@ -52,6 +58,20 @@
         }
     </script>
     <style>
+        /* Mobile-Native Core Reset & Touch Feedback */
+        *, *::before, *::after {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         /* Custom Website Cursor */
         html,
         body,
@@ -71,6 +91,8 @@
         select,
         summary {
             cursor: -webkit-image-set(url('cursor.png') 1x, url('cursor-64.png') 2x) 15 1, url('cursor.png') 15 1, pointer !important;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* Keep text cursor for editable inputs and typing fields */
@@ -81,12 +103,23 @@
             cursor: text !important;
         }
 
+        /* Mobile Native Input Optimization - prevent iOS 16px auto-zoom */
+        input, textarea, select {
+            font-size: 16px !important;
+            touch-action: manipulation;
+        }
+
         body {
             background-color: #ffffff;
             color: #000000;
             scroll-behavior: smooth;
             font-family: 'Satoshi', sans-serif;
             font-weight: 500;
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            padding-bottom: env(safe-area-inset-bottom, 0px);
         }
         
         ::-webkit-scrollbar {
@@ -104,7 +137,11 @@
             background: #000000; 
         }
         
-        /* Funky scrollbar for mobile carousel */
+        /* Funky scrollbar for mobile carousel with iOS momentum scrolling */
+        .overflow-x-auto, .overflow-y-auto, .funky-scrollbar {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
         .funky-scrollbar::-webkit-scrollbar {
             height: 14px;
         }
@@ -117,6 +154,15 @@
             background-color: #171717;
             border-radius: 4px;
         }
+
+        /* Mobile Game Canvases: prevent scroll interference and rubberbanding */
+        canvas {
+            touch-action: none;
+            -webkit-user-select: none;
+            user-select: none;
+            overscroll-behavior: none;
+        }
+
         /* Arcade specific styling */
         .touch-manipulation {
             touch-action: manipulation;
@@ -127,7 +173,7 @@
 
         /* iOS Insta-style Neo-Brutalist Mobile Dock Navigation */
         .mobile-dock-wrapper {
-            bottom: max(1.25rem, calc(0.5rem + env(safe-area-inset-bottom, 0px)));
+            bottom: max(0.85rem, calc(0.35rem + env(safe-area-inset-bottom, 0px)));
         }
         .mobile-dock-pill {
             background-color: rgba(255, 255, 255, 0.94);
@@ -136,18 +182,18 @@
             border: 2px solid #171717;
             box-shadow: 4px 4px 0px #171717;
             border-radius: 9999px;
-            padding: 6px 10px;
+            padding: 5px 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .mobile-nav-btn {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 9999px;
             border: 2px solid transparent;
             color: #171717;
@@ -162,8 +208,14 @@
         .mobile-nav-btn:active {
             transform: scale(0.9) translateY(2px);
         }
-        .mobile-nav-btn.active-arsenal {
+        .mobile-nav-btn.active-games {
             background-color: #a3e635;
+            border-color: #171717;
+            box-shadow: 2px 2px 0px #171717;
+            transform: scale(1.06);
+        }
+        .mobile-nav-btn.active-arsenal {
+            background-color: #fae9ff;
             border-color: #171717;
             box-shadow: 2px 2px 0px #171717;
             transform: scale(1.06);
@@ -180,14 +232,8 @@
             box-shadow: 2px 2px 0px #171717;
             transform: scale(1.06);
         }
-        .mobile-nav-btn.active-linkedin {
+        .mobile-nav-btn.active-contact {
             background-color: #d2fae5;
-            border-color: #171717;
-            box-shadow: 2px 2px 0px #171717;
-            transform: scale(1.06);
-        }
-        .mobile-nav-btn.active-email {
-            background-color: #fbbf25;
             border-color: #171717;
             box-shadow: 2px 2px 0px #171717;
             transform: scale(1.06);
@@ -409,17 +455,17 @@
                 </div>
 
                 <!-- Four-Game Selector -->
-                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-6" role="tablist" aria-label="Arcade Game Selector">
-                    <button id="tab-btn-football" role="tab" aria-selected="true" aria-controls="game-panel-football" class="arcade-tab-btn active-tab px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle-2 -translate-y-0.5 bg-accent-green text-midnight-ink transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-6" role="tablist" aria-label="Arcade Game Selector">
+                    <button id="tab-btn-football" role="tab" aria-selected="true" aria-controls="game-panel-football" class="arcade-tab-btn active-tab px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg font-bold text-[11px] sm:text-sm border-2 border-charcoal-border shadow-subtle-2 -translate-y-0.5 bg-accent-green text-midnight-ink transition-all duration-150 flex items-center gap-1.5 sm:gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border touch-manipulation">
                         <i class="fas fa-futbol"></i> <span>Football Arena</span>
                     </button>
-                    <button id="tab-btn-snake" role="tab" aria-selected="false" aria-controls="game-panel-snake" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                    <button id="tab-btn-snake" role="tab" aria-selected="false" aria-controls="game-panel-snake" class="arcade-tab-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg font-bold text-[11px] sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-1.5 sm:gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border touch-manipulation">
                         <i class="fab fa-github text-emerald-600"></i> <span>Git Commit Snake</span>
                     </button>
-                    <button id="tab-btn-type" role="tab" aria-selected="false" aria-controls="game-panel-type" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                    <button id="tab-btn-type" role="tab" aria-selected="false" aria-controls="game-panel-type" class="arcade-tab-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg font-bold text-[11px] sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-1.5 sm:gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border touch-manipulation">
                         <i class="fas fa-keyboard text-amber-600"></i> <span>Type or Die</span>
                     </button>
-                    <button id="tab-btn-fighter" role="tab" aria-selected="false" aria-controls="game-panel-fighter" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
+                    <button id="tab-btn-fighter" role="tab" aria-selected="false" aria-controls="game-panel-fighter" class="arcade-tab-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg font-bold text-[11px] sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-1.5 sm:gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border touch-manipulation">
                         <i class="fas fa-fist-raised text-rose-600"></i> <span>Street Tekken</span>
                     </button>
                 </div>
@@ -1042,7 +1088,7 @@
     <section id="skills" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 text-center">
-                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Technical Arsenal</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Technical Arsenal</h2>
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">A quick look at the languages and tools I use to build data-driven applications.</p>
             </div>
 
@@ -1255,7 +1301,7 @@
 <!-- Developer Profiles Widget -->
 <div class="mt-24 border-t-2 border-charcoal-border pt-16" id="dev-profiles">
     <div class="mb-8 text-center">
-        <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Coding & Open Source</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Coding & Open Source</h2>
         <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">Toggle between live GitHub contributions and LeetCode problem-solving metrics.</p>
     </div>
 
@@ -2266,7 +2312,7 @@
     <section id="projects" class="py-12 md:py-24 bg-lime-spritz-gradient border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -2406,7 +2452,7 @@
     <section id="achievements" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Achievements</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Achievements</h2>
             </div>
 
             <div class="max-w-4xl mx-auto bg-highlight-yellow rounded-lg border border-charcoal-border shadow-subtle flex flex-col md:flex-row hover:shadow-subtle-2 transition-all">
@@ -2441,7 +2487,7 @@
     <section id="certifications" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <h2 class="text-4xl font-bold tracking-tight text-midnight-ink mb-4">Certifications</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Certifications</h2>
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl">Official courses and credentials I've earned to level up my skills.</p>
             </div>
 
@@ -2612,6 +2658,17 @@
     <!-- iOS / Insta-Style Neo-Brutalist Mobile Dock Navigation -->
     <nav id="mobile-dock-nav" aria-label="Mobile Navigation" class="md:hidden fixed mobile-dock-wrapper left-1/2 -translate-x-1/2 z-50 transition-all duration-300">
         <div class="mobile-dock-pill">
+            <!-- Games Arcade (Gamepad Shape) -->
+            <a href="#pitch-game" data-section="games" data-active-class="active-games" class="mobile-nav-btn" aria-label="Games Arcade" title="Playable Games">
+                <svg class="w-5 h-5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="12" x2="10" y2="12"></line>
+                    <line x1="8" y1="10" x2="8" y2="14"></line>
+                    <line x1="15" y1="13" x2="15.01" y2="13"></line>
+                    <line x1="18" y1="11" x2="18.01" y2="11"></line>
+                    <rect x="2" y="6" width="20" height="12" rx="4"></rect>
+                </svg>
+            </a>
+
             <!-- Tech Arsenal (3D Cube Shape) -->
             <a href="#skills" data-section="skills" data-active-class="active-arsenal" class="mobile-nav-btn" aria-label="Tech Arsenal" title="Tech Arsenal">
                 <svg class="w-5 h-5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -2640,18 +2697,14 @@
                 </svg>
             </a>
 
-            <!-- LinkedIn (Official LinkedIn Glyph Shape) -->
-            <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/d" target="_blank" rel="noopener noreferrer" data-section="linkedin" data-active-class="active-linkedin" class="mobile-nav-btn" aria-label="LinkedIn Profile" title="LinkedIn">
-                <svg class="w-5 h-5 fill-current pointer-events-none" viewBox="0 0 24 24">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                </svg>
-            </a>
-
-            <!-- Email (Envelope Shape) -->
-            <a href="mailto:sagnik.devv@gmail.com" data-section="contact" data-active-class="active-email" class="mobile-nav-btn" aria-label="Send Email" title="Email">
+            <!-- Contact & Cal.com (Calendar-Check Shape) -->
+            <a href="#contact" data-section="contact" data-active-class="active-contact" class="mobile-nav-btn" aria-label="Connect & Cal.com" title="Let's Connect">
                 <svg class="w-5 h-5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="20" height="16" x="2" y="4" rx="2"/>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                    <polyline points="9 16 11 18 15 14"></polyline>
                 </svg>
             </a>
         </div>
@@ -2662,10 +2715,11 @@
         (function() {
             const dockButtons = document.querySelectorAll('.mobile-nav-btn');
             const trackItems = [
+                { id: 'pitch-game', btn: document.querySelector('.mobile-nav-btn[data-section="games"]'), activeClass: 'active-games' },
                 { id: 'skills', btn: document.querySelector('.mobile-nav-btn[data-section="skills"]'), activeClass: 'active-arsenal' },
                 { id: 'projects', btn: document.querySelector('.mobile-nav-btn[data-section="projects"]'), activeClass: 'active-projects' },
                 { id: 'certifications', btn: document.querySelector('.mobile-nav-btn[data-section="certifications"]'), activeClass: 'active-certifications' },
-                { id: 'contact', btn: document.querySelector('.mobile-nav-btn[data-section="contact"]'), activeClass: 'active-email' }
+                { id: 'contact', btn: document.querySelector('.mobile-nav-btn[data-section="contact"]'), activeClass: 'active-contact' }
             ];
 
             function setDockActive(sectionId) {
@@ -2696,13 +2750,8 @@
                                 top: offsetPosition,
                                 behavior: 'smooth'
                             });
-                            setDockActive(targetSec);
+                            setDockActive(targetSec === 'games' ? 'pitch-game' : targetSec);
                         }
-                    } else if (targetSec === 'linkedin') {
-                        // Momentary active flash on external click
-                        const linkedinBtn = this;
-                        linkedinBtn.classList.add('active-linkedin');
-                        setTimeout(() => linkedinBtn.classList.remove('active-linkedin'), 800);
                     }
                 });
             });
@@ -2714,7 +2763,7 @@
                 const viewHeight = window.innerHeight;
                 const docHeight = document.documentElement.scrollHeight;
 
-                // If scrolled near bottom, highlight email / contact
+                // If scrolled near bottom, highlight contact
                 if (scrollY + viewHeight >= docHeight - 90) {
                     setDockActive('contact');
                     return;
@@ -2724,7 +2773,7 @@
                 trackItems.forEach(item => {
                     const el = document.getElementById(item.id);
                     if (el) {
-                        const top = el.offsetTop - 120;
+                        const top = el.offsetTop - 140;
                         const bottom = top + el.offsetHeight;
                         if (scrollY >= top && scrollY < bottom) {
                             currentActive = item.id;
@@ -2732,7 +2781,11 @@
                     }
                 });
 
-                setDockActive(currentActive);
+                if (currentActive) {
+                    setDockActive(currentActive);
+                } else if (scrollY < 300) {
+                    setDockActive(null);
+                }
             }
 
             window.addEventListener('scroll', () => {
@@ -2797,7 +2850,7 @@
     <script src="arcade-manager.js"></script>
 
     <!-- ================= FLOATING ROBLOX AVATAR COMPANION ================= -->
-    <div id="roblox-companion-container" class="fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40 select-none pointer-events-auto transition-all duration-300">
+    <div id="roblox-companion-container" class="fixed bottom-24 right-2 sm:right-3 md:bottom-6 md:right-6 z-40 select-none pointer-events-auto transition-all duration-300">
         <!-- Speech Bubble -->
         <div id="roblox-speech-bubble" class="absolute -top-12 right-0 md:-top-14 md:right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3 py-1.5 shadow-subtle text-xs font-bold text-midnight-ink whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
             <span id="roblox-speech-text">Hey there! 🎮</span>
@@ -2809,8 +2862,8 @@
 
         <!-- Avatar Canvas Wrapper -->
         <div id="roblox-avatar-wrapper" class="relative group cursor-pointer transition-transform duration-200" title="Click to interact with Sagnik's Avatar!">
-            <!-- Minimize Button -->
-            <button id="roblox-minimize-btn" class="absolute -top-1 -left-1 w-5 h-5 bg-canvas-white border border-charcoal-border rounded-full flex items-center justify-center text-[10px] font-bold text-midnight-ink shadow-subtle opacity-0 group-hover:opacity-100 hover:bg-card-pink transition-all z-20 cursor-pointer" title="Minimize Avatar">
+            <!-- Minimize Button (Mobile touch-friendly) -->
+            <button id="roblox-minimize-btn" class="absolute -top-1 -left-1 w-6 h-6 sm:w-5 sm:h-5 bg-canvas-white border-2 sm:border border-charcoal-border rounded-full flex items-center justify-center text-xs sm:text-[10px] font-black text-midnight-ink shadow-subtle opacity-90 sm:opacity-0 sm:group-hover:opacity-100 hover:bg-card-pink transition-all z-20 cursor-pointer touch-manipulation" title="Minimize Avatar">
                 &times;
             </button>
 

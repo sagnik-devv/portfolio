@@ -1361,6 +1361,11 @@
         }
 
         initEvents() {
+            // Prevent page dragging when touching game canvas
+            this.canvas.addEventListener('touchmove', (e) => {
+                if (e.cancelable) e.preventDefault();
+            }, { passive: false });
+
             // Keyboard Controls
             window.addEventListener('keydown', (e) => {
                 if (!this.isActive) return;
@@ -1466,6 +1471,7 @@
 
             btn.addEventListener('touchstart', handleDown, { passive: false });
             btn.addEventListener('touchend', handleUp, { passive: false });
+            btn.addEventListener('touchcancel', handleUp, { passive: false });
             btn.addEventListener('mousedown', handleDown);
             btn.addEventListener('mouseup', handleUp);
             btn.addEventListener('mouseleave', handleUp);

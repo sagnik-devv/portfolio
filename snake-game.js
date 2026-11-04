@@ -977,6 +977,10 @@
                 }
             }, { passive: true });
 
+            this.canvas.addEventListener('touchmove', (e) => {
+                if (e.cancelable) e.preventDefault();
+            }, { passive: false });
+
             this.canvas.addEventListener('touchend', (e) => {
                 if (!this.isActive) return;
                 if (this.state === 'IDLE' || this.state === 'GAME_OVER') {
@@ -1084,6 +1088,8 @@
             };
 
             btn.addEventListener('touchstart', handler, { passive: false });
+            btn.addEventListener('touchend', (e) => { e.preventDefault(); }, { passive: false });
+            btn.addEventListener('touchcancel', (e) => { e.preventDefault(); }, { passive: false });
             btn.addEventListener('mousedown', handler);
         }
 

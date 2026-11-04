@@ -873,7 +873,11 @@
             this.bindTouchButton('btn-touch-jump', (pressed) => this.keys.up = pressed);
             this.bindTouchButton('btn-touch-kick', (pressed) => this.keys.kick = pressed);
 
-            // Canvas Click / Tap Play Me Button
+            // Canvas Touch & Click / Tap Play Me Button
+            this.canvas.addEventListener('touchmove', (e) => {
+                if (e.cancelable) e.preventDefault();
+            }, { passive: false });
+
             this.canvas.addEventListener('click', (e) => {
                 const rect = this.canvas.getBoundingClientRect();
                 const scaleX = CANVAS_WIDTH / rect.width;
