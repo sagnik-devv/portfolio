@@ -28,143 +28,18 @@
         };
     }
 
-    // Web Audio Synthesizer (Zero external dependencies)
+    // Audio completely disabled
     class RetroSound {
         constructor() {
             this.ctx = null;
-            this.muted = false;
+            this.muted = true;
         }
 
-        init() {
-            if (!this.ctx) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (AudioContext) {
-                    this.ctx = new AudioContext();
-                }
-            }
-            if (this.ctx && this.ctx.state === 'suspended') {
-                this.ctx.resume();
-            }
-        }
-
-        playKick() {
-            if (this.muted) return;
-            this.init();
-            if (!this.ctx) return;
-            const now = this.ctx.currentTime;
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(220, now);
-            osc.frequency.exponentialRampToValueAtTime(40, now + 0.12);
-
-            gain.gain.setValueAtTime(0.5, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
-
-            osc.connect(gain);
-            gain.connect(this.ctx.destination);
-
-            osc.start(now);
-            osc.stop(now + 0.12);
-        }
-
-        playWhistle(isGoal = false) {
-            if (this.muted) return;
-            this.init();
-            if (!this.ctx) return;
-            const now = this.ctx.currentTime;
-
-            const osc1 = this.ctx.createOscillator();
-            const osc2 = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-
-            osc1.type = 'sine';
-            osc2.type = 'sine';
-            osc1.frequency.setValueAtTime(2400, now);
-            osc2.frequency.setValueAtTime(2425, now);
-
-            if (isGoal) {
-                // Triple blast
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.setValueAtTime(0.0, now + 0.12);
-                gain.gain.setValueAtTime(0.3, now + 0.18);
-                gain.gain.setValueAtTime(0.0, now + 0.3);
-                gain.gain.setValueAtTime(0.35, now + 0.36);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.7);
-                osc1.start(now);
-                osc2.start(now);
-                osc1.stop(now + 0.7);
-                osc2.stop(now + 0.7);
-            } else {
-                // Short blast
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-                osc1.start(now);
-                osc2.start(now);
-                osc1.stop(now + 0.25);
-                osc2.stop(now + 0.25);
-            }
-
-            osc1.connect(gain);
-            osc2.connect(gain);
-            gain.connect(this.ctx.destination);
-        }
-
-        playCrossbar() {
-            if (this.muted) return;
-            this.init();
-            if (!this.ctx) return;
-            const now = this.ctx.currentTime;
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-
-            osc.type = 'square';
-            osc.frequency.setValueAtTime(880, now);
-            osc.frequency.exponentialRampToValueAtTime(320, now + 0.2);
-
-            gain.gain.setValueAtTime(0.35, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
-
-            osc.connect(gain);
-            gain.connect(this.ctx.destination);
-
-            osc.start(now);
-            osc.stop(now + 0.2);
-        }
-
-        playCheer() {
-            if (this.muted) return;
-            this.init();
-            if (!this.ctx) return;
-            const bufferSize = this.ctx.sampleRate * 1.5;
-            const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                data[i] = Math.random() * 2 - 1;
-            }
-
-            const noise = this.ctx.createBufferSource();
-            noise.buffer = buffer;
-
-            const filter = this.ctx.createBiquadFilter();
-            filter.type = 'bandpass';
-            filter.frequency.setValueAtTime(1200, this.ctx.currentTime);
-            filter.Q.setValueAtTime(1.2, this.ctx.currentTime);
-
-            const gain = this.ctx.createGain();
-            const now = this.ctx.currentTime;
-            gain.gain.setValueAtTime(0.05, now);
-            gain.gain.linearRampToValueAtTime(0.28, now + 0.3);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + 1.5);
-
-            noise.connect(filter);
-            filter.connect(gain);
-            gain.connect(this.ctx.destination);
-
-            noise.start(now);
-            noise.stop(now + 1.5);
-        }
+        init() {}
+        playKick() {}
+        playWhistle() {}
+        playCrossbar() {}
+        playCheer() {}
     }
 
     // Ball Class
