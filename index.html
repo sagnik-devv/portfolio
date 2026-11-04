@@ -3134,7 +3134,7 @@
     <!-- ================= FLOATING ROBLOX AVATAR COMPANION ================= -->
     <div id="roblox-companion-container" class="fixed bottom-24 right-2 sm:right-3 md:bottom-6 md:right-6 z-40 select-none pointer-events-auto transition-all duration-300">
         <!-- Speech Bubble -->
-        <div id="roblox-speech-bubble" class="absolute -top-12 right-0 md:-top-14 md:right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3 py-1.5 shadow-subtle text-xs font-bold text-midnight-ink whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
+        <div id="roblox-speech-bubble" class="absolute bottom-[calc(100%+8px)] right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3 py-2 shadow-subtle text-xs font-bold text-midnight-ink max-w-[240px] sm:max-w-[280px] md:max-w-[320px] leading-snug text-left opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
             <span id="roblox-speech-text">Hey there! 🎮</span>
             <div class="absolute -bottom-1.5 right-6 w-2.5 h-2.5 bg-canvas-white border-r-2 border-b-2 border-charcoal-border transform rotate-45"></div>
         </div>
@@ -3256,34 +3256,75 @@
             document.addEventListener('scroll', startPlayback, { once: true, passive: true });
             startPlayback();
 
-            // Interactive quotes & speech bubble (dynamically personalized)
+            // Interactive tech quotes & speech bubble (dynamically personalized with visitor name)
             function getDialogues() {
-                const name = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
+                const rawName = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
+                const name = rawName.trim();
                 if (name) {
                     return [
-                        `Hey ${name}! Welcome to my portfolio! 🎮`,
-                        `Think you can score on me in the 1v1 Arena, ${name}? ⚽`,
-                        `Check out my live LeetCode stats, ${name}! 💻`,
-                        `Built with code, data & AI 🧠`,
-                        `Check out the Riwaaz project, ${name}! ✨`,
-                        `Tap my CV to download! 📄`,
-                        `Clean code & playful design! 🚀`
+                        `Hey ${name}! Welcome to my portfolio! Let's explore some code. 🎮`,
+                        `Python & C++ are my primary power tools, ${name}! Object-oriented & lightning fast. 🐍⚡`,
+                        `Writing clean, modern C++ with STL & solving DSA problems daily, ${name}! 💡`,
+                        `Need an optimized O(n log n) solution or clean OOP architecture, ${name}? 🧠`,
+                        `I love clean code with zero spaghetti — readable, tested, and maintainable, ${name}! 🍝🚫`,
+                        `Crunching datasets with Pandas & vectorizing with NumPy is my jam, ${name}! 📊`,
+                        `I turn messy raw numbers into high-impact data visualizations with Matplotlib, ${name}! 📈`,
+                        `Data-driven engineering beats guesswork every single time, ${name}! 🧪`,
+                        `Building lightweight, responsive web backends with Python Flask, ${name}! 🌐`,
+                        `Zero CSS framework bloat here, ${name} — pure, crisp Neo-Brutalist design! 🎨`,
+                        `Sub-second page loads, responsive touch layouts & 100 Lighthouse performance, ${name}! ⚡`,
+                        `Writing indexed SQL queries that execute in under 10ms, ${name}! 🗄️`,
+                        `Relational schema design with ACID guarantees & foreign key integrity, ${name}! ⚙️`,
+                        `Building practical AI workflows and smart automation with modern LLMs, ${name}! 🤖`,
+                        `Not just hype, ${name} — practical AI solutions that solve real engineering bottlenecks! 🧠`,
+                        `Slither over to Git Commit Snake above to test my live GitHub streak, ${name}! 🐙`,
+                        `Atomic commits, meaningful PR descriptions & clean branch graphs, ${name}! 🌿`,
+                        `Over 200+ DSA problems solved on LeetCode — check out my live stats, ${name}! 🧩`,
+                        `Sliding windows, tree traversals, and dynamic programming are second nature, ${name}! 🔍`,
+                        `Have you explored Riwaaz — luxury couture fashion platform, ${name}? ✨`,
+                        `Built Nexus QR & PujoNavigation to solve real everyday user navigation, ${name}! 📍`,
+                        `Engineered a custom CGPA calculator for my university peers, ${name}! 🎓`,
+                        `Think your typing speed can beat my code prompts in Type or Die, ${name}? ⌨️`,
+                        `Step onto the pitch in the 1v1 Football Arena — think you can score on me, ${name}? ⚽`,
+                        `Ready to trade martial combos with me in Street Tekken, ${name}? 🥊`,
+                        `Looking for an engineer who ships production-ready code, ${name}? Let's connect! 💼`,
+                        `Grab a quick 15-minute chat directly on my Cal.com calendar below, ${name}! 📅`,
+                        `Tap the "Download CV" button at the top to grab my latest resume PDF, ${name}! 📄`
                     ];
                 }
                 return [
-                    "Hey! Welcome to my portfolio! 🎮",
-                    "Try my 1v1 Football game up in The Arcade! ⚽",
-                    "Check out my live LeetCode stats! 💻",
-                    "Built with code, data & AI 🧠",
-                    "Check out the Riwaaz project! ✨",
-                    "Tap my CV to download! 📄",
-                    "Clean code & playful design! 🚀"
+                    "Hey! Welcome to my portfolio! Type your name in the hero section above! 🎮",
+                    "Python & C++ are my primary power tools! Object-oriented & lightning fast. 🐍⚡",
+                    "Writing clean, modern C++ with STL & solving DSA problems daily! 💡",
+                    "Need an optimized O(n log n) solution or clean OOP architecture? 🧠",
+                    "I love clean code with zero spaghetti — readable, tested, and maintainable! 🍝🚫",
+                    "Crunching datasets with Pandas & vectorizing with NumPy is my jam! 📊",
+                    "I turn messy raw numbers into high-impact data visualizations with Matplotlib! 📈",
+                    "Data-driven engineering beats guesswork every single time! 🧪",
+                    "Building lightweight, responsive web backends with Python Flask! 🌐",
+                    "Zero CSS framework bloat — pure, crisp Neo-Brutalist design! 🎨",
+                    "Sub-second page loads, responsive touch layouts & 100 Lighthouse performance! ⚡",
+                    "Writing indexed SQL queries that execute in under 10ms! 🗄️",
+                    "Relational schema design with ACID guarantees & foreign key integrity! ⚙️",
+                    "Building practical AI workflows and smart automation with modern LLMs! 🤖",
+                    "Slither over to Git Commit Snake above to test my live GitHub streak! 🐙",
+                    "Atomic commits, meaningful PR descriptions & clean branch graphs! 🌿",
+                    "Over 200+ DSA problems solved on LeetCode — check out my live stats! 🧩",
+                    "Sliding windows, tree traversals, and dynamic programming are second nature! 🔍",
+                    "Have you explored Riwaaz — luxury couture fashion platform? ✨",
+                    "Built Nexus QR & PujoNavigation to solve real everyday user navigation! 📍",
+                    "Think your typing speed can beat my code prompts in Type or Die? ⌨️",
+                    "Step onto the pitch in the 1v1 Football Arena — think you can score on me? ⚽",
+                    "Ready to trade martial combos with me in Street Tekken? 🥊",
+                    "Looking for an engineer who ships production-ready code? Let's connect! 💼",
+                    "Grab a quick 15-minute chat directly on my Cal.com calendar below! 📅",
+                    "Tap the 'Download CV' button at the top to grab my latest resume PDF! 📄"
                 ];
             }
             let diagIndex = 0;
             let bubbleTimer = null;
 
-            function showDialogue(text, duration = 3500) {
+            function showDialogue(text, duration = 3800) {
                 if (!bubble || !speechText) return;
                 speechText.textContent = text;
                 bubble.classList.remove('opacity-0', 'translate-y-2');
@@ -3310,8 +3351,46 @@
                 // Greet briefly on initial load
                 setTimeout(() => {
                     const name = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
-                    showDialogue(name ? `Yo ${name}! I'm Sagnik's Avatar 🎮` : "Yo! I'm Sagnik's Avatar 🎮", 4000);
+                    showDialogue(name ? `Yo ${name}! I'm Sagnik's Avatar 🎮 Tap me for tech insights!` : "Yo! I'm Sagnik's Avatar 🎮 Tap me for tech insights!", 4500);
                 }, 1200);
+            }
+
+            // Real-time listener: actively react when visitor enters/updates their name
+            window.addEventListener('visitorNameChanged', (e) => {
+                const newName = e.detail && e.detail.name ? e.detail.name.trim() : '';
+                if (newName) {
+                    showDialogue(`Awesome to meet you, ${newName}! Tap me anytime to hear about my tech stack! 🚀`, 4000);
+                }
+            });
+
+            // Section-Aware Tech Prompts as user navigates
+            const observedSections = [
+                { id: 'arcade', prompt: (n) => n ? `Ready to challenge me in The Arcade, ${n}? 🎮` : 'Ready to challenge me in The Arcade? 🎮' },
+                { id: 'skills', prompt: (n) => n ? `Here's my Technical Arsenal, ${n}! Python, C++, SQL & more 🛠️` : "Here's my Technical Arsenal! Python, C++, SQL & more 🛠️" },
+                { id: 'projects', prompt: (n) => n ? `Check out my featured projects, ${n}! Real products shipped 🚀` : 'Check out my featured projects! Real products shipped 🚀' },
+                { id: 'experience', prompt: (n) => n ? `My education & engineering journey, ${n}! 🎓` : 'My education & engineering journey! 🎓' },
+                { id: 'contact', prompt: (n) => n ? `Let's build something epic together, ${n}! Book a chat below 📬` : "Let's build something epic together! Book a chat below 📬" }
+            ];
+
+            const visitedSections = new Set();
+            if ('IntersectionObserver' in window) {
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const match = observedSections.find(s => s.id === entry.target.id);
+                            if (match && !visitedSections.has(match.id)) {
+                                visitedSections.add(match.id);
+                                const name = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
+                                showDialogue(match.prompt(name), 3800);
+                            }
+                        }
+                    });
+                }, { threshold: 0.25 });
+
+                observedSections.forEach(s => {
+                    const el = document.getElementById(s.id);
+                    if (el) sectionObserver.observe(el);
+                });
             }
 
             // Minimize / Restore
@@ -3327,7 +3406,8 @@
                     minPill.classList.add('hidden');
                     wrapper.classList.remove('hidden');
                     if (bubble) bubble.classList.remove('hidden');
-                    showDialogue("I'm back! 🎮", 2500);
+                    const name = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
+                    showDialogue(name ? `I'm back, ${name}! Let's build! 🎮` : "I'm back! Let's build! 🎮", 2800);
                 });
             }
         })();

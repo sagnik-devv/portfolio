@@ -1261,7 +1261,10 @@
             ctx.rect(0, boardY, CANVAS_WIDTH, boardH);
             ctx.clip();
 
-            const textSegment = '   ★  SAGNIK.DEV  ✦  SAGNIK CHAKRABORTY  ✦  AI & FULL STACK  ✦  1v1 ARENA  ✦  GOALAZO!  ';
+            const visitorPart = (this.visitor && this.visitor.name && this.visitor.name !== 'Visitor') 
+                ? ` ✦ WELCOME ${this.visitor.name.toUpperCase()}! ✦ ` 
+                : '';
+            const textSegment = `   ★  SAGNIK.DEV  ✦  SAGNIK CHAKRABORTY  ✦${visitorPart}  PYTHON & C++  ✦  AI & FULL STACK  ✦  1v1 ARENA  ✦  GOALAZO!  `;
             ctx.font = 'bold 13px "Courier New", monospace';
             const segWidth = ctx.measureText(textSegment).width;
 
@@ -1591,9 +1594,10 @@
             ctx.textAlign = 'center';
 
             let title = '';
-            if (isDraw) title = '🤝 DRAW MATCH!';
-            else if (isWinnerVisitor) title = `🏆 ${this.visitor.name.toUpperCase()} WINS!`;
-            else title = '👑 SAGNIK WINS!';
+            const vName = (this.visitor && this.visitor.name) ? this.visitor.name.toUpperCase() : 'VISITOR';
+            if (isDraw) title = `🤝 DRAW MATCH, ${vName}!`;
+            else if (isWinnerVisitor) title = `🏆 ${vName} WINS!`;
+            else title = (vName !== 'VISITOR') ? `👑 SAGNIK WINS! GG, ${vName}!` : '👑 SAGNIK WINS!';
 
             ctx.fillText(title, CANVAS_WIDTH / 2, bY + 45);
 

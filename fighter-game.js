@@ -1533,7 +1533,11 @@
             this.particles.clear();
 
             // Display Round Intro Banner
-            this.showAnnouncement(`ROUND ${this.currentRound}`, 'READY... FIGHT!', 1800, () => {
+            const fighterName = (this.p1?.name && this.p1.name !== 'VISITOR' && !this.p1.name.includes('(You)')) 
+                ? this.p1.name.toUpperCase() 
+                : '';
+            const fightSub = fighterName ? `READY... FIGHT, ${fighterName}!` : 'READY... FIGHT!';
+            this.showAnnouncement(`ROUND ${this.currentRound}`, fightSub, 1800, () => {
                 this.roundState = 'fight';
                 this.audio.playRoundStart();
                 this.startTimer();

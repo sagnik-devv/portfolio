@@ -172,7 +172,13 @@
 
             // Pick random prompt from selected category
             const list = PROMPTS[this.difficulty] || PROMPTS.beginner;
-            this.currentPrompt = list[Math.floor(Math.random() * list.length)];
+            let rawPrompt = list[Math.floor(Math.random() * list.length)];
+            if (this.playerName && this.playerName !== 'Visitor') {
+                rawPrompt = rawPrompt
+                    .replace(/^Recruiter:/, `Recruiter (${this.playerName}):`)
+                    .replace(/^Interviewer:/, `Interviewer (${this.playerName}):`);
+            }
+            this.currentPrompt = rawPrompt;
 
             this.updateStatsDisplay();
             this.renderPromptText();
