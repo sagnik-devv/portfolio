@@ -346,13 +346,32 @@
                     </div>
 
                     <!-- 3. Headline -->
-                    <h1 class="order-3 text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-midnight-ink mb-6 mt-4 lg:mt-0 leading-tight">
-                        Building with <br/><span class="bg-accent-green px-2 border border-charcoal-border shadow-subtle-3 hover:shadow-subtle hover:-translate-y-1 hover:rotate-0 inline-block mt-2 transform -rotate-1 transition-all duration-300 cursor-pointer">Code, Data & AI</span>
+                    <h1 class="order-3 text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-midnight-ink mb-6 mt-4 lg:mt-0 leading-tight">
+                        <span class="inline-block">Hey,</span>
+                        <span class="inline-block relative my-1 align-baseline">
+                            <input 
+                                type="text" 
+                                id="hero-visitor-name-input" 
+                                placeholder="{Enter your Name}" 
+                                autocomplete="off"
+                                spellcheck="false"
+                                maxlength="20"
+                                aria-label="Enter your name"
+                                class="bg-accent-green text-midnight-ink placeholder-midnight-ink/50 font-black px-3 py-1 sm:px-4 sm:py-1.5 border-2 sm:border-3 border-charcoal-border rounded-xl shadow-subtle hover:shadow-subtle-2 focus:shadow-subtle-2 focus:outline-none focus:ring-2 focus:ring-midnight-ink transform -rotate-1 inline-block transition-all text-xl sm:text-3xl lg:text-5xl cursor-text text-center"
+                                style="width: min(calc(18ch + 1.5rem), 85vw);"
+                            />
+                            <span class="absolute -top-3 -right-2 text-base sm:text-xl pointer-events-none select-none">✨</span>
+                        </span>
+                        <span class="inline-block">! 👋</span>
+                        <br/>
+                        <span id="hero-welcome-subtext" class="inline-block mt-3 text-2xl sm:text-4xl lg:text-5xl font-black text-neutral-800 leading-snug">
+                            Welcome to my corner of the web! <span class="bg-highlight-yellow px-2 py-0.5 border-2 border-charcoal-border shadow-subtle-3 rounded-md inline-block transform rotate-1 text-midnight-ink">Glad you're here.</span>
+                        </span>
                     </h1>
 
                     <!-- 4. Description Text -->
-                    <p class="order-4 text-lg text-midnight-ink mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
-                        Computer Science student building <span class="bg-card-lavender px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 -rotate-1 inline-block cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">practical software</span>, <span class="bg-card-mint px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">data-driven tools</span>, and <span class="bg-card-saffron px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 -rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">AI-powered solutions</span>. Always learning, building, and pushing ideas from <span class="bg-card-pink px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">concept to reality</span>.
+                    <p class="order-4 text-base sm:text-lg text-midnight-ink mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                        I build <span class="bg-card-lavender px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 -rotate-1 inline-block cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">practical software</span>, <span class="bg-card-mint px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">data-driven tools</span>, and <span class="bg-card-saffron px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 -rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">AI solutions</span> with clean code and playful UX. Take a look around, battle me in the arcade below, or drop a quick hi!
                     </p>
 
                     <!-- 5. Action Buttons -->
@@ -2987,6 +3006,82 @@
                 initMobileCarousel('skills-carousel', 'skills-carousel-counter', '.skills-dot');
                 initMobileCarousel('projects-carousel', 'projects-carousel-counter', '.project-dot');
                 initMobileCarousel('certifications-carousel', 'certifications-carousel-counter', '.cert-dot');
+            });
+        })();
+    </script>
+
+    <!-- Interactive Visitor Welcome & Name Personalization -->
+    <script>
+        (function() {
+            const nameInput = document.getElementById('hero-visitor-name-input');
+            const welcomeSubtext = document.getElementById('hero-welcome-subtext');
+            if (!nameInput) return;
+
+            function adjustInputWidth() {
+                const val = nameInput.value;
+                if (!val) {
+                    nameInput.style.width = 'min(calc(18ch + 1.5rem), 85vw)';
+                } else {
+                    const charCount = Math.max(val.length, 5);
+                    nameInput.style.width = `min(calc(${charCount + 2}ch + 1.25rem), 85vw)`;
+                }
+            }
+
+            function updateGreeting(name, save = true) {
+                const cleanName = name ? name.trim() : '';
+                if (cleanName) {
+                    if (welcomeSubtext) {
+                        welcomeSubtext.innerHTML = `Awesome to have you here, <span class="bg-highlight-yellow px-2 py-0.5 border-2 border-charcoal-border shadow-subtle-3 rounded-md inline-block transform rotate-1 text-midnight-ink">${cleanName}</span>! Let's build something epic. 🚀`;
+                    }
+                    // Sync with Football Arena visitor badge
+                    const arenaDisplay = document.getElementById('arena-visitor-display');
+                    if (arenaDisplay) arenaDisplay.textContent = cleanName;
+                    // Sync with Roblox companion speech bubble
+                    const robloxText = document.getElementById('roblox-speech-text');
+                    if (robloxText) robloxText.textContent = `Hey ${cleanName}! 🎮`;
+                    if (save) {
+                        try { localStorage.setItem('sagnik_portfolio_visitor', cleanName); } catch(e) {}
+                    }
+                } else {
+                    if (welcomeSubtext) {
+                        welcomeSubtext.innerHTML = `Welcome to my corner of the web! <span class="bg-highlight-yellow px-2 py-0.5 border-2 border-charcoal-border shadow-subtle-3 rounded-md inline-block transform rotate-1 text-midnight-ink">Glad you're here.</span>`;
+                    }
+                    const arenaDisplay = document.getElementById('arena-visitor-display');
+                    if (arenaDisplay) arenaDisplay.textContent = 'Visitor';
+                    const robloxText = document.getElementById('roblox-speech-text');
+                    if (robloxText) robloxText.textContent = 'Hey there! 🎮';
+                    if (save) {
+                        try { localStorage.removeItem('sagnik_portfolio_visitor'); } catch(e) {}
+                    }
+                }
+            }
+
+            nameInput.addEventListener('input', () => {
+                adjustInputWidth();
+                updateGreeting(nameInput.value, true);
+            });
+
+            // On enter key, blur input to dismiss mobile keyboard smoothly
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    nameInput.blur();
+                }
+            });
+
+            // Restore from localStorage if present
+            document.addEventListener('DOMContentLoaded', () => {
+                try {
+                    const saved = localStorage.getItem('sagnik_portfolio_visitor');
+                    if (saved) {
+                        nameInput.value = saved;
+                        adjustInputWidth();
+                        updateGreeting(saved, false);
+                    } else {
+                        adjustInputWidth();
+                    }
+                } catch(e) {
+                    adjustInputWidth();
+                }
             });
         })();
     </script>
