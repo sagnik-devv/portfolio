@@ -1092,9 +1092,21 @@
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">A quick look at the languages and tools I use to build data-driven applications.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 pb-4">
+            <!-- Mobile Swipe Hint Bar for Skills -->
+            <div class="flex md:hidden items-center justify-between mb-3 px-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
+                    <i class="fas fa-hand-pointer animate-pulse"></i>
+                    <span>Swipe left for next stack</span>
+                    <i class="fas fa-arrow-right text-[10px]"></i>
+                </span>
+                <span id="skills-carousel-counter" class="font-mono font-bold text-xs bg-pale-ash px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
+                    1 of 3
+                </span>
+            </div>
+
+            <div id="skills-carousel" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
                 <!-- Languages Category -->
-                <div class="bg-card-saffron p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform -rotate-1 md:rotate-0">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-code text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Languages</h3>
@@ -1160,7 +1172,7 @@
                 </div>
 
                 <!-- Data Analysis Category -->
-                <div class="bg-card-mint p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform rotate-1 md:rotate-0">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-chart-line text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Data Analysis</h3>
@@ -1204,7 +1216,7 @@
                 </div>
 
                 <!-- Frameworks & Tools Category -->
-                <div class="bg-card-lavender p-8 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform -rotate-1 md:rotate-0">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-toolbox text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Frameworks & Tools</h3>
@@ -1270,8 +1282,15 @@
                 </div>
             </div>
 
+            <!-- Mobile Pagination Dots for Skills -->
+            <div class="flex md:hidden items-center justify-center gap-2 mb-8">
+                <button type="button" data-skills-index="0" class="skills-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">Languages</button>
+                <button type="button" data-skills-index="1" class="skills-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">Data</button>
+                <button type="button" data-skills-index="2" class="skills-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">Tools</button>
+            </div>
+
             <!-- Currently Learning -->
-            <div class="bg-card-pink p-6 rounded-xl border border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all">
+            <div class="bg-card-pink p-6 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all mb-12">
                 <div class="flex items-center gap-3 mb-4">
                     <i class="fas fa-book-reader text-xl text-midnight-ink"></i>
                     <h3 class="text-lg font-bold text-midnight-ink flex flex-wrap items-center gap-y-2">
@@ -1297,7 +1316,7 @@
                     </div>
                 </div>
             </div>
-
+ 
 <!-- Developer Profiles Widget -->
 <div class="mt-24 border-t-2 border-charcoal-border pt-16" id="dev-profiles">
     <div class="mb-8 text-center">
@@ -2315,9 +2334,21 @@
                 <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <!-- Mobile Swipe Hint Bar for Projects -->
+            <div class="flex md:hidden items-center justify-between mb-3 px-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
+                    <i class="fas fa-hand-pointer animate-pulse"></i>
+                    <span>Swipe left for next project</span>
+                    <i class="fas fa-arrow-right text-[10px]"></i>
+                </span>
+                <span id="projects-carousel-counter" class="font-mono font-bold text-xs bg-canvas-white px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
+                    1 of 4
+                </span>
+            </div>
+
+            <div id="projects-carousel" class="flex md:grid md:grid-cols-2 gap-6 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
                 <!-- Riwaaz Luxury Couture -->
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform -rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-crown text-4xl text-midnight-ink mb-2"></i>
@@ -2351,7 +2382,7 @@
                 </div>
 
                 <!-- Nexus QR -->
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-lavender flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-qrcode text-4xl text-midnight-ink mb-2"></i>
@@ -2378,7 +2409,7 @@
                 </div>
 
                 <!-- PujoNavigation -->
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform -rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
                         <div class="absolute top-3 right-3 z-20">
                             <span class="px-2.5 py-1 bg-accent-green text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
@@ -2412,7 +2443,7 @@
                 </div>
 
                 <!-- LPU CGPA Calculator -->
-                <div class="bg-canvas-white rounded-lg border border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
                         <div class="absolute top-3 right-3 z-20">
                             <span class="px-2.5 py-1 bg-highlight-yellow text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
@@ -2445,6 +2476,14 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- Mobile Pagination Dots for Projects -->
+            <div class="flex md:hidden items-center justify-center gap-2 mt-2">
+                <button type="button" data-project-index="0" class="project-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">1. Riwaaz</button>
+                <button type="button" data-project-index="1" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">2. Nexus</button>
+                <button type="button" data-project-index="2" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">3. PujoNav</button>
+                <button type="button" data-project-index="3" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">4. CGPA</button>
             </div>
         </div>
     </section>
@@ -2589,7 +2628,7 @@
 
                     <!-- Left: Icon & Title -->
                     <div class="flex items-center gap-3.5">
-                        <div class="w-13 h-13 rounded-xl bg-accent-green border-2 border-charcoal-border flex items-center justify-center text-2xl text-midnight-ink shadow-subtle group-hover:rotate-6 group-hover:scale-105 transition-all shrink-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 aspect-square rounded-xl bg-accent-green border-2 border-charcoal-border flex items-center justify-center text-2xl text-midnight-ink shadow-subtle group-hover:rotate-6 group-hover:scale-105 transition-all shrink-0">
                             <i class="fas fa-calendar-check"></i>
                         </div>
                         <div>
@@ -2619,28 +2658,28 @@
             </div>
             
             <!-- Social Link Buttons -->
-            <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
-                <a href="mailto:sagnik.devv@gmail.com" class="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 bg-highlight-yellow border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:rotate-2 transition-all cursor-pointer" title="Email: sagnik.devv@gmail.com">
+            <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 max-w-md mx-auto">
+                <a href="mailto:sagnik.devv@gmail.com" class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shrink-0 aspect-square bg-highlight-yellow border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:rotate-2 transition-all cursor-pointer touch-manipulation" title="Email: sagnik.devv@gmail.com">
                     <i class="fas fa-envelope text-xl sm:text-2xl text-midnight-ink"></i>
                 </a>
 
-                <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/d" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 bg-card-mint border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:-rotate-2 transition-all cursor-pointer" title="LinkedIn Profile">
+                <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/d" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shrink-0 aspect-square bg-card-mint border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:-rotate-2 transition-all cursor-pointer touch-manipulation" title="LinkedIn Profile">
                     <i class="fab fa-linkedin text-xl sm:text-2xl text-midnight-ink"></i>
                 </a>
                 
-                <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 bg-card-pink border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:rotate-2 transition-all cursor-pointer" title="GitHub: @sagnik-devv">
+                <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shrink-0 aspect-square bg-card-pink border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:rotate-2 transition-all cursor-pointer touch-manipulation" title="GitHub: @sagnik-devv">
                     <i class="fab fa-github text-xl sm:text-2xl text-midnight-ink"></i>
                 </a>
 
-                <a href="https://leetcode.com/u/sagnikcodez/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 bg-card-saffron border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:-rotate-2 transition-all cursor-pointer" title="LeetCode: @sagnikcodez">
+                <a href="https://leetcode.com/u/sagnikcodez/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shrink-0 aspect-square bg-card-saffron border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:-rotate-2 transition-all cursor-pointer touch-manipulation" title="LeetCode: @sagnikcodez">
                     <svg class="w-6 h-6 fill-current text-midnight-ink" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
                 </a>
 
-                <a href="https://www.instagram.com/canbe.sagnik/?next=%2F" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 bg-card-lavender border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:rotate-2 transition-all cursor-pointer" title="Instagram: @canbe.sagnik">
+                <a href="https://www.instagram.com/canbe.sagnik/?next=%2F" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shrink-0 aspect-square bg-card-lavender border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:rotate-2 transition-all cursor-pointer touch-manipulation" title="Instagram: @canbe.sagnik">
                     <i class="fab fa-instagram text-xl sm:text-2xl text-midnight-ink"></i>
                 </a>
 
-                <a href="https://x.com/canbesagnik" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:-rotate-2 transition-all cursor-pointer" title="X / Twitter: @canbesagnik">
+                <a href="https://x.com/canbesagnik" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 shrink-0 aspect-square bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:-rotate-2 transition-all cursor-pointer touch-manipulation" title="X / Twitter: @canbesagnik">
                     <i class="fab fa-x-twitter text-xl sm:text-2xl text-midnight-ink"></i>
                 </a>
             </div>
@@ -2841,6 +2880,89 @@
                 });
             });
         });
+    </script>
+
+    <!-- Interactive Mobile Swipe & Snap Carousel for Skills & Projects -->
+    <script>
+        (function() {
+            function initMobileCarousel(carouselId, counterId, dotSelector) {
+                const carousel = document.getElementById(carouselId);
+                const counter = document.getElementById(counterId);
+                const dots = document.querySelectorAll(dotSelector);
+                if (!carousel) return;
+
+                const cards = Array.from(carousel.children).filter(el => el.nodeType === 1);
+                const total = cards.length;
+                let isScrolling = false;
+
+                function updateSlideStatus() {
+                    if (!cards.length) return;
+                    const carouselRect = carousel.getBoundingClientRect();
+                    const carouselCenter = carouselRect.left + carouselRect.width / 2;
+
+                    let closestIndex = 0;
+                    let minDistance = Infinity;
+
+                    cards.forEach((card, index) => {
+                        const cardRect = card.getBoundingClientRect();
+                        const cardCenter = cardRect.left + cardRect.width / 2;
+                        const dist = Math.abs(carouselCenter - cardCenter);
+                        if (dist < minDistance) {
+                            minDistance = dist;
+                            closestIndex = index;
+                        }
+                    });
+
+                    if (counter) {
+                        counter.textContent = `${closestIndex + 1} of ${total}`;
+                    }
+
+                    dots.forEach((dot, idx) => {
+                        if (idx === closestIndex) {
+                            dot.classList.add('bg-accent-green', 'active-dot');
+                            dot.classList.remove('bg-canvas-white');
+                            dot.style.transform = 'scale(1.08)';
+                        } else {
+                            dot.classList.remove('bg-accent-green', 'active-dot');
+                            dot.classList.add('bg-canvas-white');
+                            dot.style.transform = 'scale(1)';
+                        }
+                    });
+                }
+
+                carousel.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        window.requestAnimationFrame(() => {
+                            updateSlideStatus();
+                            isScrolling = false;
+                        });
+                        isScrolling = true;
+                    }
+                }, { passive: true });
+
+                dots.forEach((dot, idx) => {
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (cards[idx]) {
+                            cards[idx].scrollIntoView({
+                                behavior: 'smooth',
+                                inline: 'center',
+                                block: 'nearest'
+                            });
+                        }
+                    });
+                });
+
+                // Init on resize and DOM ready
+                window.addEventListener('resize', updateSlideStatus, { passive: true });
+                setTimeout(updateSlideStatus, 150);
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                initMobileCarousel('skills-carousel', 'skills-carousel-counter', '.skills-dot');
+                initMobileCarousel('projects-carousel', 'projects-carousel-counter', '.project-dot');
+            });
+        })();
     </script>
     <!-- Developer Arcade Game Scripts -->
     <script src="football-game.js?v=2"></script>
