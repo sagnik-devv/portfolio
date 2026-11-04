@@ -567,6 +567,9 @@
                 <!-- Status Bar & Controls -->
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-card-lavender text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-user-astronaut text-purple-700"></i> Dev: <span id="snake-visitor-name-display" class="font-bold">Visitor</span>
+                        </span>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-accent-green text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
                             <i class="fas fa-code-commit"></i> Commits: <span id="snake-score-val" class="font-mono ml-1 font-extrabold">0</span>
                         </span>
@@ -731,6 +734,9 @@
                 <!-- Status Bar & Mode Pickers -->
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-pale-ash text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-keyboard text-emerald-600"></i> Typist: <span id="type-visitor-name-display" class="text-emerald-700 font-black">Visitor</span>
+                        </span>
                         <!-- Mode Selector (15s, 30s, 60s) -->
                         <div class="inline-flex rounded-md border border-charcoal-border p-0.5 bg-pale-ash text-xs font-bold">
                             <button class="type-time-btn px-2.5 py-1 rounded bg-canvas-white text-midnight-ink hover:bg-card-saffron transition-all" data-time="15">15s</button>
@@ -809,7 +815,7 @@
                         <div id="type-res-best-banner" class="hidden inline-block px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs uppercase rounded-md border border-charcoal-border shadow-subtle mb-3">
                             ★ NEW PERSONAL BEST! ★
                         </div>
-                        <h3 class="text-2xl font-bold text-midnight-ink mb-1">Challenge Complete!</h3>
+                        <h3 id="type-res-title" class="text-2xl font-bold text-midnight-ink mb-1">Challenge Complete!</h3>
                         <div id="type-res-badge" class="inline-block px-3 py-1 bg-card-lavender text-midnight-ink font-bold text-xs rounded-pill border border-charcoal-border mb-4">
                             Senior Typist
                         </div>
@@ -851,7 +857,7 @@
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-neutral-800">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-950/70 text-rose-400 font-mono font-bold text-xs rounded-md border border-rose-600/40 shadow-subtle-3">
-                            <i class="fas fa-fist-raised text-rose-500"></i> YOU VS SAGNIK
+                            <i class="fas fa-fist-raised text-rose-500"></i> <span id="fighter-vs-badge-name">YOU</span> VS SAGNIK
                         </span>
                         <div class="inline-flex rounded-md border border-neutral-700 p-0.5 bg-neutral-900 text-xs font-mono font-bold">
                             <button class="fighter-diff-btn px-2.5 py-1 rounded bg-neutral-800 text-neutral-300 hover:text-white transition-all" data-diff="easy">Novice</button>
@@ -3012,6 +3018,17 @@
 
     <!-- Interactive Visitor Welcome & Name Personalization -->
     <script>
+        // Global helper accessible by all arcade games and widgets
+        window.getPortfolioVisitorName = function() {
+            try {
+                const nameInput = document.getElementById('hero-visitor-name-input');
+                const val = nameInput ? nameInput.value.trim() : '';
+                return val || localStorage.getItem('sagnik_portfolio_visitor') || '';
+            } catch(e) {
+                return '';
+            }
+        };
+
         (function() {
             const nameInput = document.getElementById('hero-visitor-name-input');
             const welcomeSubtext = document.getElementById('hero-welcome-subtext');
@@ -3029,16 +3046,12 @@
 
             function updateGreeting(name, save = true) {
                 const cleanName = name ? name.trim() : '';
+                const fallbackName = cleanName || 'Visitor';
+
                 if (cleanName) {
                     if (welcomeSubtext) {
                         welcomeSubtext.innerHTML = `Awesome to have you here, <span class="bg-highlight-yellow px-2 py-0.5 border-2 border-charcoal-border shadow-subtle-3 rounded-md inline-block transform rotate-1 text-midnight-ink">${cleanName}</span>! Let's build something epic. 🚀`;
                     }
-                    // Sync with Football Arena visitor badge
-                    const arenaDisplay = document.getElementById('arena-visitor-display');
-                    if (arenaDisplay) arenaDisplay.textContent = cleanName;
-                    // Sync with Roblox companion speech bubble
-                    const robloxText = document.getElementById('roblox-speech-text');
-                    if (robloxText) robloxText.textContent = `Hey ${cleanName}! 🎮`;
                     if (save) {
                         try { localStorage.setItem('sagnik_portfolio_visitor', cleanName); } catch(e) {}
                     }
@@ -3046,14 +3059,40 @@
                     if (welcomeSubtext) {
                         welcomeSubtext.innerHTML = `Welcome to my corner of the web! <span class="bg-highlight-yellow px-2 py-0.5 border-2 border-charcoal-border shadow-subtle-3 rounded-md inline-block transform rotate-1 text-midnight-ink">Glad you're here.</span>`;
                     }
-                    const arenaDisplay = document.getElementById('arena-visitor-display');
-                    if (arenaDisplay) arenaDisplay.textContent = 'Visitor';
-                    const robloxText = document.getElementById('roblox-speech-text');
-                    if (robloxText) robloxText.textContent = 'Hey there! 🎮';
                     if (save) {
                         try { localStorage.removeItem('sagnik_portfolio_visitor'); } catch(e) {}
                     }
                 }
+
+                // 1. Sync Football Arena visitor badge
+                const arenaDisplay = document.getElementById('arena-visitor-display');
+                if (arenaDisplay) arenaDisplay.textContent = fallbackName;
+
+                // 2. Sync Street Tekken player names
+                const fighterVsBadge = document.getElementById('fighter-vs-badge-name');
+                if (fighterVsBadge) fighterVsBadge.textContent = (cleanName || 'YOU').toUpperCase();
+                const fighterP1Name = document.getElementById('fighter-p1-name');
+                if (fighterP1Name) fighterP1Name.textContent = cleanName ? `${cleanName} (You)` : 'VISITOR (You)';
+
+                // 3. Sync Type or Die typist badge
+                const typeDisplay = document.getElementById('type-visitor-name-display');
+                if (typeDisplay) typeDisplay.textContent = fallbackName;
+
+                // 4. Sync Git Commit Snake dev badge
+                const snakeDisplay = document.getElementById('snake-visitor-name-display');
+                if (snakeDisplay) snakeDisplay.textContent = fallbackName;
+
+                // 5. Sync Roblox companion speech bubble
+                const robloxText = document.getElementById('roblox-speech-text');
+                if (robloxText) robloxText.textContent = cleanName ? `Hey ${cleanName}! 🎮` : 'Hey there! 🎮';
+
+                // 6. Broadcast event to all running arcade game instances
+                window.dispatchEvent(new CustomEvent('visitorNameChanged', {
+                    detail: {
+                        name: cleanName,
+                        displayName: fallbackName
+                    }
+                }));
             }
 
             nameInput.addEventListener('input', () => {
@@ -3217,16 +3256,30 @@
             document.addEventListener('scroll', startPlayback, { once: true, passive: true });
             startPlayback();
 
-            // Interactive quotes & speech bubble
-            const dialogues = [
-                "Hey! Welcome to my portfolio! 🎮",
-                "Try my 1v1 Football game up in The Arcade! ⚽",
-                "Check out my live LeetCode stats! 💻",
-                "Built with code, data & AI 🧠",
-                "Check out the Riwaaz project! ✨",
-                "Tap my CV to download! 📄",
-                "Clean code & playful design! 🚀"
-            ];
+            // Interactive quotes & speech bubble (dynamically personalized)
+            function getDialogues() {
+                const name = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
+                if (name) {
+                    return [
+                        `Hey ${name}! Welcome to my portfolio! 🎮`,
+                        `Think you can score on me in the 1v1 Arena, ${name}? ⚽`,
+                        `Check out my live LeetCode stats, ${name}! 💻`,
+                        `Built with code, data & AI 🧠`,
+                        `Check out the Riwaaz project, ${name}! ✨`,
+                        `Tap my CV to download! 📄`,
+                        `Clean code & playful design! 🚀`
+                    ];
+                }
+                return [
+                    "Hey! Welcome to my portfolio! 🎮",
+                    "Try my 1v1 Football game up in The Arcade! ⚽",
+                    "Check out my live LeetCode stats! 💻",
+                    "Built with code, data & AI 🧠",
+                    "Check out the Riwaaz project! ✨",
+                    "Tap my CV to download! 📄",
+                    "Clean code & playful design! 🚀"
+                ];
+            }
             let diagIndex = 0;
             let bubbleTimer = null;
 
@@ -3249,13 +3302,15 @@
                     wrapper.classList.remove('roblox-bounce');
                     void wrapper.offsetWidth; // trigger reflow
                     wrapper.classList.add('roblox-bounce');
-                    showDialogue(dialogues[diagIndex % dialogues.length]);
+                    const diagList = getDialogues();
+                    showDialogue(diagList[diagIndex % diagList.length]);
                     diagIndex++;
                 });
 
                 // Greet briefly on initial load
                 setTimeout(() => {
-                    showDialogue("Yo! I'm Sagnik's Avatar 🎮", 4000);
+                    const name = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || '';
+                    showDialogue(name ? `Yo ${name}! I'm Sagnik's Avatar 🎮` : "Yo! I'm Sagnik's Avatar 🎮", 4000);
                 }, 1200);
             }
 

@@ -1306,10 +1306,13 @@
             this.btnTouchGuard = document.getElementById('btn-touch-f-guard');
 
             // Fighters Init
-            this.playerName = localStorage.getItem('sagnik_arcade_username') || 'VISITOR (You)';
+            const heroName = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : localStorage.getItem('sagnik_portfolio_visitor')) || '';
+            this.playerName = heroName ? `${heroName} (You)` : (localStorage.getItem('sagnik_arcade_username') || 'VISITOR (You)');
+            const p1FighterName = heroName || (this.playerName.includes(' (You)') ? this.playerName.replace(' (You)', '') : this.playerName);
+
             this.p1 = new Fighter({
                 id: 'p1',
-                name: this.playerName,
+                name: p1FighterName,
                 isPlayer: true,
                 isAvatar: false,
                 startX: 250,
@@ -1322,6 +1325,16 @@
                 auraColor: '#38bdf8',
                 audio: this.audio,
                 particles: this.particles
+            });
+
+            // Listen for hero section visitor name changes in real-time
+            window.addEventListener('visitorNameChanged', (e) => {
+                const raw = e.detail && e.detail.name ? e.detail.name : '';
+                this.playerName = raw ? `${raw} (You)` : 'VISITOR (You)';
+                if (this.p1) {
+                    this.p1.name = raw ? raw.substring(0, 14) : 'VISITOR';
+                }
+                this.updatePlayerNameUI();
             });
 
             this.cpu = new Fighter({
@@ -1424,12 +1437,22 @@
 
             // Edit Name Button
             this.nameBtn?.addEventListener('click', () => {
-                const newName = prompt('Enter your Fighter Name:', this.playerName);
+                const promptCurrent = (this.p1?.name && this.p1.name !== 'VISITOR') ? this.p1.name : (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '');
+                const newName = prompt('Enter your Fighter Name:', promptCurrent);
                 if (newName && newName.trim().length > 0) {
-                    this.playerName = newName.trim().substring(0, 14);
+                    const clean = newName.trim().substring(0, 14);
+                    this.playerName = `${clean} (You)`;
                     localStorage.setItem('sagnik_arcade_username', this.playerName);
-                    this.p1.name = this.playerName;
+                    localStorage.setItem('sagnik_portfolio_visitor', clean);
+                    this.p1.name = clean;
                     this.updatePlayerNameUI();
+
+                    // Sync hero section input if present
+                    const heroInput = document.getElementById('hero-visitor-name-input');
+                    if (heroInput && heroInput.value !== clean) {
+                        heroInput.value = clean;
+                        heroInput.dispatchEvent(new Event('input'));
+                    }
                 }
             });
 
@@ -1480,6 +1503,11 @@
         updatePlayerNameUI() {
             if (this.p1NameDisplay) {
                 this.p1NameDisplay.textContent = this.playerName;
+            }
+            const vsBadge = document.getElementById('fighter-vs-badge-name');
+            if (vsBadge) {
+                const raw = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : '') || (this.p1?.name || 'YOU');
+                vsBadge.textContent = raw.toUpperCase();
             }
         }
 
@@ -1617,7 +1645,7 @@
                 : 'text-3xl font-extrabold text-rose-500 font-mono uppercase tracking-wider mb-2';
 
             this.modalDesc.textContent = isPlayerWin
-                ? `Sensational martial mastery! You defeated ${this.cpu.name} with a final score of ${this.p1.roundsWon} - ${this.cpu.roundsWon}.`
+                ? `Sensational martial mastery! ${this.p1.name} defeated ${this.cpu.name} with a final score of ${this.p1.roundsWon} - ${this.cpu.roundsWon}.`
                 : `${this.cpu.name} proved too formidable this time. Practice your guard, time your specials, and claim revenge!`;
 
             this.matchModal.classList.remove('hidden');

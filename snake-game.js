@@ -83,6 +83,24 @@
             this.totalContributions = 168;
             this.loadLiveGitHubData();
 
+            // Visitor Name Personalization
+            const heroName = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : localStorage.getItem('sagnik_portfolio_visitor')) || '';
+            this.playerName = heroName || 'Visitor';
+
+            const snakeNameDisplay = document.getElementById('snake-visitor-name-display');
+            if (snakeNameDisplay) {
+                snakeNameDisplay.textContent = this.playerName;
+            }
+
+            window.addEventListener('visitorNameChanged', (e) => {
+                const raw = e.detail && e.detail.name ? e.detail.name : '';
+                this.playerName = raw || 'Visitor';
+                const disp = document.getElementById('snake-visitor-name-display');
+                if (disp) {
+                    disp.textContent = this.playerName;
+                }
+            });
+
             // Touch
             this.touchStartX = 0;
             this.touchStartY = 0;
@@ -518,17 +536,28 @@
             const modal = document.getElementById('snake-game-over-modal');
             if (!modal) return;
 
+            const modalTitle = document.getElementById('snake-modal-title');
             const scoreEl = document.getElementById('snake-res-score');
             const streakEl = document.getElementById('snake-res-streak');
             const bestEl = document.getElementById('snake-res-best');
             const liveStreakEl = document.getElementById('snake-res-livestreak');
             const descEl = document.getElementById('snake-modal-desc');
 
+            if (modalTitle) {
+                modalTitle.textContent = (this.playerName && this.playerName !== 'Visitor')
+                    ? `${this.playerName.toUpperCase()}'S RUN HALTED`
+                    : 'SESSION TERMINATED';
+            }
+
             if (scoreEl) scoreEl.textContent = this.score.toString();
             if (streakEl) streakEl.textContent = this.sessionStreak.toString();
             if (bestEl) bestEl.textContent = this.highScore.toString();
             if (liveStreakEl) liveStreakEl.textContent = `${this.liveStreak} Days`;
-            if (descEl && reason) descEl.textContent = reason;
+            if (descEl) {
+                descEl.textContent = (this.playerName && this.playerName !== 'Visitor')
+                    ? `${this.playerName}'s push was interrupted: ${reason || 'Conflict detected'}`
+                    : (reason || 'Branch conflict detected while pushing commits');
+            }
 
             modal.classList.remove('hidden');
             modal.classList.add('flex');

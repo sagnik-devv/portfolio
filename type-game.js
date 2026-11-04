@@ -117,6 +117,26 @@
             this.totalTypedChars = 0;
             this.bestWPM = this.loadBestWPM();
 
+            // Visitor Name Personalization
+            const heroName = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : localStorage.getItem('sagnik_portfolio_visitor')) || '';
+            this.playerName = heroName || 'Visitor';
+
+            // Sync with badge
+            const display = document.getElementById('type-visitor-name-display');
+            if (display) {
+                display.textContent = this.playerName;
+            }
+
+            // Real-time visitor name sync
+            window.addEventListener('visitorNameChanged', (e) => {
+                const raw = e.detail && e.detail.name ? e.detail.name : '';
+                this.playerName = raw || 'Visitor';
+                const disp = document.getElementById('type-visitor-name-display');
+                if (disp) {
+                    disp.textContent = this.playerName;
+                }
+            });
+
             this.initUI();
             this.initEvents();
             this.resetChallenge();
@@ -319,6 +339,7 @@
             const resAcc = document.getElementById('type-res-accuracy');
             const resChars = document.getElementById('type-res-chars');
             const resErrors = document.getElementById('type-res-errors');
+            const resTitle = document.getElementById('type-res-title');
             const resBadge = document.getElementById('type-res-badge');
             const resBestBanner = document.getElementById('type-res-best-banner');
 
@@ -327,6 +348,12 @@
             if (resChars) resChars.textContent = `${this.correctChars} / ${this.typedText.length}`;
             if (resErrors) resErrors.textContent = this.errorCount;
 
+            if (resTitle) {
+                resTitle.textContent = (this.playerName && this.playerName !== 'Visitor')
+                    ? `${this.playerName}'s Result!`
+                    : 'Challenge Complete!';
+            }
+
             // Tier evaluation
             let tier = 'Promising Candidate 📝';
             if (stats.wpm >= 90) tier = '🚀 Instant Offer (Lead Architect)';
@@ -334,7 +361,11 @@
             else if (stats.wpm >= 50) tier = '☕ Schedule Round 2 (Solid Hire)';
             else if (stats.wpm >= 35) tier = '📝 Promising Candidate (Hire Me!)';
 
-            if (resBadge) resBadge.textContent = tier;
+            if (resBadge) {
+                resBadge.textContent = (this.playerName && this.playerName !== 'Visitor')
+                    ? `${this.playerName} • ${tier}`
+                    : tier;
+            }
 
             if (resBestBanner) {
                 if (isNewBest && stats.wpm > 0) {

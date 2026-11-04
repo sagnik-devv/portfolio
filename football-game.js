@@ -786,12 +786,27 @@
 
             window.soundManager = new RetroSound();
 
-            this.visitorName = localStorage.getItem('sagnik_arena_visitor') || '';
+            const heroVisitor = (window.getPortfolioVisitorName ? window.getPortfolioVisitorName() : localStorage.getItem('sagnik_portfolio_visitor')) || '';
+            this.visitorName = heroVisitor || localStorage.getItem('sagnik_arena_visitor') || '';
             this.visitorColor = localStorage.getItem('sagnik_arena_color') || '#2563eb'; // Royal Blue
 
             this.ball = new Ball(CANVAS_WIDTH / 2, PITCH_TOP + 50);
             this.sagnik = new RobloxPlayer(true, 'SAGNIK', '#dc2626', 220); // Sagnik Red Team
             this.visitor = new RobloxPlayer(false, this.visitorName || 'Visitor', this.visitorColor, 780);
+
+            // Listen for hero section visitor name changes in real-time
+            window.addEventListener('visitorNameChanged', (e) => {
+                const raw = e.detail && e.detail.name ? e.detail.name : '';
+                const newName = raw || 'Visitor';
+                this.visitorName = raw;
+                if (this.visitor) {
+                    this.visitor.name = newName;
+                }
+                const nameDisplay = document.getElementById('arena-visitor-display');
+                if (nameDisplay) {
+                    nameDisplay.textContent = newName;
+                }
+            });
 
             this.state = 'LOBBY'; // 'LOBBY', 'PLAYING', 'GOAL_PAUSE', 'MATCH_OVER'
             this.goalMessage = '';
@@ -1005,6 +1020,7 @@
             this.visitorColor = color;
             localStorage.setItem('sagnik_arena_visitor', name);
             localStorage.setItem('sagnik_arena_color', color);
+            localStorage.setItem('sagnik_portfolio_visitor', name);
 
             this.visitor.name = name;
             this.visitor.teamColor = color;
@@ -1013,6 +1029,13 @@
             const nameDisplay = document.getElementById('arena-visitor-display');
             if (nameDisplay) {
                 nameDisplay.textContent = name;
+            }
+
+            // Sync with hero input if present
+            const heroInput = document.getElementById('hero-visitor-name-input');
+            if (heroInput && heroInput.value !== name) {
+                heroInput.value = name;
+                heroInput.dispatchEvent(new Event('input'));
             }
         }
 
