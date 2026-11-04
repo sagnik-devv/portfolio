@@ -414,7 +414,7 @@
                         <i class="fas fa-futbol"></i> <span>Football Arena</span>
                     </button>
                     <button id="tab-btn-snake" role="tab" aria-selected="false" aria-controls="game-panel-snake" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
-                        <i class="fas fa-worm text-emerald-600"></i> <span>Nokia Snake</span>
+                        <i class="fab fa-github text-emerald-600"></i> <span>Git Commit Snake</span>
                     </button>
                     <button id="tab-btn-type" role="tab" aria-selected="false" aria-controls="game-panel-type" class="arcade-tab-btn px-3.5 py-2 rounded-lg font-bold text-xs sm:text-sm border-2 border-charcoal-border shadow-subtle bg-canvas-white hover:bg-pale-ash text-midnight-ink hover:-translate-y-0.5 transition-all duration-150 flex items-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-charcoal-border">
                         <i class="fas fa-keyboard text-amber-600"></i> <span>Type or Die</span>
@@ -500,16 +500,19 @@
                 </div>
             </div>
 
-            <!-- GAME 2: NOKIA SNAKE -->
+            <!-- GAME 2: GIT COMMIT SNAKE -->
             <div id="game-panel-snake" class="arcade-game-panel hidden bg-canvas-white border-2 border-charcoal-border rounded-xl shadow-subtle-4 p-3 sm:p-6 mb-4">
                 <!-- Status Bar & Controls -->
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-4 border-b border-charcoal-border">
                     <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-600 text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
-                            <i class="fas fa-apple-alt"></i> Score: <span id="snake-score-val" class="font-mono ml-1">0</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#238636] text-white font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
+                            <i class="fas fa-code-commit"></i> Commits: <span id="snake-score-val" class="font-mono ml-1">0</span>
                         </span>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3">
-                            <i class="fas fa-crown"></i> High: <span id="snake-high-val" class="font-mono ml-1">0</span>
+                            <i class="fas fa-trophy"></i> Best: <span id="snake-high-val" class="font-mono ml-1">0</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-card-saffron text-midnight-ink font-bold text-xs rounded-md border border-charcoal-border shadow-subtle-3" title="Live GitHub Commit Streak">
+                            <i class="fas fa-fire text-amber-600"></i> Live Streak: <span id="snake-streak-val" class="font-mono ml-1 font-extrabold">...</span>
                         </span>
                         <div class="flex items-center gap-1">
                             <label for="snake-diff-select" class="text-xs font-bold text-midnight-ink">Speed:</label>
@@ -522,37 +525,67 @@
                         <div class="flex items-center gap-1">
                             <label for="snake-mode-select" class="text-xs font-bold text-midnight-ink">Wall:</label>
                             <select id="snake-mode-select" class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded text-xs font-bold text-midnight-ink focus:outline-none">
-                                <option value="solid" selected>Solid Wall</option>
-                                <option value="wrap">Wrap-Around</option>
+                                <option value="wrap" selected>Wrap-Around</option>
+                                <option value="solid">Solid Wall</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-2">
-                        <button id="snake-pause-btn" class="px-3 py-1.5 bg-card-mint hover:bg-accent-green text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <!-- Direct Link to Sagnik's GitHub Profile -->
+                        <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 bg-accent-green hover:bg-highlight-yellow text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5 cursor-pointer" title="Visit Sagnik's GitHub Profile">
+                            <i class="fab fa-github"></i> <span>@sagnik-devv</span> <i class="fas fa-external-link-alt text-[10px]"></i>
+                        </a>
+                        <button id="snake-pause-btn" class="px-3 py-1.5 bg-card-mint hover:bg-accent-green text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all cursor-pointer">
                             <i class="fas fa-play mr-1"></i> Start
                         </button>
-                        <button id="snake-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                        <button id="snake-reset-btn" class="px-3 py-1.5 bg-highlight-yellow hover:bg-card-saffron text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all cursor-pointer">
                             <i class="fas fa-redo-alt mr-1"></i> Restart
                         </button>
-                        <button id="snake-sound-btn" class="px-3 py-1.5 bg-canvas-white hover:bg-pale-ash text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all">
+                        <button id="snake-sound-btn" class="px-3 py-1.5 bg-canvas-white hover:bg-pale-ash text-midnight-ink font-bold text-xs sm:text-sm rounded-md border border-charcoal-border shadow-subtle hover:-translate-y-0.5 transition-all cursor-pointer">
                             <i class="fas fa-volume-up"></i> Sound On
                         </button>
                     </div>
                 </div>
 
-                <!-- Nokia LCD Screen Wrapper -->
+                <!-- GitHub Contribution Card Arena -->
                 <div class="flex justify-center my-2">
-                    <div class="relative w-full max-w-xl bg-[#7c9269] p-3 sm:p-5 rounded-2xl border-4 border-charcoal-border shadow-subtle-4">
-                        <div class="flex justify-between items-center text-[11px] font-mono font-bold text-[#172214] mb-1.5 px-1">
-                            <span>NOKIA 3310</span>
-                            <span class="flex items-center gap-1.5"><i class="fas fa-signal"></i> ▮▮▮▮ <i class="fas fa-battery-three-quarters ml-1"></i></span>
+                    <div class="relative w-full max-w-4xl bg-[#0d1117] p-3 sm:p-5 rounded-xl border-2 border-charcoal-border shadow-subtle-4 text-[#e6edf3]">
+                        <!-- GitHub Contribution Header Bar (matches user image) -->
+                        <div class="flex flex-wrap justify-between items-center text-xs sm:text-sm font-semibold text-[#8b949e] mb-2 px-1 gap-2 border-b border-[#30363d] pb-2.5">
+                            <div class="flex items-center gap-2">
+                                <i class="fab fa-github text-white text-base"></i>
+                                <span id="git-snake-contrib-count" class="text-[#e6edf3] font-bold text-xs sm:text-sm">168 contributions in the last year</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="hidden sm:inline-flex items-center gap-1 text-[#8b949e]">
+                                    <span>Contribution settings</span> <i class="fas fa-caret-down text-[10px]"></i>
+                                </span>
+                                <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-accent-green hover:underline flex items-center gap-1">
+                                    <span>@sagnik-devv</span> <i class="fas fa-external-link-alt text-[9px]"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="relative w-full overflow-hidden rounded-lg border-3 border-[#172214] shadow-inner bg-[#9cb884]">
-                            <canvas id="snake-canvas" class="w-full block select-none cursor-pointer" style="aspect-ratio: 5 / 4; touch-action: none;"></canvas>
+
+                        <!-- Canvas Container -->
+                        <div class="relative w-full overflow-hidden rounded-lg border border-[#30363d] bg-[#0d1117] shadow-inner">
+                            <canvas id="snake-canvas" class="w-full block select-none cursor-pointer" style="aspect-ratio: 700 / 294; touch-action: none;"></canvas>
                         </div>
-                        <div class="text-center mt-2 text-[10px] font-mono tracking-widest text-[#172214] font-bold uppercase">
-                            Swipe screen or use D-Pad below
+
+                        <!-- GitHub Contribution Footer (matches user image) -->
+                        <div class="flex flex-wrap justify-between items-center text-[11px] text-[#8b949e] mt-2.5 px-1 gap-2 pt-2 border-t border-[#30363d]/60">
+                            <a href="https://github.com/sagnik-devv" target="_blank" rel="noopener noreferrer" class="hover:text-accent-green hover:underline transition-colors flex items-center gap-1.5">
+                                <i class="fas fa-info-circle text-[10px]"></i> Learn how we count contributions (View @sagnik-devv)
+                            </a>
+                            <div class="flex items-center gap-1.5 font-mono text-[11px]">
+                                <span>Less</span>
+                                <span class="w-2.5 h-2.5 rounded-sm bg-[#161b22] border border-[#30363d] inline-block" title="No contributions"></span>
+                                <span class="w-2.5 h-2.5 rounded-sm bg-[#0e4429] inline-block" title="1-2 contributions"></span>
+                                <span class="w-2.5 h-2.5 rounded-sm bg-[#006d32] inline-block" title="3-5 contributions"></span>
+                                <span class="w-2.5 h-2.5 rounded-sm bg-[#26a641] inline-block" title="6-9 contributions"></span>
+                                <span class="w-2.5 h-2.5 rounded-sm bg-[#39d353] inline-block shadow-[0_0_6px_#39d353]" title="10+ contributions"></span>
+                                <span>More</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -564,17 +597,17 @@
                     </div>
                     <div class="grid grid-cols-3 gap-2 w-48 mx-auto">
                         <div></div>
-                        <button id="snake-dpad-up" aria-label="Move Up" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                        <button id="snake-dpad-up" aria-label="Move Up" class="w-14 h-14 bg-pale-ash active:bg-accent-green text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation cursor-pointer">
                             <i class="fas fa-arrow-up"></i>
                         </button>
                         <div></div>
-                        <button id="snake-dpad-left" aria-label="Move Left" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                        <button id="snake-dpad-left" aria-label="Move Left" class="w-14 h-14 bg-pale-ash active:bg-accent-green text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation cursor-pointer">
                             <i class="fas fa-arrow-left"></i>
                         </button>
-                        <button id="snake-dpad-down" aria-label="Move Down" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                        <button id="snake-dpad-down" aria-label="Move Down" class="w-14 h-14 bg-pale-ash active:bg-accent-green text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation cursor-pointer">
                             <i class="fas fa-arrow-down"></i>
                         </button>
-                        <button id="snake-dpad-right" aria-label="Move Right" class="w-14 h-14 bg-pale-ash active:bg-highlight-yellow text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation">
+                        <button id="snake-dpad-right" aria-label="Move Right" class="w-14 h-14 bg-pale-ash active:bg-accent-green text-midnight-ink font-bold text-xl rounded-lg border-2 border-charcoal-border shadow-subtle flex items-center justify-center active:translate-y-0.5 active:shadow-none transition-all touch-manipulation cursor-pointer">
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -583,12 +616,12 @@
                 <!-- Desktop Controls Hint -->
                 <div class="hidden md:flex items-center justify-between mt-4 pt-3 border-t border-charcoal-border text-xs font-bold text-midnight-ink">
                     <div class="flex items-center gap-4">
-                        <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">W</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">A</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">S</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">D</kbd> or <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">Arrow Keys</kbd> Navigate</span>
+                        <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">W</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">A</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">S</kbd> <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">D</kbd> or <kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">Arrow Keys</kbd> Slither</span>
                         <span><kbd class="px-2 py-1 bg-pale-ash border border-charcoal-border rounded shadow-subtle-3">Space</kbd> Pause/Resume</span>
                         <span><kbd class="px-2 py-1 bg-accent-green border border-charcoal-border rounded shadow-subtle-3">Enter</kbd> Restart</span>
                     </div>
                     <div class="flex items-center gap-2 text-neutral-600">
-                        <i class="fas fa-trophy text-highlight-yellow"></i> Eat pixel apples to grow without biting your tail!
+                        <i class="fab fa-github text-emerald-600"></i> Slither across the commit graph & collect commits for Sagnik's streak!
                     </div>
                 </div>
             </div>
@@ -1709,6 +1742,9 @@
                     }
                     try {
                         localStorage.setItem('gh_contributions_cache', JSON.stringify(data.contributions));
+                        if (window.gitSnakeInstance && typeof window.gitSnakeInstance.onContributionsLoaded === 'function') {
+                            window.gitSnakeInstance.onContributionsLoaded(data.contributions, data.total);
+                        }
                     } catch (e) {}
                 }
             })

@@ -123,7 +123,9 @@
                     }
                     break;
                 case 'snake':
-                    if (window.nokiaSnakeInstance) {
+                    if (window.gitSnakeInstance) {
+                        window.gitSnakeInstance.onDeactivate();
+                    } else if (window.nokiaSnakeInstance) {
                         window.nokiaSnakeInstance.onDeactivate();
                     }
                     break;
@@ -149,7 +151,9 @@
                     }
                     break;
                 case 'snake':
-                    if (window.nokiaSnakeInstance) {
+                    if (window.gitSnakeInstance) {
+                        window.gitSnakeInstance.onActivate();
+                    } else if (window.nokiaSnakeInstance) {
                         window.nokiaSnakeInstance.onActivate();
                     }
                     break;
