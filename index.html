@@ -155,6 +155,16 @@
             border-radius: 4px;
         }
 
+        /* Swipe left hint animation */
+        @keyframes swipeLeftMotion {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+        }
+        .animate-swipe-left {
+            display: inline-block;
+            animation: swipeLeftMotion 1.3s ease-in-out infinite;
+        }
+
         /* Mobile Game Canvases: prevent scroll interference and rubberbanding */
         canvas {
             touch-action: none;
@@ -280,7 +290,6 @@
                     <a href="#skills" class="text-midnight-ink border border-transparent hover:bg-card-lavender hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Arsenal</a>
                     <a href="#experience" class="text-midnight-ink border border-transparent hover:bg-card-mint hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Experience</a>
                     <a href="#projects" class="text-midnight-ink border border-transparent hover:bg-card-pink hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Projects</a>
-                    <a href="#achievements" class="text-midnight-ink border border-transparent hover:bg-highlight-yellow hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Achievements</a>
                     <a href="#certifications" class="text-midnight-ink border border-transparent hover:bg-card-saffron hover:border-charcoal-border hover:shadow-subtle hover:-translate-y-0.5 px-3 py-2 rounded-md text-sm font-bold transition-all">Certifications</a>
                     <a href="#contact" class="bg-accent-green text-midnight-ink font-bold border border-charcoal-border px-6 py-2 rounded-md text-sm shadow-subtle hover:-translate-y-0.5 hover:shadow-subtle-2 transition-all">Contact Me</a>
                 </div>
@@ -1118,9 +1127,21 @@
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">A quick look at the languages and tools I use to build data-driven applications.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 pb-4">
+            <!-- Mobile Swipe Hint Bar for Skills -->
+            <div class="flex md:hidden items-center justify-between mb-3 px-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
+                    <i class="fas fa-hand-point-left animate-swipe-left text-midnight-ink"></i>
+                    <span>Swipe left for next stack</span>
+                    <i class="fas fa-arrow-left text-[10px] animate-swipe-left"></i>
+                </span>
+                <span id="skills-carousel-counter" class="font-mono font-bold text-xs bg-pale-ash px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
+                    1 of 3
+                </span>
+            </div>
+
+            <div id="skills-carousel" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
                 <!-- Languages Category -->
-                <div class="bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform -rotate-1 md:rotate-0">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-code text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Languages</h3>
@@ -1186,7 +1207,7 @@
                 </div>
 
                 <!-- Data Analysis Category -->
-                <div class="bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform rotate-1 md:rotate-0">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-chart-line text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Data Analysis</h3>
@@ -1230,7 +1251,7 @@
                 </div>
 
                 <!-- Frameworks & Tools Category -->
-                <div class="bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform -rotate-1 md:rotate-0">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-toolbox text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Frameworks & Tools</h3>
@@ -1294,6 +1315,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Mobile Pagination Dots for Skills -->
+            <div class="flex md:hidden items-center justify-center gap-2 mb-8">
+                <button type="button" data-skills-index="0" class="skills-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">Languages</button>
+                <button type="button" data-skills-index="1" class="skills-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">Data</button>
+                <button type="button" data-skills-index="2" class="skills-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">Tools</button>
             </div>
 
             <!-- Currently Learning -->
@@ -2341,9 +2369,21 @@
                 <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Mobile Swipe Hint Bar for Projects -->
+            <div class="flex md:hidden items-center justify-between mb-3 px-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
+                    <i class="fas fa-hand-point-left animate-swipe-left text-midnight-ink"></i>
+                    <span>Swipe left for next project</span>
+                    <i class="fas fa-arrow-left text-[10px] animate-swipe-left"></i>
+                </span>
+                <span id="projects-carousel-counter" class="font-mono font-bold text-xs bg-canvas-white px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
+                    1 of 4
+                </span>
+            </div>
+
+            <div id="projects-carousel" class="flex md:grid md:grid-cols-2 gap-6 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
                 <!-- Riwaaz Luxury Couture -->
-                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform -rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-crown text-4xl text-midnight-ink mb-2"></i>
@@ -2377,7 +2417,7 @@
                 </div>
 
                 <!-- Nexus QR -->
-                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-lavender flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-qrcode text-4xl text-midnight-ink mb-2"></i>
@@ -2404,7 +2444,7 @@
                 </div>
 
                 <!-- PujoNavigation -->
-                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform -rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
                         <div class="absolute top-3 right-3 z-20">
                             <span class="px-2.5 py-1 bg-accent-green text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
@@ -2438,7 +2478,7 @@
                 </div>
 
                 <!-- LPU CGPA Calculator -->
-                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
                         <div class="absolute top-3 right-3 z-20">
                             <span class="px-2.5 py-1 bg-highlight-yellow text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
@@ -2472,40 +2512,13 @@
                 </div>
 
             </div>
-        </div>
-    </section>
 
-    <section id="achievements" class="py-12 md:py-24 bg-canvas-white border-b border-charcoal-border">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Achievements</h2>
-            </div>
-
-            <div class="max-w-4xl mx-auto bg-highlight-yellow rounded-lg border border-charcoal-border shadow-subtle flex flex-col md:flex-row hover:shadow-subtle-2 transition-all">
-                <div class="md:w-5/12 relative border-b md:border-b-0 md:border-r border-charcoal-border">
-                    <img src="IMG_3723.jpeg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'"
-                         alt="TechXpo Hackathon" 
-                         class="w-full h-full object-cover min-h-[250px]">
-                    <div class="absolute top-4 left-4 bg-canvas-white text-midnight-ink font-bold px-4 py-2 rounded-pill text-sm shadow-subtle border border-charcoal-border transform -rotate-3">
-                        <i class="fas fa-trophy mr-1 text-midnight-ink"></i> 7th Place
-                    </div>
-                </div>
-                
-                <div class="md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold text-midnight-ink mb-2">TechXpo Hackathon</h3>
-                    <div class="flex items-center gap-2 mb-6 text-midnight-ink text-sm font-bold bg-canvas-white border border-charcoal-border w-max px-3 py-1 rounded-pill">
-                        <i class="fas fa-map-pin"></i> 
-                        <span>Lovely Professional University</span>
-                    </div>
-                    <p class="text-md text-midnight-ink font-medium mb-8 leading-relaxed">
-                        Competed against numerous teams to solve real-world problems. Secured 7th position by demonstrating strong problem-solving skills and teamwork. This experience fueled my passion for competitive coding and development.
-                    </p>
-                    <div class="flex gap-3">
-                        <span class="px-4 py-1.5 bg-canvas-white text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">Teamwork</span>
-                        <span class="px-4 py-1.5 bg-canvas-white text-midnight-ink border border-charcoal-border text-xs font-bold rounded-pill shadow-subtle-3">Innovation</span>
-                    </div>
-                </div>
+            <!-- Mobile Pagination Dots for Projects -->
+            <div class="flex md:hidden items-center justify-center gap-2 mt-3">
+                <button type="button" data-project-index="0" class="project-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">1. Riwaaz</button>
+                <button type="button" data-project-index="1" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">2. Nexus</button>
+                <button type="button" data-project-index="2" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">3. PujoNav</button>
+                <button type="button" data-project-index="3" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">4. CGPA</button>
             </div>
         </div>
     </section>
@@ -2517,9 +2530,21 @@
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl">Official courses and credentials I've earned to level up my skills.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Mobile Swipe Hint Bar for Certifications -->
+            <div class="flex md:hidden items-center justify-between mb-3 px-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
+                    <i class="fas fa-hand-point-left animate-swipe-left text-midnight-ink"></i>
+                    <span>Swipe left for next cert</span>
+                    <i class="fas fa-arrow-left text-[10px] animate-swipe-left"></i>
+                </span>
+                <span id="certifications-carousel-counter" class="font-mono font-bold text-xs bg-canvas-white px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
+                    1 of 3
+                </span>
+            </div>
+
+            <div id="certifications-carousel" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
                 <!-- Cert 1: IBM -->
-                <div class="bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full transform -rotate-1 md:rotate-0">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
@@ -2543,7 +2568,7 @@
                 </div>
 
                 <!-- Cert 2: Cisco -->
-                <div class="bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full transform rotate-1 md:rotate-0">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
@@ -2567,7 +2592,7 @@
                 </div>
 
                 <!-- Cert 3: Python -->
-                <div class="bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
+                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full transform -rotate-1 md:rotate-0">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
@@ -2589,6 +2614,13 @@
                         </a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Mobile Pagination Dots for Certifications -->
+            <div class="flex md:hidden items-center justify-center gap-2 mt-3">
+                <button type="button" data-cert-index="0" class="cert-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">1. IBM Web</button>
+                <button type="button" data-cert-index="1" class="cert-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">2. Cisco Data</button>
+                <button type="button" data-cert-index="2" class="cert-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">3. Python</button>
             </div>
         </div>
     </section>
@@ -2983,6 +3015,97 @@
             });
         })();
     </script>
+    <!-- Interactive Mobile Swipe & Snap Carousel for Skills, Projects & Certifications -->
+    <script>
+        (function() {
+            function initMobileCarousel(carouselId, counterId, dotSelector) {
+                const carousel = document.getElementById(carouselId);
+                const counter = document.getElementById(counterId);
+                const dots = document.querySelectorAll(dotSelector);
+                if (!carousel) return;
+
+                const cards = Array.from(carousel.children).filter(el => el.nodeType === 1);
+                const total = cards.length;
+                let isScrolling = false;
+
+                function updateSlideStatus() {
+                    if (!cards.length) return;
+                    const carouselRect = carousel.getBoundingClientRect();
+                    const carouselCenter = carouselRect.left + carouselRect.width / 2;
+
+                    let closestIndex = 0;
+                    let minDistance = Infinity;
+
+                    cards.forEach((card, index) => {
+                        const cardRect = card.getBoundingClientRect();
+                        const cardCenter = cardRect.left + cardRect.width / 2;
+                        const dist = Math.abs(carouselCenter - cardCenter);
+                        if (dist < minDistance) {
+                            minDistance = dist;
+                            closestIndex = index;
+                        }
+                    });
+
+                    if (counter) {
+                        counter.textContent = `${closestIndex + 1} of ${total}`;
+                    }
+
+                    dots.forEach((dot, idx) => {
+                        if (idx === closestIndex) {
+                            dot.classList.add('bg-accent-green', 'active-dot');
+                            dot.classList.remove('bg-canvas-white');
+                            dot.style.transform = 'scale(1.08)';
+                        } else {
+                            dot.classList.remove('bg-accent-green', 'active-dot');
+                            dot.classList.add('bg-canvas-white');
+                            dot.style.transform = 'scale(1)';
+                        }
+                    });
+                }
+
+                carousel.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        window.requestAnimationFrame(() => {
+                            updateSlideStatus();
+                            isScrolling = false;
+                        });
+                        isScrolling = true;
+                    }
+                }, { passive: true });
+
+                dots.forEach((dot, idx) => {
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (cards[idx]) {
+                            cards[idx].scrollIntoView({
+                                behavior: 'smooth',
+                                inline: 'center',
+                                block: 'nearest'
+                            });
+                        }
+                    });
+                });
+
+                // Init on resize and DOM ready
+                window.addEventListener('resize', updateSlideStatus, { passive: true });
+                setTimeout(updateSlideStatus, 150);
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                initMobileCarousel('skills-carousel', 'skills-carousel-counter', '.skills-dot');
+                initMobileCarousel('projects-carousel', 'projects-carousel-counter', '.project-dot');
+                initMobileCarousel('certifications-carousel', 'certifications-carousel-counter', '.cert-dot');
+            });
+
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setTimeout(() => {
+                    initMobileCarousel('skills-carousel', 'skills-carousel-counter', '.skills-dot');
+                    initMobileCarousel('projects-carousel', 'projects-carousel-counter', '.project-dot');
+                    initMobileCarousel('certifications-carousel', 'certifications-carousel-counter', '.cert-dot');
+                }, 100);
+            }
+        })();
+    </script>
     <!-- Developer Arcade Game Scripts -->
     <script src="football-game.js?v=2"></script>
     <script src="snake-game.js"></script>
@@ -2997,8 +3120,8 @@
     <!-- ================= FLOATING ROBLOX AVATAR COMPANION ================= -->
     <div id="roblox-companion-container" class="fixed bottom-24 right-2 sm:right-3 md:bottom-6 md:right-6 z-40 select-none pointer-events-auto transition-all duration-300">
         <!-- Speech Bubble -->
-        <div id="roblox-speech-bubble" class="absolute bottom-[calc(100%+8px)] right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3.5 py-1.5 shadow-subtle text-xs font-bold text-midnight-ink whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
-            <span id="roblox-speech-text">Hey there! 🎮</span>
+        <div id="roblox-speech-bubble" class="absolute bottom-[calc(100%+8px)] right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3 py-2 sm:px-3.5 sm:py-2 shadow-subtle text-[11px] sm:text-xs font-bold text-midnight-ink whitespace-normal break-words leading-snug w-max max-w-[210px] sm:max-w-[280px] md:max-w-xs text-left opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
+            <span id="roblox-speech-text" class="block">Hey there! 🎮</span>
             <div class="absolute -bottom-1.5 right-6 w-2.5 h-2.5 bg-canvas-white border-r-2 border-b-2 border-charcoal-border transform rotate-45"></div>
         </div>
 
