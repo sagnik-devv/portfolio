@@ -290,47 +290,79 @@
 
     <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-sky-breeze-gradient border-b border-charcoal-border">
         
-        <!-- Background Post-it Pics (Industry Mentors) - Desktop Only -->
-        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none hidden md:block">
-            <!-- Pic 1: Top Left -->
-            <div class="absolute top-20 left-12 rotate-6 hover:rotate-0 hover:z-20 transition-transform duration-300 pointer-events-auto group">
-                <div class="bg-card-saffron p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm group-hover:-translate-y-1 group-hover:shadow-subtle-2 transition-all">
-                    <img src="postit 1.JPG" class="w-32 h-32 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                </div>
+        <!-- Interactive Physics-Based Hanging Developer ID Card (Matter.js) -->
+        <div id="hero-hanging-card-wrapper" class="absolute inset-0 pointer-events-none z-20 overflow-hidden" aria-hidden="false">
+            <canvas id="hero-lanyard-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+            <!-- Inline Ribbon Company Name Editor (Opens when clicking directly on the ribbon) -->
+            <div id="ribbon-company-editor" class="hidden absolute pointer-events-auto z-40 flex items-center gap-2 px-3 py-1.5 bg-[#171717] text-white border-2 border-accent-green rounded-xl shadow-subtle-2 transform -translate-x-1/2 -translate-y-1/2 transition-all">
+                <span class="text-xs select-none">🏢</span>
+                <input 
+                    type="text" 
+                    id="ribbon-company-input" 
+                    placeholder="Enter company name..." 
+                    maxlength="20"
+                    autocomplete="off"
+                    spellcheck="false"
+                    class="bg-transparent text-white font-mono font-bold text-xs focus:outline-none w-36 sm:w-44 placeholder-neutral-500"
+                />
+                <button id="ribbon-company-submit" class="text-xs text-accent-green hover:scale-110 font-bold px-1 transition-transform cursor-pointer" title="Done">✓</button>
             </div>
-            
-            <!-- Pic 2: Top Right -->
-            <div class="absolute top-32 right-20 -rotate-12 hover:rotate-0 hover:z-20 transition-transform duration-300 pointer-events-auto group">
-                <div class="bg-canvas-white p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm group-hover:-translate-y-1 group-hover:shadow-subtle-2 transition-all">
-                    <img src="postit 2.JPG" class="w-28 h-28 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                </div>
+
+            <!-- Hover hint when moving over the ribbon -->
+            <div id="hero-ribbon-hover-hint" class="hidden absolute pointer-events-none z-30 px-2 py-0.5 bg-highlight-yellow text-midnight-ink border border-charcoal-border rounded-full text-[8px] font-mono font-bold shadow-subtle whitespace-nowrap -translate-x-1/2 -translate-y-full">
+                ✎ Click to type company
             </div>
-            
-            <!-- Pic 3: Bottom Left -->
-            <div class="absolute bottom-24 left-24 -rotate-6 hover:rotate-0 hover:z-20 transition-transform duration-300 pointer-events-auto group">
-                <div class="bg-card-pink p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm group-hover:-translate-y-1 group-hover:shadow-subtle-2 transition-all">
-                    <img src="postit 3.JPG" class="w-36 h-36 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
+
+            <div id="hero-hanging-card" class="absolute top-0 left-0 pointer-events-auto select-none cursor-grab active:cursor-grabbing will-change-transform" style="touch-action: none; width: 180px; height: 272px; transform-origin: 50% 18px;" title="Interactive Developer ID - Pull & release!">
+                <!-- Premium Minimal Developer ID Badge -->
+                <div class="relative w-full h-full bg-[#11141c] text-white rounded-2xl border-2 border-charcoal-border shadow-subtle p-2.5 sm:p-3 flex flex-col justify-between overflow-hidden select-none">
+                    <!-- Subtle glass reflection -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/40 pointer-events-none"></div>
+
+                    <!-- Top Lanyard Punch Slot -->
+                    <div class="relative z-10 w-full flex flex-col items-center">
+                        <div id="hero-card-slot" class="w-8 h-2 sm:w-9 sm:h-2 bg-[#07090e] border border-neutral-700/80 rounded-full mb-1.5 shadow-inner"></div>
+                        
+                        <!-- Header Branding & Status -->
+                        <div class="w-full flex items-center justify-between text-[7.5px] sm:text-[8.5px] font-mono tracking-widest text-neutral-400 border-b border-neutral-800/80 pb-1">
+                            <span class="flex items-center gap-1 font-bold text-neutral-300">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse"></span>
+                                DEV.PASS
+                            </span>
+                            <span id="hero-card-company-label" class="text-[7px] sm:text-[8px] text-accent-green font-mono font-bold truncate max-w-[85px]">2026 // ID</span>
+                        </div>
+                    </div>
+
+                    <!-- Profile Avatar Container -->
+                    <div class="relative z-10 w-full flex-1 my-1.5 bg-gradient-to-b from-[#1a202c] to-[#0f131a] rounded-xl border border-neutral-700/60 p-1 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none"></div>
+                        <img src="assets/id.jpeg" onerror="if(this.src.indexOf('assets/')!==-1){this.src='id.jpeg';}" alt="Sagnik Chakraborty Avatar" class="w-full h-full object-contain pointer-events-none select-none relative z-10" draggable="false" loading="eager" />
+                        <span class="absolute bottom-1 right-1 px-1 py-0.2 bg-black/75 backdrop-blur-sm border border-neutral-700/80 text-[6.5px] sm:text-[7.5px] font-mono text-accent-green font-bold rounded">
+                            AI / ML
+                        </span>
+                    </div>
+
+                    <!-- Identity & Role -->
+                    <div class="relative z-10 w-full text-center">
+                        <h3 class="font-black text-xs sm:text-sm text-white tracking-tight leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                            Sagnik Chakraborty
+                        </h3>
+                        <div class="inline-flex items-center justify-center mt-1 px-2.5 py-0.5 bg-accent-green text-midnight-ink font-extrabold text-[8px] sm:text-[9.5px] rounded-full uppercase tracking-wider shadow-subtle-3 border border-charcoal-border">
+                            AI/ML Developer
+                        </div>
+
+                        <!-- Barcode & Location -->
+                        <div class="mt-1.5 sm:mt-2 pt-1 border-t border-neutral-800/80 flex items-center justify-between text-[6.5px] sm:text-[7.5px] font-mono text-neutral-500">
+                            <span class="tracking-widest font-bold text-neutral-400">||| | |||| | ||</span>
+                            <span class="uppercase">KOL // IN</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Pic 4: Bottom Right -->
-            <div class="absolute bottom-16 right-40 rotate-12 hover:rotate-0 hover:z-20 transition-transform duration-300 pointer-events-auto group">
-                <div class="bg-card-mint p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm group-hover:-translate-y-1 group-hover:shadow-subtle-2 transition-all">
-                    <img src="postit 4.JPG" class="w-32 h-32 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                </div>
-            </div>
-            
-            <!-- Pic 5: Middle Right Edge -->
-            <div class="absolute top-1/2 right-12 -translate-y-1/2 rotate-3 hover:rotate-0 hover:z-20 transition-transform duration-300 pointer-events-auto group">
-                <div class="bg-card-lavender p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm group-hover:-translate-y-1 group-hover:shadow-subtle-2 transition-all">
-                    <img src="postit 5.JPG" class="w-32 h-32 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                </div>
-            </div>
-            
-            <!-- Pic 6: Middle Left Edge -->
-            <div class="absolute top-1/2 left-12 -translate-y-1/2 -rotate-6 hover:rotate-0 hover:z-20 transition-transform duration-300 pointer-events-auto group">
-                <div class="bg-highlight-yellow p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm group-hover:-translate-y-1 group-hover:shadow-subtle-2 transition-all">
-                    <img src="postit 6.jpg" class="w-32 h-32 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
+
+                <!-- Subtle Drag Hint -->
+                <div id="hero-card-drag-hint" class="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 bg-highlight-yellow text-midnight-ink border border-charcoal-border rounded-full text-[8px] font-bold shadow-subtle pointer-events-none transition-opacity duration-300">
+                    👋 Drag me!
                 </div>
             </div>
         </div>
@@ -414,40 +446,6 @@
                                 <p class="text-xs font-bold text-midnight-ink">Python Developer</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Mobile Post-it Carousel (Industry Mentors) -->
-            <div class="mt-16 w-full flex md:hidden overflow-x-auto gap-4 pb-8 pt-4 px-2 -mx-2 snap-x snap-mandatory funky-scrollbar">
-                <div class="snap-center shrink-0">
-                    <div class="bg-card-saffron p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform rotate-2">
-                        <img src="postit 1.JPG" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                    </div>
-                </div>
-                <div class="snap-center shrink-0">
-                    <div class="bg-canvas-white p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform -rotate-2">
-                        <img src="postit 2.JPG" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                    </div>
-                </div>
-                <div class="snap-center shrink-0">
-                    <div class="bg-card-pink p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform rotate-1">
-                        <img src="postit 3.JPG" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                    </div>
-                </div>
-                <div class="snap-center shrink-0">
-                    <div class="bg-card-mint p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform -rotate-3">
-                        <img src="postit 4.JPG" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                    </div>
-                </div>
-                <div class="snap-center shrink-0">
-                    <div class="bg-card-lavender p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform rotate-3">
-                        <img src="postit 5.JPG" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
-                    </div>
-                </div>
-                <div class="snap-center shrink-0 pr-4">
-                    <div class="bg-highlight-yellow p-2 pb-8 border border-charcoal-border shadow-subtle rounded-sm transform -rotate-1">
-                        <img src="postit 6.jpg" class="w-40 h-40 object-cover border border-charcoal-border filter contrast-125" alt="Industry Mentor">
                     </div>
                 </div>
             </div>
@@ -1117,21 +1115,9 @@
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl mx-auto">A quick look at the languages and tools I use to build data-driven applications.</p>
             </div>
 
-            <!-- Mobile Swipe Hint Bar for Skills -->
-            <div class="flex md:hidden items-center justify-between mb-3 px-1">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
-                    <i class="fas fa-hand-pointer animate-pulse"></i>
-                    <span>Swipe left for next stack</span>
-                    <i class="fas fa-arrow-right text-[10px]"></i>
-                </span>
-                <span id="skills-carousel-counter" class="font-mono font-bold text-xs bg-pale-ash px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
-                    1 of 3
-                </span>
-            </div>
-
-            <div id="skills-carousel" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 pb-4">
                 <!-- Languages Category -->
-                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform -rotate-1 md:rotate-0">
+                <div class="bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-code text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Languages</h3>
@@ -1197,7 +1183,7 @@
                 </div>
 
                 <!-- Data Analysis Category -->
-                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform rotate-1 md:rotate-0">
+                <div class="bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-chart-line text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Data Analysis</h3>
@@ -1241,7 +1227,7 @@
                 </div>
 
                 <!-- Frameworks & Tools Category -->
-                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between transform -rotate-1 md:rotate-0">
+                <div class="bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all flex flex-col justify-between">
                     <div class="flex items-center gap-3 mb-8 border-b-2 border-charcoal-border pb-4">
                         <i class="fas fa-toolbox text-2xl text-midnight-ink"></i>
                         <h3 class="text-2xl font-bold text-midnight-ink">Frameworks & Tools</h3>
@@ -1305,13 +1291,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Mobile Pagination Dots for Skills -->
-            <div class="flex md:hidden items-center justify-center gap-2 mb-8">
-                <button type="button" data-skills-index="0" class="skills-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">Languages</button>
-                <button type="button" data-skills-index="1" class="skills-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">Data</button>
-                <button type="button" data-skills-index="2" class="skills-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">Tools</button>
             </div>
 
             <!-- Currently Learning -->
@@ -2359,21 +2338,9 @@
                 <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-midnight-ink mb-4">Featured Projects</h2>
             </div>
 
-            <!-- Mobile Swipe Hint Bar for Projects -->
-            <div class="flex md:hidden items-center justify-between mb-3 px-1">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
-                    <i class="fas fa-hand-pointer animate-pulse"></i>
-                    <span>Swipe left for next project</span>
-                    <i class="fas fa-arrow-right text-[10px]"></i>
-                </span>
-                <span id="projects-carousel-counter" class="font-mono font-bold text-xs bg-canvas-white px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
-                    1 of 4
-                </span>
-            </div>
-
-            <div id="projects-carousel" class="flex md:grid md:grid-cols-2 gap-6 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Riwaaz Luxury Couture -->
-                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform -rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-crown text-4xl text-midnight-ink mb-2"></i>
@@ -2407,7 +2374,7 @@
                 </div>
 
                 <!-- Nexus QR -->
-                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-lavender flex items-center justify-center relative overflow-hidden">
                         <div class="text-center relative z-10 p-6 bg-canvas-white border border-charcoal-border shadow-subtle-3 transform rotate-2 group-hover:rotate-0 transition-transform">
                             <i class="fas fa-qrcode text-4xl text-midnight-ink mb-2"></i>
@@ -2434,7 +2401,7 @@
                 </div>
 
                 <!-- PujoNavigation -->
-                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform -rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-saffron flex items-center justify-center relative overflow-hidden">
                         <div class="absolute top-3 right-3 z-20">
                             <span class="px-2.5 py-1 bg-accent-green text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
@@ -2468,7 +2435,7 @@
                 </div>
 
                 <!-- LPU CGPA Calculator -->
-                <div class="w-[86vw] sm:w-[420px] md:w-auto shrink-0 snap-center bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between transform rotate-1 md:rotate-0" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                <div class="bg-canvas-white rounded-xl border-2 border-charcoal-border shadow-subtle hover:shadow-subtle-2 hover:-translate-y-1 transition-all flex flex-col group justify-between" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="h-48 border-b border-charcoal-border bg-card-pink flex items-center justify-center relative overflow-hidden">
                         <div class="absolute top-3 right-3 z-20">
                             <span class="px-2.5 py-1 bg-highlight-yellow text-midnight-ink text-xs font-bold border border-charcoal-border rounded-md shadow-subtle-3 flex items-center gap-1">
@@ -2501,14 +2468,6 @@
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Mobile Pagination Dots for Projects -->
-            <div class="flex md:hidden items-center justify-center gap-2 mt-2">
-                <button type="button" data-project-index="0" class="project-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">1. Riwaaz</button>
-                <button type="button" data-project-index="1" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">2. Nexus</button>
-                <button type="button" data-project-index="2" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">3. PujoNav</button>
-                <button type="button" data-project-index="3" class="project-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">4. CGPA</button>
             </div>
         </div>
     </section>
@@ -2555,21 +2514,9 @@
                 <p class="text-lg text-midnight-ink font-medium max-w-2xl">Official courses and credentials I've earned to level up my skills.</p>
             </div>
 
-            <!-- Mobile Swipe Hint Bar for Certifications -->
-            <div class="flex md:hidden items-center justify-between mb-3 px-1">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-highlight-yellow text-midnight-ink font-mono font-bold text-xs rounded-pill border border-charcoal-border shadow-subtle-3">
-                    <i class="fas fa-hand-pointer animate-pulse"></i>
-                    <span>Swipe left for next cert</span>
-                    <i class="fas fa-arrow-right text-[10px]"></i>
-                </span>
-                <span id="certifications-carousel-counter" class="font-mono font-bold text-xs bg-canvas-white px-2.5 py-1 rounded-md border border-charcoal-border shadow-subtle-3">
-                    1 of 3
-                </span>
-            </div>
-
-            <div id="certifications-carousel" class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible pb-6 pt-2 px-1 -mx-1 sm:px-0 sm:mx-0 snap-x snap-mandatory funky-scrollbar touch-pan-x mb-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Cert 1: IBM -->
-                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full transform -rotate-1 md:rotate-0">
+                <div class="bg-card-lavender p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
@@ -2593,7 +2540,7 @@
                 </div>
 
                 <!-- Cert 2: Cisco -->
-                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full transform rotate-1 md:rotate-0">
+                <div class="bg-card-saffron p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
@@ -2617,7 +2564,7 @@
                 </div>
 
                 <!-- Cert 3: Python -->
-                <div class="w-[86vw] sm:w-[380px] md:w-auto shrink-0 snap-center bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle-4 md:shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full transform -rotate-1 md:rotate-0">
+                <div class="bg-card-mint p-6 sm:p-8 rounded-xl border-2 border-charcoal-border shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 transition-all group relative overflow-hidden flex flex-col justify-between h-full">
                     <div>
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-canvas-white border border-charcoal-border rounded-lg flex items-center justify-center shadow-subtle-3">
@@ -2639,13 +2586,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
-
-            <!-- Mobile Pagination Dots for Certifications -->
-            <div class="flex md:hidden items-center justify-center gap-2 mt-3">
-                <button type="button" data-cert-index="0" class="cert-dot active-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-accent-green shadow-subtle-3 transition-all cursor-pointer">1. IBM Web</button>
-                <button type="button" data-cert-index="1" class="cert-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">2. Cisco Data</button>
-                <button type="button" data-cert-index="2" class="cert-dot px-3 py-1 rounded-pill text-xs font-mono font-bold border-2 border-charcoal-border bg-canvas-white shadow-subtle-3 transition-all cursor-pointer">3. Python</button>
             </div>
         </div>
     </section>
@@ -2932,90 +2872,6 @@
         });
     </script>
 
-    <!-- Interactive Mobile Swipe & Snap Carousel for Skills & Projects -->
-    <script>
-        (function() {
-            function initMobileCarousel(carouselId, counterId, dotSelector) {
-                const carousel = document.getElementById(carouselId);
-                const counter = document.getElementById(counterId);
-                const dots = document.querySelectorAll(dotSelector);
-                if (!carousel) return;
-
-                const cards = Array.from(carousel.children).filter(el => el.nodeType === 1);
-                const total = cards.length;
-                let isScrolling = false;
-
-                function updateSlideStatus() {
-                    if (!cards.length) return;
-                    const carouselRect = carousel.getBoundingClientRect();
-                    const carouselCenter = carouselRect.left + carouselRect.width / 2;
-
-                    let closestIndex = 0;
-                    let minDistance = Infinity;
-
-                    cards.forEach((card, index) => {
-                        const cardRect = card.getBoundingClientRect();
-                        const cardCenter = cardRect.left + cardRect.width / 2;
-                        const dist = Math.abs(carouselCenter - cardCenter);
-                        if (dist < minDistance) {
-                            minDistance = dist;
-                            closestIndex = index;
-                        }
-                    });
-
-                    if (counter) {
-                        counter.textContent = `${closestIndex + 1} of ${total}`;
-                    }
-
-                    dots.forEach((dot, idx) => {
-                        if (idx === closestIndex) {
-                            dot.classList.add('bg-accent-green', 'active-dot');
-                            dot.classList.remove('bg-canvas-white');
-                            dot.style.transform = 'scale(1.08)';
-                        } else {
-                            dot.classList.remove('bg-accent-green', 'active-dot');
-                            dot.classList.add('bg-canvas-white');
-                            dot.style.transform = 'scale(1)';
-                        }
-                    });
-                }
-
-                carousel.addEventListener('scroll', () => {
-                    if (!isScrolling) {
-                        window.requestAnimationFrame(() => {
-                            updateSlideStatus();
-                            isScrolling = false;
-                        });
-                        isScrolling = true;
-                    }
-                }, { passive: true });
-
-                dots.forEach((dot, idx) => {
-                    dot.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        if (cards[idx]) {
-                            cards[idx].scrollIntoView({
-                                behavior: 'smooth',
-                                inline: 'center',
-                                block: 'nearest'
-                            });
-                        }
-                    });
-                });
-
-                // Init on resize and DOM ready
-                window.addEventListener('resize', updateSlideStatus, { passive: true });
-                setTimeout(updateSlideStatus, 150);
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-                initMobileCarousel('skills-carousel', 'skills-carousel-counter', '.skills-dot');
-                initMobileCarousel('projects-carousel', 'projects-carousel-counter', '.project-dot');
-                initMobileCarousel('certifications-carousel', 'certifications-carousel-counter', '.cert-dot');
-            });
-        })();
-    </script>
-
     <!-- Interactive Visitor Welcome & Name Personalization -->
     <script>
         // Global helper accessible by all arcade games and widgets
@@ -3131,10 +2987,14 @@
     <script src="fighter-game.js"></script>
     <script src="arcade-manager.js"></script>
 
+    <!-- Interactive Physics Hanging ID Card -->
+    <script src="matter.min.js"></script>
+    <script src="hanging-card.js"></script>
+
     <!-- ================= FLOATING ROBLOX AVATAR COMPANION ================= -->
     <div id="roblox-companion-container" class="fixed bottom-24 right-2 sm:right-3 md:bottom-6 md:right-6 z-40 select-none pointer-events-auto transition-all duration-300">
         <!-- Speech Bubble -->
-        <div id="roblox-speech-bubble" class="absolute bottom-[calc(100%+8px)] right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3 py-2 shadow-subtle text-xs font-bold text-midnight-ink max-w-[240px] sm:max-w-[280px] md:max-w-[320px] leading-snug text-left opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
+        <div id="roblox-speech-bubble" class="absolute bottom-[calc(100%+8px)] right-0 bg-canvas-white border-2 border-charcoal-border rounded-xl px-3.5 py-1.5 shadow-subtle text-xs font-bold text-midnight-ink whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 z-30">
             <span id="roblox-speech-text">Hey there! 🎮</span>
             <div class="absolute -bottom-1.5 right-6 w-2.5 h-2.5 bg-canvas-white border-r-2 border-b-2 border-charcoal-border transform rotate-45"></div>
         </div>
