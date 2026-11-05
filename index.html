@@ -288,7 +288,7 @@
         </div>
     </nav>
 
-    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-sky-breeze-gradient border-b border-charcoal-border">
+    <section id="about" class="relative pt-20 pb-16 lg:pt-48 lg:pb-32 overflow-hidden bg-sky-breeze-gradient border-b border-charcoal-border">
         
         <!-- Interactive Physics-Based Hanging Developer ID Card (Matter.js) -->
         <div id="hero-hanging-card-wrapper" class="absolute inset-0 pointer-events-none z-20 overflow-hidden" aria-hidden="false">
@@ -370,12 +370,15 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
                 <div class="contents lg:flex lg:flex-1 lg:flex-col text-center lg:text-left">
-                    <!-- 1. Hello Badge -->
-                    <div class="order-1 mb-2 lg:mb-8">
+                    <!-- 1. Hello Badge (Desktop only; on mobile the hanging ID card is the hero highlight) -->
+                    <div class="order-1 mb-2 lg:mb-8 hidden lg:block">
                         <div class="inline-block px-4 py-1.5 bg-canvas-white text-midnight-ink font-bold border border-charcoal-border rounded-pill text-xs shadow-subtle hover:-translate-y-1 hover:shadow-subtle-2 hover:bg-highlight-yellow transition-all duration-300 cursor-pointer">
                             👋 Hello, I'm Sagnik Chakraborty
                         </div>
                     </div>
+
+                    <!-- Mobile ID Card Spotlight Area: reserves vertical flow for the centered hanging badge -->
+                    <div class="order-1 lg:hidden w-full h-[350px] pointer-events-none select-none"></div>
 
                     <!-- 3. Headline -->
                     <h1 class="order-3 text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-midnight-ink mb-6 mt-4 lg:mt-0 leading-tight">
@@ -401,8 +404,8 @@
                         </span>
                     </h1>
 
-                    <!-- 4. Description Text -->
-                    <p class="order-4 text-base sm:text-lg text-midnight-ink mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                    <!-- 4. Description Text (Desktop only; hidden on mobile to prioritize the interactive ID card) -->
+                    <p class="order-4 hidden lg:block text-base sm:text-lg text-midnight-ink mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
                         I build <span class="bg-card-lavender px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 -rotate-1 inline-block cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">practical software</span>, <span class="bg-card-mint px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">data-driven tools</span>, and <span class="bg-card-saffron px-1.5 py-0.5 rounded font-bold border border-charcoal-border shadow-subtle-3 -rotate-1 inline-block mx-1 cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-subtle hover:rotate-0">AI solutions</span> with clean code and playful UX. Take a look around, battle me in the arcade below, or drop a quick hi!
                     </p>
 
@@ -423,8 +426,8 @@
                     </div>
                 </div>
 
-                <!-- 2. Video Card -->
-                <div class="order-2 lg:order-none flex-1 relative w-full flex justify-center z-10 my-4 lg:my-0 pb-4 lg:pb-0">
+                <!-- 2. Video Card (Desktop Only - Hidden on Mobile) -->
+                <div class="hidden lg:flex flex-1 relative w-full justify-center z-10 my-4 lg:my-0 pb-4 lg:pb-0">
                     <div class="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto group cursor-pointer" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
                         <div class="absolute inset-0 bg-highlight-yellow rounded-lg border-2 border-charcoal-border transform translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300"></div>
                         

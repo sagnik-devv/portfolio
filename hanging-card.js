@@ -44,12 +44,12 @@
         let isHeroVisible = true;
 
         // ================= CONFIGURATION & RESPONSIVENESS =================
-        let isMobile = window.innerWidth < 768;
-        let cardWidth = isMobile ? 120 : 180;
-        let cardHeight = isMobile ? 185 : 272;
-        let lanyardLength = isMobile ? 100 : 175;
-        let strapWidth = isMobile ? 24 : 32;
-        let slotOffset = isMobile ? 13 : 18; // Distance from card top edge to slot center
+        let isMobile = window.innerWidth < 1024;
+        let cardWidth = isMobile ? 155 : 180;
+        let cardHeight = isMobile ? 236 : 272;
+        let lanyardLength = isMobile ? 130 : 200;
+        let strapWidth = isMobile ? 26 : 32;
+        let slotOffset = isMobile ? 16 : 18; // Distance from card top edge to slot center
         let anchorX = 0;
         let anchorY = 64; // Aligns with bottom seam of fixed top navbar
 
@@ -82,13 +82,11 @@
         } catch (_) {}
 
         function getOptimalAnchorX(width) {
-            if (width < 768) {
-                return Math.round(width - 75);
-            }
+            // On mobile & tablet (< 1024px), the ID card is the hero centerpiece in dead center
             if (width < 1024) {
-                return Math.round(width - 110);
+                return Math.round(width / 2);
             }
-            // Position in open cyan area to the right of the video
+            // On desktop, position in open cyan area to the right of the video
             const videoRightEdge = Math.min((width / 2) + 360, width - 260);
             const rightMargin = width - 40;
             const optimalX = Math.round((videoRightEdge + rightMargin) / 2);
@@ -100,12 +98,12 @@
             const width = rect.width;
             const height = rect.height;
 
-            isMobile = window.innerWidth < 768;
-            cardWidth = isMobile ? 120 : 180;
-            cardHeight = isMobile ? 185 : 272;
-            lanyardLength = isMobile ? 100 : 175;
-            strapWidth = isMobile ? 24 : 32;
-            slotOffset = isMobile ? 13 : 18;
+            isMobile = window.innerWidth < 1024;
+            cardWidth = isMobile ? 155 : 180;
+            cardHeight = isMobile ? 236 : 272;
+            lanyardLength = isMobile ? 130 : 200;
+            strapWidth = isMobile ? 26 : 32;
+            slotOffset = isMobile ? 16 : 18;
 
             cardEl.style.width = cardWidth + 'px';
             cardEl.style.height = cardHeight + 'px';
@@ -172,7 +170,8 @@
         function isPointOnRibbon(px, py) {
             const slotPos = getSlotPosition();
             const hit = distToSegment(px, py, anchorX, anchorY, slotPos.x, slotPos.y);
-            return hit.dist <= (strapWidth / 2 + 10) && hit.t >= 0.08 && hit.t <= 0.92;
+            const hitMargin = isMobile ? (strapWidth / 2 + 16) : (strapWidth / 2 + 10);
+            return hit.dist <= hitMargin && hit.t >= 0.05 && hit.t <= 0.95;
         }
 
         function openRibbonEditor(clickX, clickY) {
@@ -422,7 +421,8 @@
                 ctx.translate(anchorX, anchorY);
                 ctx.rotate(angle);
 
-                const displayWord = recruiterCompanyName ? recruiterCompanyName.toUpperCase() : "ADD YOUR COMPANY'S NAME";
+                const defaultPlaceholder = isMobile ? "YOUR COMPANY" : "ADD YOUR COMPANY'S NAME";
+                const displayWord = recruiterCompanyName ? recruiterCompanyName.toUpperCase() : defaultPlaceholder;
                 const repeatUnit = `${displayWord}  ★  `;
 
                 ctx.font = `bold ${isMobile ? '8px' : '9.5px'} monospace`;
